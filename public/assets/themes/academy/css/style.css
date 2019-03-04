@@ -1,0 +1,787 @@
+/*--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+/*-- reset code --*/
+body{
+	padding:0;
+	margin:0;
+	background:#FFF;
+}
+body a{
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+input[type="button"],input[type="submit"]{
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+h1,h2,h3,h4,h5,h6{
+	margin:0;	
+	padding:0;
+}	
+p{
+	margin:0;
+	padding:0;
+}
+ul{
+	margin:0;
+	padding:0;
+}
+label{
+	margin:0;
+}
+button{
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+img {
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+/*-- /reset code --*/
+body {
+	font-family: 'Muli', sans-serif;
+	font-weight:300;
+}
+
+/*-- Contact --*/
+section.contact-us {
+	padding:100px 0;
+	background:url('../images/contact.jpg');
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+section.contact-us h3.text-center {
+	color:#fff;
+	font-size:45px;
+	font-weight:300;
+	padding:20px 0;
+	font-family: 'Nunito', sans-serif;
+} 
+section.contact-us p.text-center {
+	color:#fff;
+	font-size:17px;
+	font-weight:inherit;
+	padding:0px 0 50px;
+}
+section.contact-us .contact-info {
+    text-align: justify;
+}
+section.contact-us .contact-info h4 {
+	font-size:30px;
+	padding:20px 0;
+	color:#fff;
+	font-weight:300;
+	font-family: 'Nunito', sans-serif;
+}
+section.contact-us .contact-info p {
+	font-size:18px;
+	padding:10px 0;
+	color:#fff;
+	font-weight:inherit;
+	line-height:25px;
+}
+section.contact-us .contact-info a {
+	color:#fff;
+	text-decoration:none;
+}
+ul.social-icons2 {
+	list-style:none;
+	padding-bottom:10px;
+}
+ul.social-icons2 li {
+	display:inline;
+}
+ul.social-icons2 li a i.fa.fa-facebook {
+	background-color:#3b5998;
+	padding:7px 14px 6px;
+	border-radius:50%;
+	font-size:20px;
+	color:#fff;
+	line-height: 25px;
+	text-align: center;
+    vertical-align: middle;	
+	 transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+ul.social-icons2 li a i.fa.fa-twitter {
+	background-color:#55acee;
+	padding: 7px 11px;
+	border-radius:50%;
+	font-size:17px;
+	color:#fff;
+	line-height: 25px;
+	text-align: center;
+    vertical-align: middle;
+	 transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+ul.social-icons2 li a i.fa.fa-linkedin {
+	background-color:#e68523;
+	padding: 6px 12px 8px;
+	border-radius:50%;
+	font-size:19px;
+	color:#fff;
+	line-height: 25px;
+	text-align: center;
+    vertical-align: middle;
+	 transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+ul.social-icons2 li a i.fa.fa-google-plus {
+	background-color:#dc4e41;
+	padding: 6px 9px;
+	border-radius:50%;
+	font-size:16px;
+	color:#fff;
+	line-height: 25px;
+	text-align: center;
+    vertical-align: middle;
+	 transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+ul.social-icons2 li a i.fa.fa-facebook:hover {
+	background-color:#002573;
+}
+ul.social-icons2 li a i.fa.fa-twitter:hover {
+	background-color:#004A82;
+}
+ul.social-icons2 li a i.fa.fa-linkedin:hover { 
+	background-color:#BB5E00;
+}
+ul.social-icons2 li a i.fa.fa-google-plus:hover { 
+	background-color:#8A0B00;
+}
+input#name , input#email , textarea#comments {
+	color:#fff;
+	border-radius: 0px;
+	margin-bottom:10px;
+	background-color: rgba(255, 255, 255, 0);
+	font-size:17px;
+	border:1px solid #fff
+}
+input#name , input#email  {
+	height:55px;	
+}
+input::-webkit-input-placeholder {
+color: #fff !important;
+}
+ 
+input:-moz-placeholder { /* Firefox 18- */
+color: #fff !important;  
+}
+ 
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #fff !important;  
+}
+ 
+input:-ms-input-placeholder {  
+color: #fff !important;  
+}
+textarea::-webkit-input-placeholder {
+color: #fff !important;
+}
+ 
+textarea::-moz-placeholder { /* Firefox 18- */
+color: #fff !important;  
+}
+ 
+textarea::-moz-placeholder {  /* Firefox 19+ */
+color: #fff !important;  
+}
+ 
+textarea::-ms-input-placeholder {  
+color: #fff !important;  
+}
+textarea#comments {
+	height:150px;
+}
+section.contact-us form button {
+	border-radius: 0px;
+    padding: 10px 30px;
+}
+.btn-outline1 {
+    border: solid 1px #fff;
+    font-size: 20px;
+    color: #fff;
+	font-family: 'Nunito', sans-serif;
+	font-weight:300;
+    background: 0 0;
+    transition: all .3s ease-in-out;
+}
+.btn-outline1:hover,
+.btn-outline1:focus,
+.btn-outline1:active {
+    border: solid 1px #fff;
+    color: #18bc9c;
+    background: #fff;
+}
+/*-- /Contact --*/
+/*-- Footer --*/
+section.footer {
+	padding:50px 0;
+	background-color:#000;
+	color:#fff;
+}
+section.footer .links a{
+	color:#fff;
+	text-decoration:none;
+	font-size:17px;
+	font-weight:inherit;
+	margin-right:10px;
+}
+section.footer p {
+	font-size:17px;
+	font-weight:inherit;
+}
+section.footer p a{
+	text-decoration:none;
+	color:#fff;
+}
+section.footer p a:hover {
+	color:#D25757;
+}
+/*-- /Footer --*/
+/*-- sliding animations --*/
+/* .slideanim {visibility:hidden;} */
+.slide {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide; 
+    /* The duration of the animation */
+    animation-duration: 1s; 
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible; 
+}
+
+/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
+@keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    } 
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+/*-- /sliding animations --*/
+/*-- responsive design --*/
+@media (max-width: 1920px) {
+.about-details {
+    padding: 0 50px 0 0px;
+}
+}
+
+@media (max-width: 1680px) {
+.about-details {
+    padding: 0 50px 0 20px;
+}	
+}
+
+@media (max-width: 1600px) {
+	.cover-slider__wrap {
+	height:795px;	
+	}
+	section.about-us .col-lg-6.about-info1 {
+    padding: 0 15px 0 0;
+}
+	section.about-us .col-lg-6.about-info2 {
+    padding: 0 0 0 15px;
+}
+section.about-us p {
+    font-size: 16px;
+    padding: 0 0 20px 0;
+}
+}
+
+@media (max-width: 1366px) {
+section.about-us .col-lg-6.about-info2 {
+    padding: 0 15px 0 15px;
+}
+section.about-us h2 {
+	padding:40px 0 20px;
+}
+}
+
+@media (max-width: 1280px) {
+.about-details {
+    padding: 0 20px 0;
+}
+}
+
+@media (max-width: 1080px) {
+section.about-us .col-lg-6.about-info1,section.about-us .col-lg-6.about-info2 {
+    padding: 0 15px 0 15px;
+}
+section.about-us img.img-responsive {
+    margin: 0 auto;
+}
+section.about-us h2 {
+	text-align:center;
+}
+section.about-us p {
+	text-align:center;
+	padding: 0px 100px 20px;
+}
+section.about-us {
+	padding-bottom:50px;
+}
+.nav>li>a {
+	padding: 10px 5px;
+}
+section.our-services .serv-info {
+    margin-left: -70px;
+}
+li.t4 {
+    margin-top: 50px;
+}
+section.our-gallery {
+	text-align:center;
+}
+section.footer p {
+    font-size: 15px;
+}
+section.footer .links a {
+	font-size: 16px;
+}
+.copyright {
+    vertical-align: middle;
+}
+.links {
+    vertical-align: middle;
+}
+}
+
+@media (max-width: 1024px) {
+.cover-slider__wrap {
+    height: 658px;
+}
+section.our-team ul li.t4 {
+	margin-top: 40px;
+}
+}
+
+@media (max-width: 991px) {
+.cover-slider__wrap {
+    height: 600px;
+}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -90px;
+}
+ul.nav.navbar-nav.navbar-right {
+    margin: 14px -70px 0 0px;
+}
+section.our-services .serv-info {
+    margin-left: -85px;
+}
+section.our-services .serv-info h4 {
+    font-size: 22px;
+}
+section.our-services .serv-info p.serv {
+    font-size: 15px;
+}
+section.our-gallery img.img-responsive {
+	width: 175px;
+}
+.ch-grid li {
+	margin: 7px;
+}
+section.contact-us .contact-info {
+	padding-bottom:40px;
+}
+.links {
+	text-align:center;
+}
+.copyright {
+	text-align:center;
+	padding-top:20px;
+}
+}
+
+@media (max-width: 900px) {
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -50px;
+}	
+.navbar>.container .navbar-header a.navbar-brand h1 {
+    font-size: 30px;
+}
+ul.nav.navbar-nav.navbar-right {
+    margin: 11px -70px 0 0px;
+}
+.nav>li>a {
+    padding: 10px 0px;
+}
+section.about-us p {
+	padding: 0px 25px 20px;
+	font-size: 16px;
+}
+}
+
+@media (max-width: 800px) {
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -19px;
+}
+ul.nav.navbar-nav.navbar-right {
+    margin: -39px -38px 0 0px;
+}
+}
+
+@media (max-width: 768px) {
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: 0px;
+}
+.navbar-inverse .navbar-nav>li>a {
+	font-size:18px;
+}
+ul.nav.navbar-nav.navbar-right {
+    margin: 12px -20px 0 0px;
+}
+section.about-us p {
+    padding: 0px 0px 20px;
+}
+section.our-services .serv-info {
+   margin-left:-90px;
+}
+.cover-slider__wrap {
+    height: 400px;
+}
+section.our-services , section.our-team, section.contact-us {
+    padding: 40px 0;
+}
+section.our-gallery  {
+	padding:40px 0 60px;
+}
+section.our-services h3.text-center, section.our-gallery h3.text-center , section.our-team h3.text-center, section.contact-us h3.text-center {
+    font-size: 35px;
+}
+section.our-services p.text-center, section.our-gallery p.text-center, section.our-team p.text-center, section.contact-us p.text-center {
+	padding:0 0 40px;
+}
+}
+
+@media (max-width: 736px) {
+ul.nav.navbar-nav.navbar-right {
+    margin: 0px;
+	text-align: center;
+    background-color: rgba(0, 0, 0, 0.71);
+}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: 15px;
+}
+.cover-slider__wrap {
+    height: 350px;
+}
+section.our-services .serv-info {
+	margin-left:-225px;
+}
+section.our-services i.fa {
+	margin-left:40px;
+}
+section.our-services .serv-info p.serv {
+    font-size: 17px;
+}
+section.our-services .serv-info h4 {
+    font-size: 23px;
+}
+.ch-grid li {
+    margin: 0 40px 0 40px;
+}
+ul.social-icons2 {
+	padding-top:10px;
+}
+}
+
+@media (max-width:667px) {
+section.our-services i.fa {
+    margin-left:40px;
+}
+section.our-services .serv-info {
+	margin-left:-190px;
+}
+}
+
+@media (max-width:640px) {
+section.our-services , section.our-gallery , section.our-team, section.contact-us {
+	padding:50px 0;
+}
+section.our-services h3.text-center , section.our-gallery h3.text-center , section.our-team h3.text-center , section.contact-us h3.text-center {
+    font-size: 35px;
+}
+section.our-services .serv-info p.serv {
+    font-size: 16px;
+	padding-bottom:30px;
+}
+section.our-services p.text-center, section.our-gallery p.text-center , section.our-team p.text-center , section.contact-us p.text-center {
+    font-size: 16px;
+}
+.ch-grid li {
+    margin: 0 27px 0 27px;
+}
+section.contact-us p.text-center {
+	padding:10px 0 20px;
+}
+section.contact-us .contact-info h4 {
+	font-size: 25px;
+	text-align:center;
+    padding: 20px 0 10px;
+}
+section.contact-us .contact-info p {
+	margin-left: 120px;
+}
+ul.social-icons2 {
+	text-align:center;
+}
+section.our-services .serv-info {
+    margin-left: -170px;
+}
+}
+
+@media (max-width:600px) {
+.cover-slider__wrap {
+    height: 365px;
+}
+section.about-us h2 {
+    font-size: 35px;
+}
+section.our-services i.fa {
+    margin-left: 55px;
+}
+section.our-services .serv-info {
+    width: 130%;
+    margin-left: -130px;
+    margin-bottom: 15px;
+}
+.ch-grid li {
+    margin: 0 20px 0 20px;
+}
+section.map iframe.googlemaps {
+    width: 100%;
+    height: 250px;
+}
+p.addr {
+    margin-right: 100px;
+}
+}
+
+@media (max-width: 568px) {
+.cover-slider__wrap {
+    height: 255px;
+}
+section.our-gallery img.img-responsive {
+    width: 160px;
+}
+.ch-grid li {
+    margin: 0 10px 0 10px;
+}
+section.contact-us .contact-info p {
+    margin-left: 80px;
+}
+}
+
+@media (max-width: 480px) {
+.cover-slider__wrap {
+    height: 260px;
+}
+section.about-us h2 {
+	padding: 40px 0 15px;
+}
+section.our-services i.fa {
+    margin-left: 40px;
+}
+section.our-services .serv-info {
+	margin-left:-90px;
+}
+section.our-gallery img.img-responsive {
+    width: 140px;
+}
+.ch-grid li {
+    margin: 0px;
+}
+.ch-grid {
+	margin:0;
+}
+section.our-team section.main ul.ch-grid li.t2,section.our-team section.main ul.ch-grid li.t3,section.our-team section.main ul.ch-grid li.t4 {
+	margin-top:30px;
+}
+section.contact-us .contact-info h4 {
+    font-size: 22px;
+}
+section.contact-us .contact-info p {
+    margin-left: 70px;
+    font-size: 17px;
+}
+section.about-us p {
+    font-size: 15px;
+}
+section.our-services p.text-center, section.our-gallery p.text-center, section.our-team p.text-center, section.contact-us p.text-center {
+	font-size: 15px;
+	line-height:28px;
+	padding:0 0 40px;
+}
+section.our-services h3.text-center, section.our-gallery h3.text-center, section.our-team h3.text-center, section.contact-us h3.text-center {
+    font-size: 30px;
+}
+section.our-services .serv-info p.serv {
+    font-size: 15px;
+}
+section.contact-us p.text-center {
+	padding:0 0 15px;
+}
+section.contact-us form button {
+	width:100%;
+}
+.copyright p {
+	line-height:28px;
+}
+}
+
+@media (max-width: 414px) {
+section.our-services i.fa {
+    margin-left: 25px;
+}
+section.our-services .serv-info {
+    margin-left: -75px;
+	width:145%;
+}
+section.our-gallery img.img-responsive {
+    width: 170px;
+}
+section.our-services h3.text-center, section.our-gallery h3.text-center, section.our-team h3.text-center, section.contact-us h3.text-center {
+    font-size: 29px;
+}
+section.contact-us .contact-info p {
+    margin-left: 40px;
+}
+section.contact-us .contact-info p.addr {
+	padding-right:20px;
+}
+}
+
+@media (max-width: 384px) {
+section.our-services i.fa {
+    margin-left: 10px;
+}
+section.our-gallery img.img-responsive {
+    width: 160px;
+}
+section.our-services h3.text-center, section.our-gallery h3.text-center, section.our-team h3.text-center, section.contact-us h3.text-center {
+    font-size: 27px;
+}
+section.contact-us .contact-info p {
+    margin-left: 15px;
+}
+section.contact-us form button {
+	width:100%;
+}
+section.our-services .serv-info p.serv {
+	padding-bottom:20px;
+}
+}
+
+@media (max-width: 375px) {
+section.contact-us .contact-info p {
+    margin-left: 5px;
+}
+section.our-services h3.text-center, section.our-gallery h3.text-center, section.our-team h3.text-center, section.contact-us h3.text-center {
+    font-size: 25px;
+}
+.cover-slider__wrap {
+    height: 240px;
+}
+section.our-services, section.our-gallery, section.our-team, section.contact-us {
+    padding: 30px 0;
+}
+input#name, input#email {
+    height: 50px;
+}
+}
+
+@media (max-width: 320px) {
+input#name, input#email {
+    height: 45px;
+}
+input#name, input#email, textarea#comments {
+	font-size:16px;
+}
+.btn-outline1 {
+	font-size:17px;
+}
+.cover-slider__wrap {
+    height: 210px;
+}
+section.about-us h2 {
+    padding: 30px 0 15px;
+	font-size:30px;
+}
+section.about-us p {
+	font-size:14px;
+}
+p {
+	font-size:14px!important;
+}
+section.our-services .serv-info h4 {
+    font-size: 19px;
+	padding-bottom:7px;
+}
+section.our-services .serv-info p.serv {
+    font-size: 14px;
+	line-height: 22px;
+}
+section.our-services .serv-info {
+    margin-left: -45px;
+    width: 145%;
+}
+section.our-gallery img.img-responsive {
+    width: 250px;
+}
+section.our-team h3.text-center {
+	font-size:23px;
+}
+}
+
+
+
