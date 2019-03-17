@@ -12,11 +12,11 @@ class User extends CI_Controller{
     } 
 
     /*
-     * Listing of user
+     * Listing of users
      */
     function index()
     {
-        $data['user'] = $this->User_model->get_all_user();
+        $data['users'] = $this->User_model->get_all_users();
         
         $data['_view'] = 'user/index';
         $this->load->view('layouts/main',$data);
@@ -29,21 +29,25 @@ class User extends CI_Controller{
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('password','Password','required');
-		$this->form_validation->set_rules('email','Email','required|valid_email');
-		$this->form_validation->set_rules('phone','Phone','numeric');
-		$this->form_validation->set_rules('gender','Gender','required');
-		$this->form_validation->set_rules('userTypeId','UserTypeId','required');
+		$this->form_validation->set_rules('name','Name','required|max_length[250]');
+		$this->form_validation->set_rules('pass','Pass','required|max_length[250]');
+		$this->form_validation->set_rules('email','Email','max_length[250]|valid_email');
+		$this->form_validation->set_rules('phone','Phone','integer');
+		$this->form_validation->set_rules('gender','Gender','required|max_length[3]');
+		$this->form_validation->set_rules('address','Address','max_length[250]');
+		$this->form_validation->set_rules('userTypeID','UserTypeID','required|max_length[20]');
 		
 		if($this->form_validation->run())     
         {   
             $params = array(
-				'password' => $this->input->post('password'),
+				'name' => $this->input->post('name'),
+				'pass' => $this->input->post('pass'),
 				'email' => $this->input->post('email'),
 				'phone' => $this->input->post('phone'),
 				'gender' => $this->input->post('gender'),
-				'userTypeId' => $this->input->post('userTypeId'),
 				'address' => $this->input->post('address'),
+				'birthday' => $this->input->post('birthday'),
+				'userTypeID' => $this->input->post('userTypeID'),
             );
             
             $user_id = $this->User_model->add_user($params);
@@ -59,33 +63,37 @@ class User extends CI_Controller{
     /*
      * Editing a user
      */
-    function edit($username)
+    function edit($account)
     {   
         // check if the user exists before trying to edit it
-        $data['user'] = $this->User_model->get_user($username);
+        $data['user'] = $this->User_model->get_user($account);
         
-        if(isset($data['user']['username']))
+        if(isset($data['user']['account']))
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('password','Password','required');
-			$this->form_validation->set_rules('email','Email','required|valid_email');
-			$this->form_validation->set_rules('phone','Phone','numeric');
-			$this->form_validation->set_rules('gender','Gender','required');
-			$this->form_validation->set_rules('userTypeId','UserTypeId','required');
+			$this->form_validation->set_rules('name','Name','required|max_length[250]');
+			$this->form_validation->set_rules('pass','Pass','required|max_length[250]');
+			$this->form_validation->set_rules('email','Email','max_length[250]|valid_email');
+			$this->form_validation->set_rules('phone','Phone','integer');
+			$this->form_validation->set_rules('gender','Gender','required|max_length[3]');
+			$this->form_validation->set_rules('address','Address','max_length[250]');
+			$this->form_validation->set_rules('userTypeID','UserTypeID','required|max_length[20]');
 		
 			if($this->form_validation->run())     
             {   
                 $params = array(
-					'password' => $this->input->post('password'),
+					'name' => $this->input->post('name'),
+					'pass' => $this->input->post('pass'),
 					'email' => $this->input->post('email'),
 					'phone' => $this->input->post('phone'),
 					'gender' => $this->input->post('gender'),
-					'userTypeId' => $this->input->post('userTypeId'),
 					'address' => $this->input->post('address'),
+					'birthday' => $this->input->post('birthday'),
+					'userTypeID' => $this->input->post('userTypeID'),
                 );
 
-                $this->User_model->update_user($username,$params);            
+                $this->User_model->update_user($account,$params);            
                 redirect('user/index');
             }
             else
@@ -101,14 +109,14 @@ class User extends CI_Controller{
     /*
      * Deleting user
      */
-    function remove($username)
+    function remove($account)
     {
-        $user = $this->User_model->get_user($username);
+        $user = $this->User_model->get_user($account);
 
         // check if the user exists before trying to delete it
-        if(isset($user['username']))
+        if(isset($user['account']))
         {
-            $this->User_model->delete_user($username);
+            $this->User_model->delete_user($account);
             redirect('user/index');
         }
         else

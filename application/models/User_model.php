@@ -12,20 +12,20 @@ class User_model extends CI_Model
     }
     
     /*
-     * Get user by username
+     * Get user by account
      */
-    function get_user($username)
+    function get_user($account)
     {
-        return $this->db->get_where('user',array('username'=>$username))->row_array();
+        return $this->db->get_where('users',array('account'=>$account))->row_array();
     }
         
     /*
-     * Get all user
+     * Get all users
      */
-    function get_all_user()
+    function get_all_users()
     {
-        $this->db->order_by('username', 'desc');
-        return $this->db->get('user')->result_array();
+        $this->db->order_by('account', 'desc');
+        return $this->db->get('users')->result_array();
     }
         
     /*
@@ -33,24 +33,24 @@ class User_model extends CI_Model
      */
     function add_user($params)
     {
-        $this->db->insert('user',$params);
+        $this->db->insert('users',$params);
         return $this->db->insert_id();
     }
     
     /*
      * function to update user
      */
-    function update_user($username,$params)
+    function update_user($account,$params)
     {
-        $this->db->where('username',$username);
-        return $this->db->update('user',$params);
+        $this->db->where('account',$account);
+        return $this->db->update('users',$params);
     }
     
     /*
      * function to delete user
      */
-    function delete_user($username)
+    function delete_user($account)
     {
-        return $this->db->delete('user',array('username'=>$username));
+        return $this->db->delete('users',array('account'=>$account));
     }
 }

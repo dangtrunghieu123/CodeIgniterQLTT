@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>qltt</title>
+        <title>quanlitrungtam</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
@@ -27,9 +27,9 @@
                 <!-- Logo -->
                 <a href="" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini">qltt</span>
+                    <span class="logo-mini">quanlitrungtam</span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg">qltt</span>
+                    <span class="logo-lg">quanlitrungtam</span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -98,14 +98,66 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Cource</span>
+                                <i class="fa fa-desktop"></i> <span>Course</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('cource/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('course/add');?>"><i class="fa fa-plus"></i> Add</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('cource/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('course/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                </li>
+							</ul>
+                        </li>
+						<li>
+                            <a href="#">
+                                <i class="fa fa-desktop"></i> <span>Detail Cl</span>
+                            </a>
+                            <ul class="treeview-menu">
+								<li class="active">
+                                    <a href="<?php echo site_url('detail_cl/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                </li>
+								<li>
+                                    <a href="<?php echo site_url('detail_cl/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                </li>
+							</ul>
+                        </li>
+						<li>
+                            <a href="#">
+                                <i class="fa fa-desktop"></i> <span>Detail Uc</span>
+                            </a>
+                            <ul class="treeview-menu">
+								<li class="active">
+                                    <a href="<?php echo site_url('detail_uc/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                </li>
+								<li>
+                                    <a href="<?php echo site_url('detail_uc/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                </li>
+							</ul>
+                        </li>
+						<li>
+                            <a href="#">
+                                <i class="fa fa-desktop"></i> <span>Lesson</span>
+                            </a>
+                            <ul class="treeview-menu">
+								<li class="active">
+                                    <a href="<?php echo site_url('lesson/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                </li>
+								<li>
+                                    <a href="<?php echo site_url('lesson/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                </li>
+							</ul>
+                        </li>
+						<li>
+                            <a href="#">
+                                <i class="fa fa-desktop"></i> <span>Type User</span>
+                            </a>
+                            <ul class="treeview-menu">
+								<li class="active">
+                                    <a href="<?php echo site_url('type_user/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                </li>
+								<li>
+                                    <a href="<?php echo site_url('type_user/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
                                 </li>
 							</ul>
                         </li>
@@ -119,19 +171,6 @@
                                 </li>
 								<li>
                                     <a href="<?php echo site_url('user/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>User Type</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('user_type/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('user_type/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
                                 </li>
 							</ul>
                         </li>

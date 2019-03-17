@@ -2,16 +2,16 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">User Type Add</h3>
+              	<h3 class="box-title">Type User Add</h3>
             </div>
-            <?php echo form_open('user_type/add'); ?>
+            <?php echo form_open('type_user/add'); ?>
           	<div class="box-body">
           		<div class="row clearfix">
 					<div class="col-md-6">
-						<label for="nameType" class="control-label"><span class="text-danger">*</span>NameType</label>
+						<label for="nameTypeUser" class="control-label"><span class="text-danger">*</span>NameTypeUser</label>
 						<div class="form-group">
-							<input type="text" name="nameType" value="<?php echo $this->input->post('nameType'); ?>" class="form-control" id="nameType" />
-							<span class="text-danger"><?php echo form_error('nameType');?></span>
+							<input type="text" name="nameTypeUser" value="<?php echo $this->input->post('nameTypeUser'); ?>" class="form-control" id="nameTypeUser" />
+							<span class="text-danger"><?php echo form_error('nameTypeUser');?></span>
 						</div>
 					</div>
 				</div>

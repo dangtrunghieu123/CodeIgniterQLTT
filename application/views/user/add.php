@@ -8,14 +8,21 @@
           	<div class="box-body">
           		<div class="row clearfix">
 					<div class="col-md-6">
-						<label for="password" class="control-label"><span class="text-danger">*</span>Password</label>
+						<label for="name" class="control-label"><span class="text-danger">*</span>Name</label>
 						<div class="form-group">
-							<input type="password" name="password" value="<?php echo $this->input->post('password'); ?>" class="form-control" id="password" />
-							<span class="text-danger"><?php echo form_error('password');?></span>
+							<input type="text" name="name" value="<?php echo $this->input->post('name'); ?>" class="form-control" id="name" />
+							<span class="text-danger"><?php echo form_error('name');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="email" class="control-label"><span class="text-danger">*</span>Email</label>
+						<label for="pass" class="control-label"><span class="text-danger">*</span>Pass</label>
+						<div class="form-group">
+							<input type="text" name="pass" value="<?php echo $this->input->post('pass'); ?>" class="form-control" id="pass" />
+							<span class="text-danger"><?php echo form_error('pass');?></span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="email" class="control-label">Email</label>
 						<div class="form-group">
 							<input type="text" name="email" value="<?php echo $this->input->post('email'); ?>" class="form-control" id="email" />
 							<span class="text-danger"><?php echo form_error('email');?></span>
@@ -36,16 +43,23 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="userTypeId" class="control-label"><span class="text-danger">*</span>UserTypeId</label>
+						<label for="address" class="control-label">Address</label>
 						<div class="form-group">
-							<input type="text" name="userTypeId" value="<?php echo $this->input->post('userTypeId'); ?>" class="form-control" id="userTypeId" />
-							<span class="text-danger"><?php echo form_error('userTypeId');?></span>
+							<input type="text" name="address" value="<?php echo $this->input->post('address'); ?>" class="form-control" id="address" />
+							<span class="text-danger"><?php echo form_error('address');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="address" class="control-label">Address</label>
+						<label for="birthday" class="control-label">Birthday</label>
 						<div class="form-group">
-							<textarea name="address" class="form-control" id="address"><?php echo $this->input->post('address'); ?></textarea>
+							<input type="text" name="birthday" value="<?php echo $this->input->post('birthday'); ?>" class="has-datepicker form-control" id="birthday" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="userTypeID" class="control-label"><span class="text-danger">*</span>UserTypeID</label>
+						<div class="form-group">
+							<input type="text" name="userTypeID" value="<?php echo $this->input->post('userTypeID'); ?>" class="form-control" id="userTypeID" />
+							<span class="text-danger"><?php echo form_error('userTypeID');?></span>
 						</div>
 					</div>
 				</div>
