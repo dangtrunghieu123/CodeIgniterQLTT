@@ -3535,6 +3535,7 @@ h2.typoh2{
 	position: relative;
 	margin-bottom: 50px;
 	transition: all .2s ease-in-out;
+	border:1px solid rgba(0,0,0,.15);
   }
   
   .card:hover {
@@ -3544,7 +3545,7 @@ h2.typoh2{
   }
   
   .image {
-	height: 200px;
+	height: 250px;
 	opacity: .7;
 	overflow: hidden;
 	transition: all .2s ease-in-out;
@@ -3552,7 +3553,7 @@ h2.typoh2{
   
   .image:hover,
   .card:hover .image {
-	height: 200px;
+	height: 250px;
 	opacity: 1;
   }
   
@@ -3589,24 +3590,32 @@ h2.typoh2{
 	z-index: 0;
 }
 #owl1 .owl-nav button.owl-next{
-	position: absolute;
-	top:-7%;
-	right:2%;
+	/* position: absolute; */
+	/* top:-7%;
+	right:2%; */
+	margin-left:10px;
 	font-size:30px;
 	color:white;
-	background:orange;
+	background:#0accff;
 	padding:0 20px !important;
 }
 #owl1 .owl-nav button{
 	outline: none;
 }
 #owl1 .owl-nav button.owl-prev{
-	position: absolute;
-	top:-7%;
-	left:82%;
+	/* position: absolute; */
+	/* top:-7%;
+	left:82%; */
+	
 	color:white;	
 	font-size:30px;
-	background:orange;
+	background:#0accff;
 	padding:0 20px !important;
 }
-
+#owl1 .owl-nav.disabled{
+	display: block;
+}
+#owl1 .owl-item img{
+	height:100%;
+	width: 100%;
+}

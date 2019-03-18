@@ -181,131 +181,29 @@
 		</div>
 
 		<div class="owl-carousel" id="owl1" >
-			<div class="item">
-				<div class="card">
-					<div class="image">
-						<img src="http://assets.materialup.com/uploads/fc97b003-ba72-4c6e-9dd3-19bf5002c244/preview.jpg" width="100%">
-					</div>
-					<div class="text">
-						<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
-						<h3>Node js</h3>
-						<p>Người tạo: Lê thị thu</p>
-						<ul class="courses-info">
-							<li class="courses-info__price"><strong class="color">$20.00  </strong></li>
-							<li>
-								<span><i class="fa fa-users"></i> 200</span>
-								<span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
-							</li>
-							
-						</ul>
+			<?php foreach($courses as $value){?>
+				<div class="item">
+					<div class="card">
+						<div class="image">
+							<img src="<?= $value['image'] ?>" width="100%">
+						</div>
+						<div class="text">
+							<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
+							<h3> <a href=""><?=	$value['nameCourse'] ?></a> </h3>
+							<p>Mã: <?=	$value['courseID'] ?></p>
+							<ul class="courses-info">
+								<li class="courses-info__price"><strong class="color">$20.00  </strong></li>
+								<li>
+									<span><i class="fa fa-users"></i> <?= $value['amountReg'] ?></span>
+									<span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
+								</li>
+								
+							</ul>
 
-					</div>
-				</div>			
-			</div>
-
-			<div class="item">
-				<div class="card">
-					<div class="image">
-						<img src="http://assets.materialup.com/uploads/fc97b003-ba72-4c6e-9dd3-19bf5002c244/preview.jpg" width="100%">
-					</div>
-					<div class="text">
-						<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
-						<h3>Node js</h3>
-						<p>Người tạo: Lê thị thu</p>
-						<ul class="courses-info">
-							<li class="courses-info__price"><strong class="color">$20.00  </strong></li>
-							<li>
-								<span><i class="fa fa-users"></i> 200</span>
-								<span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
-							</li>
-							
-						</ul>
-					</div>
-				</div>			
-			</div>
-
-			<div class="item">
-				<div class="card">
-					<div class="image">
-						<img src="http://assets.materialup.com/uploads/fc97b003-ba72-4c6e-9dd3-19bf5002c244/preview.jpg" width="100%">
-					</div>
-					<div class="text">
-						<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
-						<h3>Node js</h3>
-						<p>Người tạo: Lê thị thu</p>
-						<ul class="courses-info">
-							<li class="courses-info__price"><strong class="color">$20.00  </strong></li>
-							<li>
-								<span><i class="fa fa-users"></i> 200</span>
-								<span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
-							</li>
-							
-						</ul>
-
-					</div>
-				</div>			
-			</div>
-			<div class="item">
-				<div class="card">
-					<div class="image">
-						<img src="http://assets.materialup.com/uploads/fc97b003-ba72-4c6e-9dd3-19bf5002c244/preview.jpg" width="100%">
-					</div>
-					<div class="text">
-					<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
-						<h3>Node js</h3>
-						<p>Người tạo: Lê thị thu</p>
-						<ul class="courses-info">
-							<li class="courses-info__price"><strong class="color">$20.00  </strong></li>
-							<li>
-								<span><i class="fa fa-users"></i> 200</span>
-								<span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
-							</li>
-							
-						</ul>
-					</div>
-				</div>			
-			</div>
-			<div class="item">
-				<div class="card">
-					<div class="image">
-						<img src="http://assets.materialup.com/uploads/fc97b003-ba72-4c6e-9dd3-19bf5002c244/preview.jpg" width="100%">
-					</div>
-					<div class="text">
-					<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
-						<h3>Node js</h3>
-						<p>Người tạo: Lê thị thu</p>
-						<ul class="courses-info">
-							<li class="courses-info__price"><strong class="color">$20.00  </strong></li>
-							<li>
-								<span><i class="fa fa-users"></i> 200</span>
-								<span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
-							</li>
-							
-						</ul>
-					</div>
-				</div>			
-			</div>
-			<div class="item">
-				<div class="card">
-					<div class="image">
-						<img src="http://assets.materialup.com/uploads/fc97b003-ba72-4c6e-9dd3-19bf5002c244/preview.jpg" width="100%">
-					</div>
-					<div class="text">
-					<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
-						<h3>Node js</h3>
-						<p>Người tạo: Lê thị thu</p>
-						<ul class="courses-info">
-							<li class="courses-info__price"><strong class="color">$20.00  </strong></li>
-							<li>
-								<span><i class="fa fa-users"></i> 200</span>
-								<span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
-							</li>
-							
-						</ul>
-					</div>
-				</div>			
-			</div>
-		
+						</div>
+					</div>			
+				</div>
+			<?php } ?>
 		</div>
 
 	
@@ -821,12 +719,14 @@
 
 <script src="public/assets/js/owl.carousel.js"></script>
 <script>
-
+	$('#owl1 .owl-nav').removeAttr('desabled');
 	$('#owl1 .owl-nav button.owl-next span').html("->")
 	$('#owl1').owlCarousel({
     loop:true,
     margin:20,
     nav:true,
+	autoplay:true,
+	autoplayHoverPause:true,
 	navText: ["<i class='fa fa-long-arrow-left'></i>","<i class='fa fa-long-arrow-right'></i>"],
     responsive:{
         0:{
