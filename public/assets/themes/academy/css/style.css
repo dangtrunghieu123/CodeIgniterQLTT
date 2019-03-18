@@ -370,9 +370,7 @@ section.about-us p {
 section.about-us {
 	padding-bottom:50px;
 }
-.nav>li>a {
-	padding: 10px 5px;
-}
+
 section.our-services .serv-info {
     margin-left: -70px;
 }
@@ -409,12 +407,7 @@ section.our-team ul li.t4 {
 .cover-slider__wrap {
     height: 600px;
 }
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-    margin-left: -90px;
-}
-ul.nav.navbar-nav.navbar-right {
-    margin: 14px -70px 0 0px;
-}
+
 section.our-services .serv-info {
     margin-left: -85px;
 }
@@ -443,43 +436,16 @@ section.contact-us .contact-info {
 }
 
 @media (max-width: 900px) {
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-    margin-left: -50px;
-}	
-.navbar>.container .navbar-header a.navbar-brand h1 {
-    font-size: 30px;
-}
-ul.nav.navbar-nav.navbar-right {
-    margin: 11px -70px 0 0px;
-}
-.nav>li>a {
-    padding: 10px 0px;
-}
+
 section.about-us p {
 	padding: 0px 25px 20px;
 	font-size: 16px;
 }
 }
 
-@media (max-width: 800px) {
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-    margin-left: -19px;
-}
-ul.nav.navbar-nav.navbar-right {
-    margin: -39px -38px 0 0px;
-}
-}
 
 @media (max-width: 768px) {
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-    margin-left: 0px;
-}
-.navbar-inverse .navbar-nav>li>a {
-	font-size:18px;
-}
-ul.nav.navbar-nav.navbar-right {
-    margin: 12px -20px 0 0px;
-}
+
 section.about-us p {
     padding: 0px 0px 20px;
 }
@@ -504,14 +470,7 @@ section.our-services p.text-center, section.our-gallery p.text-center, section.o
 }
 
 @media (max-width: 736px) {
-ul.nav.navbar-nav.navbar-right {
-    margin: 0px;
-	text-align: center;
-    background-color: rgba(0, 0, 0, 0.71);
-}
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-    margin-left: 15px;
-}
+
 .cover-slider__wrap {
     height: 350px;
 }

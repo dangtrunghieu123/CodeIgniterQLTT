@@ -228,12 +228,17 @@ span.ab-badge:hover {
 }
 .team-bottom p {
     font-size: 1em;
-    color: #908F8F;
+    /* color: #908F8F; */
+    color:white;
     line-height: 1.8em;
 }
 /*--team start here--*/
 .team {
-    padding: 1em 0em;
+    padding: 0em !important;
+    background:url('http://img.giaoduc.net.vn/w801/Uploaded/2019/edxwpcqdh/2017_09_03/giao_duc.jpg');
+    background-attachment: fixed;
+    background-size:cover;
+
 }
 .team-top {
     margin-bottom: 4em;
@@ -795,93 +800,7 @@ i.link {
     width: 100%;
     height: 350px;
 }
-/*--contact start here--*/
-/* .contact {
-    background: url(../images/conatc.jpg)no-repeat;
-    background-size: cover;
-    min-height:500px;
-	padding: 5em 0em;
-}
-.contact-left input[type="text"] {
-    font-size: 1em;
-    color: #F1F1F1;
-    padding: 0.8em 1em;
-    width: 100%;
-    margin-bottom: 1.5em;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    outline: none;
-    background: none;
-}
-.contact-left textarea {
-    font-size: 1em;
-    color: #F1F1F1;
-    padding: 0.8em 1em;
-    width: 100%;
-    margin-bottom: 0.5em;
-    border: 1px solid #fff;
-    outline: none;
-    resize: none;
-    height: 10em;
-    border-radius: 5px;
-    background: none;
-}
-.contact-left input[type="submit"] {
-    font-size: 1em;
-    color: #fff;
-    background: #EA548E;
-    border: none;
-    padding: 0.5em 1.5em;
-    outline: none;
-    border-radius: 5px;
-}
-.contact-left input[type="submit"]:hover{
-    background:#006e96;
-     transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -o-transition: 0.5s all;
-}
-.contact-top {
-    padding-bottom: 4em;
-}
-.contact-top h3 {
-    font-size: 3em;
-    color: #fff;
-    text-align: center;
-    font-family: 'Oswald', sans-serif;
-}
-.contact-top p {
-    font-size: 1em;
-    color: #fff;
-    text-align: center;
-}
-.contact-right p {
-    font-size: 0.95em;
-    color: #fff;
-    line-height: 1.8em;
-}
-.contact-right h4 {
-    font-size: 2em;
-    color:#006e96;
-    margin-bottom: 0.5em;
-    font-family: 'Oswald', sans-serif;
-}
-.contact-right ul {
-    padding: 0px;
-    list-style: none;
-    margin-top: 1em;
-}
-.contact-right ul li {
-    padding-bottom: 14px;
-    color:#fff;
-}
-.contact-right ul li a{
-	color:#fff;
-}
-.contact-right ul li a:hover{
-	color:#006e96;
-} */
+
 span.glyphicon.glyphicon-map-marker {
     font-size: 1.3em;
     color: #fff;
@@ -906,15 +825,11 @@ span.glyphicon.glyphicon-envelope {
 	
 }
 @media (max-width:1366px){
-.banner {
-    min-height: 630px;	
-}
+
 span.mover {
     margin: 6em auto 0em;
 }
-.banner-main {
-    padding-top: 7em;
-}
+
 .about-grid {
     margin-top: 1.2em;
 }
@@ -942,12 +857,8 @@ span.mover {
 span.flr {
     margin: 1.5em 0em 1.5em 14em;
 }
-.nav > li > a {
-    padding: 10px 10px !important;
-}
-.banner-main p {
-    width: 63%;
-}
+
+
 .blog-title h4 {
     margin-top: 0em;
 }
@@ -1036,15 +947,7 @@ span.flr {
 }
 }
 @media (max-width:768px){
-.banner-main h1 {
-    font-size: 2.6em;	
-}
-.banner {
-    min-height: 534px;
-}
-.banner-main {
-    padding-top: 5em;
-}
+
 .about {
     padding: 3em 0em;
 }
@@ -1073,23 +976,7 @@ span.flr {
     padding: 3em 0em;
 }
 }
-@media (max-width:767px){
-.navbar-inverse .navbar-toggle {
-    background: #EA548E;
-    border:none;
-}
-.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-    background-color: #006e96;
-}
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border: none;
-    background: #F1F1F1;
-}
-.navbar-nav {
-    float: none !important;
-    text-align: center;
-}
-}
+
 @media (max-width:667px){
 span.flr {
     margin: 1.5em 0em 1.5em 8em;
@@ -1099,15 +986,11 @@ span.flr {
 span.flr {
     margin: 1.5em 0em 1.5em 8em;
 }	
-.banner-main {
-    padding-top: 3em;
-}
+
 span.mover {
     margin: 4em auto 0em;
 }
-.banner {
-    min-height:430px;
-}
+
 .about-top h2 {
     font-size: 2.5em;
 }
@@ -1172,34 +1055,18 @@ span.mover {
 .ftr-grid p {
     font-size: 0.8em;
 }
-.banner-main p {
-    width: 88%;
-}
-.navbar-toggle {
-    margin-top: 15px !important;
-    margin-right: 0px !important;
-    margin-bottom: 0px !important;
-}
+
+
 }
 @media (max-width:480px){
-.banner-main h1 {
-    font-size:1.8em;
-}	
-.banner-main p {
-    width: 100%;
-}
+
 span.bann-line {
     margin: 1em auto 1em;
 }
 span.mover {
     margin: 2em auto 0em;
 }
-.banner {
-    min-height:325px;
-}
-.banner-main {
-    padding-top: 2em;
-}
+
 .team-grids {
     width: 55%;
     float: none;
@@ -1362,16 +1229,7 @@ span.ab-badge {
 }	
 }
 @media (max-width:320px){
-.banner-main h1 {
-    font-size: 1.5em;
-    margin-top: 0.6em;
-}	
-.banner-main p {
-    font-size: 0.8em;
-}
-.banner {
-    min-height:260px;
-}
+
 span.mover {
     margin: 1em auto 0em;
     background-size: 100%;
@@ -1380,15 +1238,7 @@ span.mover {
 .logo img {
     width: 70%;
 }
-.navbar-wrapper {
-    padding: 0.5em 0em;
-}
-nav a {
-    font-size: 0.9em;
-}
-.nav > li > a {
-    padding: 8px 0px !important;
-}
+
 .about {
     padding: 1.5em 0em;
 }
@@ -1561,3 +1411,9 @@ span.ab-badge {
 }
 }
 /*--media quries end here--*/
+
+/* custom team */
+.team .gackground{
+    background: rgba(0, 0, 0, 0.49);
+    padding: 2.5em 0em;
+}
