@@ -27,7 +27,10 @@ class User_model extends CI_Model
         $this->db->order_by('account', 'desc');
         return $this->db->get('users')->result_array();
     }
-        
+    
+    function get_all_GV(){
+        return $this->db->get_where('users',array('userTypeID'=>'GV'))->result_array();
+    }
     /*
      * function to add new user
      */

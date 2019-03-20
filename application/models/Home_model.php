@@ -27,7 +27,7 @@ class Home_model extends CI_Model
         $this->db->order_by('courseID', 'desc');
         return $this->db->get('courses')->result_array();
     }
-        
+     
     /*
      * function to add new course
      */

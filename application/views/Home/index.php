@@ -34,9 +34,9 @@
 			<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 				<nav class="link-effect-2" id="link-effect-2">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html"><span data-hover="Trang chủ">Trang chủ</span></a></li>
-						<li><a href="courses.html"><span data-hover="Khóa học">Khóa học</span></a></li>
-						<li><a href="services.html"><span data-hover="Dịch vụ">Dịch vụ</span></a></li>
+						<li class="active"><a href="/"><span data-hover="Trang chủ">Trang chủ</span></a></li>
+						<li><a href="#courses"><span data-hover="Khóa học">Khóa học</span></a></li>
+						<li><a href="#services"><span data-hover="Dịch vụ">Dịch vụ</span></a></li>
 						<!-- <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span data-hover="Short Codes">Short Codes</span> <b class="caret"></b></a>
 							<ul class="dropdown-menu agile_short_dropdown">
@@ -44,7 +44,7 @@
 								<li><a href="typography.html">Typography</a></li>
 							</ul>
 						</li> -->
-						<li><a href="#"><span data-hover="Liên hệ">Liên hệ</span></a></li>
+						<li><a href="#contact"><span data-hover="Liên hệ">Liên hệ</span></a></li>
 						<li><a href="#"><span data-hover="Đăng kí/Đăng nhập">Đăng kí/Đăng nhập</span></a></li>
 					</ul>
 				</nav>
@@ -166,7 +166,7 @@
 
 
 <!--gallery-->
-<div class="portfolio" id="portfolio">
+<div class="portfolio" id="courses">
    <div class="container">
         <div class="w3_agile_team_grid">
 				<div class="w3_agile_team_grid_left">
@@ -180,7 +180,9 @@
 				<div class="clearfix"> </div>
 		</div>
 
+		
 		<div class="owl-carousel" id="owl1" >
+
 			<?php foreach($courses as $value){?>
 				<div class="item">
 					<div class="card">
@@ -224,7 +226,7 @@
 <!--gallery-->
 
 <!--team start here-->
-<div class="team">
+<div class="team" id="teacher">
 	<div class="gackground">
 	<div class="container">
 		<div class="team-main">
@@ -238,88 +240,37 @@
 					<p>Bạn sẽ được giao dự án và làm theo Teamwork ngay từ ngày đầu tiên. Đóng vai trò một thành viên trong qui trình Scrum, Agile. Được Mentor hỗ trợ tân tâm, nhiệt tình.</p>
 				</div>
 				<div class="clearfix"> </div>
+				</div>
+					<div class="team-bottom wow fadeInRight" data-wow-delay="0.3s">
+						
+						<div class="owl-carousel" id="owl2" >
+							<?php foreach($teaher as $val){?>
+								<div class="item">	
+									<div class="ih-item circle effect5">
+										<a href="#">
+											<div class="img"><img src="<?=$val['avatar'] ?>" width="100%"></div>
+											<div class="info">
+												<div class="info-back">
+													<h3>Profile</h3>		           
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="team-bottom">
+										<p><?=$val['name'] ?></p>
+										<p><?=$val['birthday'] ?></p>
+										<ul>
+											<li><a href="#" class="fa"> </a></li>
+											<li><a href="#" class="tw"> </a></li>
+											<li><a href="#" class="g"> </a></li>
+										</ul>
+									</div>	
+								</div>
+							<?php } ?>
+						</div>
+					</div>
+				</div>
 		</div>
-			<div class="team-bottom wow fadeInRight" data-wow-delay="0.3s">
-			  <div class="col-md-3 team-grids">
-			    <!-- normal -->
-			    <div class="ih-item circle effect5"><a href="#">
-			        <div class="img"><img src="public/assets/themes/coaching/images/t1.jpg" alt="img" class="img-responsive"></div>
-			        <div class="info">
-			          <div class="info-back">
-			            <h3>Malorum</h3>		          
-			          </div>			          
-			        </div></a></div>
-			        <div class="team-bottom">
-			        	  <p>On the other hand, we denounce with righteous indignation.</p>
-			        	  <ul>
-			        	  	<li><a href="#" class="fa"> </a></li>
-			        	  	<li><a href="#" class="tw"> </a></li>
-			        	  	<li><a href="#" class="g"> </a></li>
-			        	  </ul>
-			        </div>
-			        
-			    <!-- end normal -->
-			   </div>
-			  <div class="col-md-3 team-grids">
-			   <!-- normal -->
-			    <div class="ih-item circle effect5"><a href="#">
-			        <div class="img"><img src="public/assets/themes/coaching/images/t2.jpg" alt="img" class="img-responsive"></div>
-			        <div class="info">
-			          <div class="info-back">
-			            <h3>Bonorum</h3>		           	            
-			          </div>
-			        </div></a></div>
-			        <div class="team-bottom">
-			        	  <p>On the other hand, we denounce with righteous indignation.</p>
-			        	  <ul>
-			        	  	<li><a href="#" class="fa"> </a></li>
-			        	  	<li><a href="#" class="tw"> </a></li>
-			        	  	<li><a href="#" class="g"> </a></li>
-			        	  </ul>
-			        </div>
-			    <!-- end normal -->		 
-			  </div>
-			  <div class="col-md-3 team-grids">
-			    <!-- normal -->
-			    <div class="ih-item circle effect5"><a href="#">
-			        <div class="img"><img src="public/assets/themes/coaching/images/t3.jpg" alt="img" class="img-responsive"></div>
-			        <div class="info">
-			          <div class="info-back">
-			            <h3>Finibus</h3>			       
-			          </div>
-			        </div></a></div>
-			        <div class="team-bottom">
-			        	  <p>On the other hand, we denounce with righteous indignation.</p>
-			        	  <ul>
-			        	  	<li><a href="#" class="fa"> </a></li>
-			        	  	<li><a href="#" class="tw"> </a></li>
-			        	  	<li><a href="#" class="g"> </a></li>
-			        	  </ul>
-			        </div>
-			    <!-- end normal -->
-			  </div>
-			   <div class="col-md-3 team-grids">
-			    <!-- normal -->
-			    <div class="ih-item circle effect5"><a href="#">
-			        <div class="img"><img src="public/assets/themes/coaching/images/t4.jpg" alt="img" class="img-responsive"></div>
-			        <div class="info">
-			          <div class="info-back">
-			            <h3>Rackham</h3>		           
-			          </div>
-			        </div></a></div>
-			        <div class="team-bottom">
-			        	  <p>On the other hand, we denounce with righteous indignation.</p>
-			        	  <ul>
-			        	  	<li><a href="#" class="fa"> </a></li>
-			        	  	<li><a href="#" class="tw"> </a></li>
-			        	  	<li><a href="#" class="g"> </a></li>
-			        	  </ul>
-			        </div>
-			    <!-- end normal -->			 
-			  </div>
-			</div>
-		</div>
-	</div>
 	</div>
 </div>
 <!--team end here-->
@@ -450,7 +401,7 @@
 <!--services end here-->
 
 <!-- testimonials -->
-	<div class="testimonials">
+	<div class="testimonials" id="student">
 		<div class="container">
 			<div class="w3_agile_team_grid">
 				<div class="w3_agile_team_grid_left">
@@ -700,12 +651,12 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="links">
-					<a href="index.html">Trang chủ</a>
-					<a href="#about">Khóa học</a>
+					<a href="#">Trang chủ</a>
+					<a href="#courses">Khóa học</a>
 					<a href="#service">Dịch vụ</a>
-					<a href="#gallery">Liên hệ</a>
-					<a href="#team">Giảng viên</a>
-					<a href="#contact">Học viên</a>
+					<a href="#connect">Liên hệ</a>
+					<a href="#teacher">Giảng viên</a>
+					<a href="#student">Học viên</a>
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -720,7 +671,6 @@
 <script src="public/assets/js/owl.carousel.js"></script>
 <script>
 	$('#owl1 .owl-nav').removeAttr('desabled');
-	$('#owl1 .owl-nav button.owl-next span').html("->")
 	$('#owl1').owlCarousel({
     loop:true,
     margin:20,
@@ -740,6 +690,38 @@
         }
     }
 })
+</script>
+
+<script>
+	// $('#owl1 .owl-nav').removeAttr('desabled');
+	$('#owl2').owlCarousel({
+		loop:true,
+		margin:20,
+		// nav:true,
+		autoplay:true,
+		autoplayHoverPause:true,
+		responsive:{
+			0:{
+				items:1
+			},
+			600:{
+				items:3
+			},
+			1000:{
+				items:4
+			}
+		}
+	})
+</script>
+
+<script>
+	$("a[href*='#']:not([href='#])").click(function() {
+	let target = $(this).attr("href");
+	$('html,body').stop().animate({
+		scrollTop: $(target).offset().top
+	}, 1000);
+	event.preventDefault();
+	});
 </script>
 
 </body>
