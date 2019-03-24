@@ -12,10 +12,13 @@ class Home extends CI_Controller{
 
     function index()
     {
-        $data['teaher'] = $this->User_model->get_all_GV();
-        $data['courses'] = $this->Course_model->get_all_courses();
+        $data['teacher'] = $this->User_model->get_user_by_promissionID();
+        $data['courses'] = $this->Course_model->get_all_course();
         $data['_view'] = 'Home/index';
         $this->load->view('Home/layouts/main',$data);
     }
-  
+    
+    function login(){
+        $this->load->view('login/login');
+    }
 }

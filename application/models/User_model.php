@@ -16,27 +16,27 @@ class User_model extends CI_Model
      */
     function get_user($account)
     {
-        return $this->db->get_where('users',array('account'=>$account))->row_array();
+        return $this->db->get_where('user',array('account'=>$account))->row_array();
     }
-        
+    function get_user_by_promissionID()
+    {
+        return $this->db->get_where('user',array('permissionID'=>"GV"))->result_array();
+    }  
     /*
-     * Get all users
+     * Get all user
      */
-    function get_all_users()
+    function get_all_user()
     {
         $this->db->order_by('account', 'desc');
-        return $this->db->get('users')->result_array();
+        return $this->db->get('user')->result_array();
     }
-    
-    function get_all_GV(){
-        return $this->db->get_where('users',array('userTypeID'=>'GV'))->result_array();
-    }
+        
     /*
      * function to add new user
      */
     function add_user($params)
     {
-        $this->db->insert('users',$params);
+        $this->db->insert('user',$params);
         return $this->db->insert_id();
     }
     
@@ -46,7 +46,7 @@ class User_model extends CI_Model
     function update_user($account,$params)
     {
         $this->db->where('account',$account);
-        return $this->db->update('users',$params);
+        return $this->db->update('user',$params);
     }
     
     /*
@@ -54,6 +54,6 @@ class User_model extends CI_Model
      */
     function delete_user($account)
     {
-        return $this->db->delete('users',array('account'=>$account));
+        return $this->db->delete('user',array('account'=>$account));
     }
 }

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href="public/assets/themes/edify/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="public/assets/themes/coaching/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-	<link href="public/assets/themes/academy/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-	<link rel="stylesheet" href="public/assets/css/owl.carousel.min.css">
+    <link href="<?= base_url()?>public/assets/themes/edify/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="<?= base_url()?>public/assets/themes/coaching/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="<?= base_url()?>public/assets/themes/academy/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link rel="stylesheet" href="<?= base_url()?>public/assets/css/owl.carousel.min.css">
 
 	
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
@@ -128,7 +128,7 @@
 					</div>
 				</div>
 				<div class="col-md-6 about-right wow fadeInRight" data-wow-delay="0.3s">
-					<img src="public/assets/themes/coaching/images/ab.jpg" class="img-responsive" alt="">
+					<img src="<?= base_url()?>public/assets/themes/coaching/images/ab.jpg" class="img-responsive" alt="">
 				</div>
 			   <div class="clearfix"> </div>
 			</div>
@@ -148,7 +148,7 @@
 				</div>
 				<section>
 					<div class="modal-body">
-						<img src="public/assets/themes/edify/images/10.jpg" alt=" " class="img-responsive" />
+						<img src="<?= base_url()?>public/assets/themes/edify/images/10.jpg" alt=" " class="img-responsive" />
 						<p>Ut enim ad minima veniam, quis nostrum 
 							exercitationem ullam corporis suscipit laboriosam, 
 							nisi ut aliquid ex ea commodi consequatur? Quis autem 
@@ -192,9 +192,9 @@
 						<div class="text">
 							<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
 							<h3> <a href=""><?=	$value['nameCourse'] ?></a> </h3>
-							<p>Mã: <?=	$value['courseID'] ?></p>
+							<p>Người tạo : <?=	$value['userID'] ?></p>
 							<ul class="courses-info">
-								<li class="courses-info__price"><strong class="color">$20.00  </strong></li>
+								<li class="courses-info__price"><strong class="color">$<?=$value['price']?>  </strong></li>
 								<li>
 									<span><i class="fa fa-users"></i> <?= $value['amountReg'] ?></span>
 									<span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
@@ -211,8 +211,8 @@
 	
     </div>	
 </div>
-<script src="public/assets/themes/coaching/js/jquery-1.11.0.min.js"></script>
-<script src="public/assets/themes/coaching/js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script src="<?= base_url()?>public/assets/themes/coaching/js/jquery-1.11.0.min.js"></script>
+<script src="<?= base_url()?>public/assets/themes/coaching/js/easyResponsiveTabs.js" type="text/javascript"></script>
 		    <script type="text/javascript">
 			    $(document).ready(function () {
 			        $('#horizontalTab').easyResponsiveTabs({
@@ -244,7 +244,7 @@
 					<div class="team-bottom wow fadeInRight" data-wow-delay="0.3s">
 						
 						<div class="owl-carousel" id="owl2" >
-							<?php foreach($teaher as $val){?>
+							<?php foreach($teacher as $val){?>
 								<div class="item">	
 									<div class="ih-item circle effect5">
 										<a href="#">
@@ -293,7 +293,7 @@
 			   <div class="serice-layer wow fadeInRight" data-wow-delay="0.3s">
 				<div class="col-md-6 services-grid">
 					<div class="col-md-6 serv-img">
-						<a href="#"><img src="public/assets/themes/coaching/images/s1.jpg" alt="" class="img-responsive"></a>
+						<a href="#"><img src="<?= base_url()?>public/assets/themes/coaching/images/s1.jpg" alt="" class="img-responsive"></a>
 							<div class="blog-discription">
 							  <div class="theme-border">
 								<div class="tg-display-table">
@@ -318,7 +318,7 @@
 				</div>
 				<div class="col-md-6 services-grid">
 					<div class="col-md-6 serv-img">
-						<a href="#"><img src="public/assets/themes/coaching/images/s2.jpg" alt="" class="img-responsive"></a>
+						<a href="#"><img src="<?= base_url()?>public/assets/themes/coaching/images/s2.jpg" alt="" class="img-responsive"></a>
 						<div class="blog-discription">
 							  <div class="theme-border">
 								<div class="tg-display-table">
@@ -345,7 +345,7 @@
 		     <div class="serice-layer wow fadeInLeft" data-wow-delay="0.3s">
 				<div class="col-md-6 services-grid">
 					<div class="col-md-6 serv-img">
-						<a href="#"><img src="public/assets/themes/coaching/images/s3.jpg" alt="" class="img-responsive"></a>
+						<a href="#"><img src="<?= base_url()?>public/assets/themes/coaching/images/s3.jpg" alt="" class="img-responsive"></a>
 						<div class="blog-discription">
 							  <div class="theme-border">
 								<div class="tg-display-table">
@@ -370,7 +370,7 @@
 				</div>
 				<div class="col-md-6 services-grid">
 					<div class="col-md-6 serv-img">
-						<a href="#"><img src="public/assets/themes/coaching/images/s4.jpg" alt="" class="img-responsive"></a>
+						<a href="#"><img src="<?= base_url()?>public/assets/themes/coaching/images/s4.jpg" alt="" class="img-responsive"></a>
 						<div class="blog-discription">
 							  <div class="theme-border">
 								<div class="tg-display-table">
@@ -424,7 +424,7 @@
 								<h4>Rosy Crisp</h4>
 								<h5>Student</h5>
 								<div class="w3l_testimonial_grid_pos">
-									<img src="public/assets/themes/edify/images/1.png" alt=" " class="img-responsive" />
+									<img src="<?= base_url()?>public/assets/themes/edify/images/1.png" alt=" " class="img-responsive" />
 								</div>
 							</div>
 						</div>
@@ -435,7 +435,7 @@
 								<h4>Laura Paul</h4>
 								<h5>Student</h5>
 								<div class="w3l_testimonial_grid_pos">
-									<img src="public/assets/themes/edify/images/2.png" alt=" " class="img-responsive" />
+									<img src="<?= base_url()?>public/assets/themes/edify/images/2.png" alt=" " class="img-responsive" />
 								</div>
 							</div>
 						</div>
@@ -446,7 +446,7 @@
 								<h4>Michael Doe</h4>
 								<h5>Student</h5>
 								<div class="w3l_testimonial_grid_pos">
-									<img src="public/assets/themes/edify/images/3.png" alt=" " class="img-responsive" />
+									<img src="<?= base_url()?>public/assets/themes/edify/images/3.png" alt=" " class="img-responsive" />
 								</div>
 							</div>
 						</div>
@@ -456,7 +456,7 @@
 	</div>
 <!-- //testimonials -->
 
-    <script src="public/assets/themes/edify/js/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<?= base_url()?>public/assets/themes/edify/js/slick.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		$(document).on('ready', function() {
 		  $(".center").slick({
@@ -516,10 +516,10 @@
 			
 		});
 	</script>
-	<script type="text/javascript" src="public/assets/themes/edify/js/jquery.flexisel.js"></script>
+	<script type="text/javascript" src="<?= base_url()?>public/assets/themes/edify/js/jquery.flexisel.js"></script>
 <!-- //flexisel -->
 <!-- gallery-pop-up -->
-	<script src="public/assets/themes/edify/js/lsb.min.js"></script>
+	<script src="<?= base_url()?>public/assets/themes/edify/js/lsb.min.js"></script>
 	<script>
 	$(window).load(function() {
 		  $.fn.lightspeedBox();
@@ -527,7 +527,7 @@
 	</script>
 <!-- //gallery-pop-up -->
 <!-- flexSlider -->
-	<script defer src="public/assets/themes/edify/js/jquery.flexslider.js"></script>
+	<script defer src="<?= base_url()?>public/assets/themes/edify/js/jquery.flexslider.js"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 		  $('.flexslider').flexslider({
@@ -540,7 +540,7 @@
 	</script>
 <!-- //flexSlider -->
 <!-- banner-type-text -->
-	<script src="public/assets/themes/edify/js/typed.js" type="text/javascript"></script>
+	<script src="<?= base_url()?>public/assets/themes/edify/js/typed.js" type="text/javascript"></script>
     <script>
 		$(function(){
 
@@ -567,8 +567,8 @@
 
 		function foo(){ console.log("Callback"); }
     </script>
-<script type="text/javascript" src="public/assets/themes/edify/js/move-top.js"></script>
-<script type="text/javascript" src="public/assets/themes/edify/js/easing.js"></script>
+<script type="text/javascript" src="<?= base_url()?>public/assets/themes/edify/js/move-top.js"></script>
+<script type="text/javascript" src="<?= base_url()?>public/assets/themes/edify/js/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -577,7 +577,7 @@
 		});
 	});
 </script>
-	<script src="public/assets/themes/edify/js/bootstrap.js"></script>
+	<script src="<?= base_url()?>public/assets/themes/edify/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
@@ -668,7 +668,7 @@
 	</div>
 </section>
 
-<script src="public/assets/js/owl.carousel.js"></script>
+<script src="<?= base_url()?>public/assets/js/owl.carousel.js"></script>
 <script>
 	$('#owl1 .owl-nav').removeAttr('desabled');
 	$('#owl1').owlCarousel({

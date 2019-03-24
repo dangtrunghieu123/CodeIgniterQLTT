@@ -106,7 +106,7 @@ canvas{
   
   .cont_forms_active_sign_up {
   box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
-    height: 450px;  
+  height: 450px;  
   top:20px;
   left:320px;
   -webkit-transition: all 0.5s;
@@ -189,7 +189,7 @@ canvas{
     float: left;
     width: 50%;
   }
-  
+ 
   .col_md_login > h2 {
     font-weight: 400;
   margin-top: 70px;
@@ -211,7 +211,7 @@ canvas{
   border-radius:3px;
   box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
     color: #fff;
-  margin-top: 10px;
+  margin-top: 20px;
   cursor: pointer;
   }
   
@@ -342,11 +342,11 @@ canvas{
   }
   
     
-  .cont_form_sign_up > input {
+  .cont_form_sign_up form > input {
   text-align: left;
-    padding: 15px 5px;
+  padding: 10px 5px;
   margin-left: 10px;
-  margin-top: 20px;
+  margin-top: 18px;
     width: 260px;
   border: none;
       color: #757575;
@@ -359,8 +359,8 @@ canvas{
   }
   
   
-  .cont_form_login > input {
-    padding: 15px 5px;
+  .cont_form_login form > input {
+    padding: 10px 5px;
   margin-left: 10px;
   margin-top: 20px;
     width: 260px;
@@ -380,4 +380,50 @@ canvas{
       float: left;
       margin: 10px;
      margin-left: 30px;
+  }
+
+#radio1{
+  width: 20px;
+  height:29px;
+  position: absolute;
+  top:-1px;
+  left:40px;
+}
+#radio2{
+  width: 20px;
+  height:29px;
+  position: absolute;
+  top:-1px;
+  left:120px;
+}
+.form-radio {
+  margin: 1rem 0;
+  position: relative;
+}
+.form-radio label:first-child{
+  position: absolute;
+  top:0;
+  left:70px;
+}
+.screan_xs{
+  display: none;
+}
+.screan_xs .head{
+  background:#f8f8f8;
+}
+.screan_xs .head p{
+  font-size: 13px;
+  color: #555555;
+  padding:10px;
+}
+/* .cotn_principal{
+  display: none;
+} */
+  @media screen and (max-width: 640px) {
+    .cotn_principal{
+      display: none;
+    }
+    .screan_xs{
+      display: block;
+    }
   }

@@ -12,11 +12,11 @@ class Course extends CI_Controller{
     } 
 
     /*
-     * Listing of courses
+     * Listing of course
      */
     function index()
     {
-        $data['courses'] = $this->Course_model->get_all_courses();
+        $data['course'] = $this->Course_model->get_all_course();
         
         $data['_view'] = 'course/index';
         $this->load->view('layouts/main',$data);
@@ -31,14 +31,20 @@ class Course extends CI_Controller{
 
 		$this->form_validation->set_rules('nameCourse','NameCourse','required|max_length[250]');
 		$this->form_validation->set_rules('amountReg','AmountReg','integer');
+		$this->form_validation->set_rules('price','Price','required|integer');
+		$this->form_validation->set_rules('userID','UserID','required|max_length[150]');
+		$this->form_validation->set_rules('image','Image','required');
+		$this->form_validation->set_rules('desription','Desription','required');
 		
 		if($this->form_validation->run())     
         {   
             $params = array(
 				'nameCourse' => $this->input->post('nameCourse'),
 				'amountReg' => $this->input->post('amountReg'),
+				'price' => $this->input->post('price'),
+				'userID' => $this->input->post('userID'),
 				'image' => $this->input->post('image'),
-				'description' => $this->input->post('description'),
+				'desription' => $this->input->post('desription'),
             );
             
             $course_id = $this->Course_model->add_course($params);
@@ -65,14 +71,20 @@ class Course extends CI_Controller{
 
 			$this->form_validation->set_rules('nameCourse','NameCourse','required|max_length[250]');
 			$this->form_validation->set_rules('amountReg','AmountReg','integer');
+			$this->form_validation->set_rules('price','Price','required|integer');
+			$this->form_validation->set_rules('userID','UserID','required|max_length[150]');
+			$this->form_validation->set_rules('image','Image','required');
+			$this->form_validation->set_rules('desription','Desription','required');
 		
 			if($this->form_validation->run())     
             {   
                 $params = array(
 					'nameCourse' => $this->input->post('nameCourse'),
 					'amountReg' => $this->input->post('amountReg'),
+					'price' => $this->input->post('price'),
+					'userID' => $this->input->post('userID'),
 					'image' => $this->input->post('image'),
-					'description' => $this->input->post('description'),
+					'desription' => $this->input->post('desription'),
                 );
 
                 $this->Course_model->update_course($courseID,$params);            
