@@ -45,7 +45,7 @@
 							</ul>
 						</li> -->
 						<li><a href="#contact"><span data-hover="Liên hệ">Liên hệ</span></a></li>
-						<li><a href="#"><span data-hover="Đăng kí/Đăng nhập">Đăng kí/Đăng nhập</span></a></li>
+						<li><a href="<?=base_url() ?>login"><span data-hover="Đăng kí/Đăng nhập">Đăng kí/Đăng nhập</span></a></li>
 					</ul>
 				</nav>
 			</div>
