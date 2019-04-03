@@ -21,7 +21,7 @@ class Clas_model extends CI_Model
 
     function get_clas_by_courseID($courseID)
     {
-        return $this->db->get_where('class',array('courseID'=>$courseID))->row_array();
+        return $this->db->get_where('class',array('courseID'=>$courseID))->result_array();
     }
         
     /*
