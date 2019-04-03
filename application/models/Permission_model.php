@@ -18,7 +18,7 @@ class Permission_model extends CI_Model
     {
         return $this->db->get_where('permission',array('permissionID'=>$permissionID))->row_array();
     }
-        
+    
     /*
      * Get all permission
      */

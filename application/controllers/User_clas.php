@@ -4,11 +4,12 @@
  * www.crudigniter.com
  */
  
-class User_clas extends CI_Controller{
+class User_clas extends MY_Controller{
     function __construct()
     {
         parent::__construct();
         $this->load->model('User_clas_model');
+        $this->load->model('Cource_model');
     } 
 
     /*
@@ -17,7 +18,7 @@ class User_clas extends CI_Controller{
     function index()
     {
         $data['user_class'] = $this->User_clas_model->get_all_user_class();
-        
+        $data['course'] = $this->Cource_model->get_all_cource();
         $data['_view'] = 'user_clas/index';
         $this->load->view('layouts/main',$data);
     }
@@ -29,12 +30,18 @@ class User_clas extends CI_Controller{
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('time','Time','required|max_length[250]');
+		$this->form_validation->set_rules('studentID','StudentID','required|max_length[150]');
+		$this->form_validation->set_rules('classID','ClassID','required|integer');
+		$this->form_validation->set_rules('status','Status','required|max_length[250]');
+		$this->form_validation->set_rules('result','Result','required|max_length[250]');
 		
 		if($this->form_validation->run())     
         {   
             $params = array(
-				'time' => $this->input->post('time'),
+				'studentID' => $this->input->post('studentID'),
+				'classID' => $this->input->post('classID'),
+				'status' => $this->input->post('status'),
+				'result' => $this->input->post('result'),
             );
             
             $user_clas_id = $this->User_clas_model->add_user_clas($params);
@@ -50,24 +57,30 @@ class User_clas extends CI_Controller{
     /*
      * Editing a user_clas
      */
-    function edit($userClassID)
+    function edit($id)
     {   
         // check if the user_clas exists before trying to edit it
-        $data['user_clas'] = $this->User_clas_model->get_user_clas($userClassID);
+        $data['user_clas'] = $this->User_clas_model->get_user_clas($id);
         
-        if(isset($data['user_clas']['userClassID']))
+        if(isset($data['user_clas']['']))
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('time','Time','required|max_length[250]');
+			$this->form_validation->set_rules('studentID','StudentID','required|max_length[150]');
+			$this->form_validation->set_rules('classID','ClassID','required|integer');
+			$this->form_validation->set_rules('status','Status','required|max_length[250]');
+			$this->form_validation->set_rules('result','Result','required|max_length[250]');
 		
 			if($this->form_validation->run())     
             {   
                 $params = array(
-					'time' => $this->input->post('time'),
+					'studentID' => $this->input->post('studentID'),
+					'classID' => $this->input->post('classID'),
+					'status' => $this->input->post('status'),
+					'result' => $this->input->post('result'),
                 );
 
-                $this->User_clas_model->update_user_clas($userClassID,$params);            
+                $this->User_clas_model->update_user_clas($id,$params);            
                 redirect('user_clas/index');
             }
             else
@@ -83,14 +96,14 @@ class User_clas extends CI_Controller{
     /*
      * Deleting user_clas
      */
-    function remove($userClassID)
+    function remove($id)
     {
-        $user_clas = $this->User_clas_model->get_user_clas($userClassID);
+        $user_clas = $this->User_clas_model->get_user_clas($id);
 
         // check if the user_clas exists before trying to delete it
-        if(isset($user_clas['userClassID']))
+        if(isset($user_clas['']))
         {
-            $this->User_clas_model->delete_user_clas($userClassID);
+            $this->User_clas_model->delete_user_clas($id);
             redirect('user_clas/index');
         }
         else

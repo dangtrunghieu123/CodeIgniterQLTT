@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
  
-class Permission extends CI_Controller{
+class Permission extends MY_Controller{
     function __construct()
     {
         parent::__construct();

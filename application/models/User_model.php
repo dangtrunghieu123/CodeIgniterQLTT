@@ -18,10 +18,47 @@ class User_model extends CI_Model
     {
         return $this->db->get_where('user',array('account'=>$account))->row_array();
     }
-    function get_user_by_promissionID()
+    // function get_user_by_promissionID()
+    // {
+    //     return $this->db->get_where('user',array('permissionID'=>"GV"))->result_array();
+    // }  
+    function get_permission_by_promissionID($account)
     {
-        return $this->db->get_where('user',array('permissionID'=>"GV"))->result_array();
+       
+        return $this->db->select("u.*, p.namePermission")->from('user u')->join('permission p','p.permissionID = u.permissionID')
+        ->where(array('u.account' => $account))
+        ->get() 
+        ->row_array();
+    } 
+    function get_author_create_lesson(){
+        return $this->db->select("u.account")->from('user u')->or_where_in('u.permissionID', array('GV','AD'))
+        ->get() 
+        ->result_array();   
+    }
+    function get_user_by_namePermission()
+    {
+        
+        return $this->db->select("u.*, p.namePermission")->from('user u')->join('permission p','p.permissionID = u.permissionID')
+        ->get() 
+        ->result_array();
     }  
+
+    function get_user_by_Permission($permissionID)// get list admin, teacher, student
+    {
+        
+        return $this->db->select("u.*, p.namePermission")->from('user u')->join('permission p','p.permissionID = u.permissionID')
+        ->where(array('u.permissionID' => $permissionID))
+        ->get() 
+        ->result_array();
+    }
+ 
+    function get_user_by_authorAD()
+    {
+        return $this->db->get_where('user',array('permissionID'=>'AD'))->result_array();
+        // return $this->db->select("u.account")->from('user u')->where('permissionID', 'AD')
+        // ->get() 
+        // ->result_array();
+    } 
     /*
      * Get all user
      */

@@ -4,15 +4,23 @@
  * www.crudigniter.com
  */
  
-class Dashboard extends CI_Controller{
+class Dashboard extends MY_Controller{
     function __construct()
     {
         parent::__construct();
+        $this->load->model('Cource_model');
+        $this->load->model('User_model');
+         // load Pagination library
+         $this->load->library('pagination');
+         
+         // load URL helper
+         $this->load->helper('url');
         
     }
 
     function index()
     {
+        $data['courses'] = $this->Cource_model->get_all_cource();
         $data['_view'] = 'dashboard';
         $this->load->view('layouts/main',$data);
     }

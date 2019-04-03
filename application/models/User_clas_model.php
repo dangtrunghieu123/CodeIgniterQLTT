@@ -12,11 +12,11 @@ class User_clas_model extends CI_Model
     }
     
     /*
-     * Get user_clas by userClassID
+     * Get user_clas by 
      */
-    function get_user_clas($userClassID)
+    function get_user_clas($id)
     {
-        return $this->db->get_where('user_class',array('userClassID'=>$userClassID))->row_array();
+        return $this->db->get_where('user_class',array(''=>$id))->row_array();
     }
         
     /*
@@ -24,7 +24,7 @@ class User_clas_model extends CI_Model
      */
     function get_all_user_class()
     {
-        $this->db->order_by('userClassID', 'desc');
+        $this->db->order_by('', 'desc');
         return $this->db->get('user_class')->result_array();
     }
         
@@ -40,17 +40,17 @@ class User_clas_model extends CI_Model
     /*
      * function to update user_clas
      */
-    function update_user_clas($userClassID,$params)
+    function update_user_clas($id,$params)
     {
-        $this->db->where('userClassID',$userClassID);
+        $this->db->where('',$id);
         return $this->db->update('user_class',$params);
     }
     
     /*
      * function to delete user_clas
      */
-    function delete_user_clas($userClassID)
+    function delete_user_clas($id)
     {
-        return $this->db->delete('user_class',array('userClassID'=>$userClassID));
+        return $this->db->delete('user_class',array(''=>$id));
     }
 }

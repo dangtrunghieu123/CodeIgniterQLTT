@@ -18,7 +18,10 @@ class Lesson_model extends CI_Model
     {
         return $this->db->get_where('lesson',array('lessonID'=>$lessonID))->row_array();
     }
-        
+    function get_name_lesson($nameLesson)
+    {
+        return $this->db->get_where('lesson',array('nameLesson'=>$nameLesson))->row_array();
+    } 
     /*
      * Get all lesson
      */

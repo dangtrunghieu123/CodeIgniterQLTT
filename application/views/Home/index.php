@@ -192,11 +192,11 @@
 						<div class="text">
 							<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
 							<h3> <a href=""><?=	$value['nameCourse'] ?></a> </h3>
-							<p>Người tạo : <?=	$value['userID'] ?></p>
+							<p>Người tạo : <?=	$value['author'] ?></p>
 							<ul class="courses-info">
 								<li class="courses-info__price"><strong class="color">$<?=$value['price']?>  </strong></li>
 								<li>
-									<span><i class="fa fa-users"></i> <?= $value['amountReg'] ?></span>
+									<span><i class="fa fa-users"></i> 123</span>
 									<span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
 								</li>
 								

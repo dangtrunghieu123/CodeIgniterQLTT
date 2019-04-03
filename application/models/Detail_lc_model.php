@@ -14,11 +14,18 @@ class Detail_lc_model extends CI_Model
     /*
      * Get detail_lc by 
      */
-    function get_detail_lc($)
+    function get_detail_lc($id)
     {
-        return $this->db->get_where('detail_lc',array(''=>$))->row_array();
+        return $this->db->get_where('detail_lc',array(''=>$id))->row_array();
     }
-        
+    function get_detail_lc_by_lessonID($lessonID)
+    {
+        return $this->db->get_where('detail_lc',array('lessonID'=>$lessonID))->result_array();
+    }  
+    function get_detail_lc_by_courseID($courseID)
+    {
+        return $this->db->get_where('detail_lc',array('courseID'=>$courseID))->result_array();
+    }  
     /*
      * Get all detail_lc
      */
@@ -40,17 +47,17 @@ class Detail_lc_model extends CI_Model
     /*
      * function to update detail_lc
      */
-    function update_detail_lc($,$params)
+    function update_detail_lc($id,$params)
     {
-        $this->db->where('',$);
+        $this->db->where('',$id);
         return $this->db->update('detail_lc',$params);
     }
     
     /*
      * function to delete detail_lc
      */
-    function delete_detail_lc($)
+    function delete_detail_lc($id)
     {
-        return $this->db->delete('detail_lc',array(''=>$));
+        return $this->db->delete('detail_lc',array(''=>$id));
     }
 }

@@ -4,11 +4,12 @@
  * www.crudigniter.com
  */
  
-class User extends CI_Controller{
+class User extends MY_Controller{
     function __construct()
     {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->model('Permission_model');
     } 
 
     /*
@@ -16,8 +17,10 @@ class User extends CI_Controller{
      */
     function index()
     {
-        $data['user'] = $this->User_model->get_all_user();
-        
+        $data['AD'] = $this->User_model->get_user_by_Permission('AD');
+        $data['ST'] = $this->User_model->get_user_by_Permission('GV');
+        $data['T'] = $this->User_model->get_user_by_Permission('HV');
+        // $data['user'] = $this->User_model->get_user_by_namePermission();
         $data['_view'] = 'user/index';
         $this->load->view('layouts/main',$data);
     }
@@ -27,31 +30,47 @@ class User extends CI_Controller{
      */
     function add()
     {   
+        $data['permission'] = $this->Permission_model->get_all_permission();
         $this->load->library('form_validation');
 
+		$this->form_validation->set_rules('pass','Pass','required|max_length[250]');
 		$this->form_validation->set_rules('name','Name','required|max_length[250]');
 		$this->form_validation->set_rules('email','Email','max_length[250]|valid_email');
 		$this->form_validation->set_rules('phone','Phone','integer');
 		$this->form_validation->set_rules('gender','Gender','required|max_length[3]');
-		$this->form_validation->set_rules('permissionID','PermissionID','required|max_length[100]');
-		$this->form_validation->set_rules('pass','Pass','required');
-		
+		$this->form_validation->set_rules('permissionID','PermissionID','required|max_length[150]');
+        $user = $this->User_model->get_user($this->input->post('account'));
 		if($this->form_validation->run())     
         {   
-            $params = array(
-				'name' => $this->input->post('name'),
-				'email' => $this->input->post('email'),
-				'phone' => $this->input->post('phone'),
-				'gender' => $this->input->post('gender'),
-				'birthday' => $this->input->post('birthday'),
-				'permissionID' => $this->input->post('permissionID'),
-				'pass' => $this->input->post('pass'),
-				'address' => $this->input->post('address'),
-				'avatar' => $this->input->post('avatar'),
-            );
-            
-            $user_id = $this->User_model->add_user($params);
-            redirect('user/index');
+            if($user == null){
+                if(isset($_POST) && count($_POST) > 0)  {
+                    $params = array(
+                        'account' => $this->input->post('account'),
+                        'pass' => MD5($this->input->post('pass')),
+                        'name' => $this->input->post('name'),
+                        'email' => $this->input->post('email'),
+                        'phone' => $this->input->post('phone'),
+                        'gender' => $this->input->post('gender'),
+                        'birthday' => $this->input->post('birthday'),
+                        'permissionID' => $this->input->post('permissionID'),
+                        'address' => $this->input->post('address'),
+                        'avatar' => $this->input->post('avatar'),
+                        'introduce' => $this->input->post('introduce')
+                    );
+                    var_dump($params);
+                    $user_id = $this->User_model->add_user($params);
+                    redirect('user/index');
+                }
+                else{
+                    $data['_view'] = 'user/add';
+                    $this->load->view('layouts/main',$data);
+                }
+            }
+            else{
+                echo "trùng";
+                $data['_view'] = 'user/add';
+                $this->load->view('layouts/main',$data);
+            }
         }
         else
         {            
@@ -70,34 +89,53 @@ class User extends CI_Controller{
         
         if(isset($data['user']['account']))
         {
+            
             $this->load->library('form_validation');
 
+			// $this->form_validation->set_rules('pass','Pass','required|max_length[250]');
 			$this->form_validation->set_rules('name','Name','required|max_length[250]');
 			$this->form_validation->set_rules('email','Email','max_length[250]|valid_email');
 			$this->form_validation->set_rules('phone','Phone','integer');
 			$this->form_validation->set_rules('gender','Gender','required|max_length[3]');
-			$this->form_validation->set_rules('permissionID','PermissionID','required|max_length[100]');
-			$this->form_validation->set_rules('pass','Pass','required');
-		
+			$this->form_validation->set_rules('permissionID','PermissionID','required|max_length[150]');
+        
 			if($this->form_validation->run())     
             {   
-                $params = array(
-					'name' => $this->input->post('name'),
-					'email' => $this->input->post('email'),
-					'phone' => $this->input->post('phone'),
-					'gender' => $this->input->post('gender'),
-					'birthday' => $this->input->post('birthday'),
-					'permissionID' => $this->input->post('permissionID'),
-					'pass' => $this->input->post('pass'),
-					'address' => $this->input->post('address'),
-					'avatar' => $this->input->post('avatar'),
-                );
-
-                $this->User_model->update_user($account,$params);            
-                redirect('user/index');
+                echo "tới đây rồi";
+                 if(isset($_POST) && count($_POST) > 0)  {
+                     echo "submit rồi nha";
+                    $params = array(
+                        'account' => $this->input->post('account'),
+                        'name' => $this->input->post('name'),
+                        'email' => $this->input->post('email'),
+                        'phone' => $this->input->post('phone'),
+                        'birthday' => $this->input->post('birthday'),
+                        'permissionID' => $this->input->post('permissionID'),
+                        'address' => $this->input->post('address'),
+                        'introduce' => $this->input->post('introduce'),
+                    );
+                    if ($this->input->post('password') != null) {
+                        $params['password'] = MD5($this->input->post('pass'));
+                    } else {
+                        $params['password'] = $data['user']['pass'];
+                    }
+                    print_r($params);
+                    $this->User_model->update_user($account,$params);            
+                    // redirect('user/index');
+                }
+                else
+                {
+                    $data['permission'] = $this->Permission_model->get_all_permission();
+                    $data['user_permission'] = $this->User_model->get_permission_by_promissionID($account);
+                    $data['_view'] = 'user/edit';
+                    $this->load->view('layouts/main',$data);
+                }
+                
             }
             else
             {
+                $data['permission'] = $this->Permission_model->get_all_permission();
+                $data['user_permission'] = $this->User_model->get_permission_by_promissionID($account);
                 $data['_view'] = 'user/edit';
                 $this->load->view('layouts/main',$data);
             }
