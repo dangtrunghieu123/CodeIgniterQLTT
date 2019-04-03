@@ -16,15 +16,18 @@ class User_clas_model extends CI_Model
      */
     function get_user_clas($id)
     {
-        return $this->db->get_where('user_class',array(''=>$id))->row_array();
+        return $this->db->get_where('user_class',array('id'=>$id))->row_array();
     }
-        
+    function get_student_by_classID($classID)
+    {
+        return $this->db->get_where('user_class',array('classID'=>$classID))->result_array();
+    }   
     /*
      * Get all user_class
      */
     function get_all_user_class()
     {
-        $this->db->order_by('', 'desc');
+        $this->db->order_by('id', 'desc');
         return $this->db->get('user_class')->result_array();
     }
         
@@ -42,7 +45,7 @@ class User_clas_model extends CI_Model
      */
     function update_user_clas($id,$params)
     {
-        $this->db->where('',$id);
+        $this->db->where('id',$id);
         return $this->db->update('user_class',$params);
     }
     
@@ -51,6 +54,6 @@ class User_clas_model extends CI_Model
      */
     function delete_user_clas($id)
     {
-        return $this->db->delete('user_class',array(''=>$id));
+        return $this->db->delete('user_class',array('id'=>$id));
     }
 }

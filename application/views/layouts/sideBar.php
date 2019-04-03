@@ -47,19 +47,19 @@
                     </li>
                     <li>
                         <a href="<?=base_url()?>user">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">assignment_ind</i>
                             <span>QL người dùng</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?=base_url()?>lesson">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">clear_all</i>
                             <span>QL bài học</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?=base_url()?>user_clas">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">recent_actors</i>
                             <span>Ghi danh học viên</span>
                         </a>
                     </li>

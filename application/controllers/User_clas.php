@@ -10,6 +10,7 @@ class User_clas extends MY_Controller{
         parent::__construct();
         $this->load->model('User_clas_model');
         $this->load->model('Cource_model');
+        $this->load->model('Clas_model');
     } 
 
     /*
@@ -54,6 +55,46 @@ class User_clas extends MY_Controller{
         }
     }  
 
+    function fetch_by_courseID(){
+        $courseId=$this->input->post('courseID');
+        $sc=$this->Clas_model->get_clas_by_courseID($courseId);//lấy danh sách theo courseId
+        print_r($sc);
+        if($sc!=""){
+            $html="";
+            foreach($sc as $key => $obj){
+                $html.=" <option value='".($obj['classID'])."'>". ($obj['times'])."</option>";
+            }
+            print_r($html);//cục html select box
+        }
+        else{
+            echo"<option value=''>không có dữ liệu</option>";
+        }
+    }
+
+    public function student_by_classID(){
+        $classId=$this->input->post('id');
+        $value=$this->User_clas_model->get_student_by_classID($classId);//lấy danh sách theo yearSchoolId
+        print_r($value);
+        for ($i=0; $i < count($value); $i++) {
+            $new[$i] = new stdClass;
+            $new[$i]->id = $i +1;
+            $new[$i]->studentID = $value[$i]['studentID'];
+            $new[$i]->status = $value[$i]['status'];
+            $new[$i]->result = $value[$i]['result'];
+            $new[$i]->action = '
+                    <a class="btn btn-warning btn-xs btn-raised" href="' . base_url() . 'user_clas/edit/' . $value[$i]['id'] . '"  data-toggle="tooltip" data-original-title="Sửa"  aria-hidden="true"><i class="material-icons">mode_edit</i></a>
+                    <a onclick=\'onDelete("' . $value[$i]['id'] . '","' . $value[$i]['studentID'] . '")\' class="btn btn-danger btn-xs btn-raised" data-toggle="tooltip" title="Xóa"><i class="material-icons">delete</i></a>
+                ';
+            
+        }
+        $new = array('data' => $new);        
+        // print_r($new);
+        // $data = $news;
+        $data = json_encode($new,JSON_UNESCAPED_UNICODE);
+        print_r($data);
+        return;
+
+    }
     /*
      * Editing a user_clas
      */
