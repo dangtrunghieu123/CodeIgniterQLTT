@@ -7,14 +7,14 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="card">
 					<div class="header">
-						<a href="#" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Thêm khóa học">
+						<a href="<?=base_url()?>user_clas/add" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Thêm khóa học">
 							<i class="material-icons">add</i> 
 						</a>
-						<h2>QUẢN LÝ KHÓA HỌC</h2>
+						<h2>QUẢN LÝ HỌC VIÊN</h2>
 					</div>
 					<div class="body">
 
-                        <form id="form_validation" action="<?=base_url()?>semester/index" method="POST">
+                        <form id="form_validation" action="<?=base_url()?>user_clas/index" method="POST">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group form-float">

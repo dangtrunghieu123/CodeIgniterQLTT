@@ -29,6 +29,8 @@ class User_clas extends MY_Controller{
      */
     function add()
     {   
+        $data['user_class'] = $this->User_clas_model->get_all_user_class();
+        $data['course'] = $this->Cource_model->get_all_cource();
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('studentID','StudentID','required|max_length[150]');
@@ -67,7 +69,7 @@ class User_clas extends MY_Controller{
             print_r($html);//cục html select box
         }
         else{
-            echo"<option value=''>không có dữ liệu</option>";
+            echo "<option value=''>không có dữ liệu</option>";
         }
     }
 
@@ -82,17 +84,19 @@ class User_clas extends MY_Controller{
             $new[$i]->status = $value[$i]['status'];
             $new[$i]->result = $value[$i]['result'];
             $new[$i]->action = '
+                    
                     <a class="btn btn-warning btn-xs btn-raised" href="' . base_url() . 'user_clas/edit/' . $value[$i]['id'] . '"  data-toggle="tooltip" data-original-title="Sửa"  aria-hidden="true"><i class="material-icons">mode_edit</i></a>
                     <a onclick=\'onDelete("' . $value[$i]['id'] . '","' . $value[$i]['studentID'] . '")\' class="btn btn-danger btn-xs btn-raised" data-toggle="tooltip" title="Xóa"><i class="material-icons">delete</i></a>
                 ';
             
         }
-        $new = array('data' => $new);        
+
+        $news = array('data' => $new);        
         // print_r($new);
         // $data = $news;
-        $data = json_encode($new,JSON_UNESCAPED_UNICODE);
+        $data = json_encode($news,JSON_UNESCAPED_UNICODE);
         print_r($data);
-        return;
+        return $data;
 
     }
     /*

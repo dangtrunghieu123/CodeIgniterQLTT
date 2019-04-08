@@ -191,7 +191,23 @@
 						</div>
 						<div class="text">
 							<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
-							<h3> <a href=""><?=	$value['nameCourse'] ?></a> </h3>
+							<h3 style="height:60px"> 
+								<a  href="<?= base_url() ?>cource/detail_course/<?=$value['courseID']?>">
+									<?php
+										$str = $value['nameCourse'];
+										if(strlen($str) >30 ){
+											$string = substr($str,0,30);
+											echo $string . "...";
+										}
+										else{
+											echo $value['nameCourse'];
+										}
+										
+									?>
+								
+									
+								</a>
+							</h3>
 							<p>Người tạo : <?=	$value['author'] ?></p>
 							<ul class="courses-info">
 								<li class="courses-info__price"><strong class="color">$<?=$value['price']?>  </strong></li>
@@ -247,7 +263,7 @@
 							<?php foreach($teacher as $val){?>
 								<div class="item">	
 									<div class="ih-item circle effect5">
-										<a href="#">
+										<a href="<?= base_url()?>user/detail_user/<?=$val['account'] ?>">
 											<div class="img"><img src="<?=$val['avatar'] ?>" width="100%"></div>
 											<div class="info">
 												<div class="info-back">

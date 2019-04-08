@@ -85,7 +85,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                XEM THÔNG CÁC THÔNG TIN
+                                KHÓA HỌC CỦA TÔI
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -101,146 +101,43 @@
                             </ul>
                         </div>
                         <div class="body">
-                                    
-                            <div class="clearfix">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs tab-nav-right" role="tablist" style="margin-bottom: 20px;">
-                                        <li role="presentation" class="active"><a href="#home_animation_2" data-toggle="tab"><i class="material-icons">view_module</i>KHÓA HỌC CỦA TÔI</a></li>
-                                        <li role="presentation"><a href="#profile_animation_2" data-toggle="tab"><i class="material-icons">assignment_ind</i>DANH SÁCH GIẢNG VIÊN</a></li>
-                                        <li role="presentation"><a href="#messages_animation_2" data-toggle="tab"><i class="material-icons">account_box</i>DANH SÁCH HỌC VIÊN</a></li>
-                                    </ul>
-
-                                    <!-- Tab panes -->
-                                    <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane animated fadeInRight active"  id="home_animation_2">
-                                            
-                                            <?php foreach($courses as $value){?>
-                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                                    <div class="card c-card">
-                                                        <img src="<?= $value['image'] ?>" width="100%">
-                                                        <div class="body">
-                                                            <div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
-                                                            <h3> <a href=""><?=	$value['nameCourse'] ?></a> </h3>
-                                                            <p>Người tạo : <?=	$value['author'] ?></p>
-                                                            <ul class="courses-info">
-                                                                <li class="courses-info__price"><strong class="color">$<?=$value['price']?> </strong></li>
-                                                                <li>
-                                                                    <span><i class="fa fa-users"></i> 123</span>
-                                                                    <span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>	
-                                            <?php } ?>
-                                            
+                           <div class="row">
+                                <?php foreach($_course as $value){?>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="card c-card">
+                                            <img src="<?= $value['image'] ?>" width="100%">
+                                            <div class="body">
+                                                <div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
+                                                <h3>
+                                                 <!-- <a  href="<?php echo site_url('home/detail_course/'.$value['courseID']); ?>"><?=	$value['nameCourse'] ?></a>  -->
+                                                    <a  href="<?= base_url() ?>cource/detail_course/<?=$value['courseID']?>">
+                                                        <?php
+                                                            $str = $value['nameCourse'];
+                                                            if(strlen($str) >30 ){
+                                                                $string = substr($str,0,30);
+                                                                echo $string . "...";
+                                                            }
+                                                            else{
+                                                                echo $value['nameCourse'];
+                                                            }
+                                                        ?>
+                                                    </a>
+                                                 </h3>
+                                                <p>Người tạo : <?=	$value['author'] ?></p>
+                                                <ul class="courses-info">
+                                                    <li class="courses-info__price"><strong class="color">$<?=$value['price']?> </strong></li>
+                                                    <li>
+                                                        <span><i class="fa fa-users"></i> 123</span>
+                                                        <span class="heart_icon"> <i class="fa fa-heart-o"></i></span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div role="tabpanel" class="tab-pane animated fadeInRight" id="profile_animation_2">
-                                            <!-- <?php foreach($teacher as $val){?>
-                                                <div class="item">	
-                                                    <div class="ih-item circle effect5">
-                                                        <a href="#">
-                                                            <div class="img"><img src="<?=$val['avatar'] ?>" width="100%"></div>
-                                                            <div class="info">
-                                                                <div class="info-back">
-                                                                    <h3>Profile</h3>		           
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="team-bottom">
-                                                        <p><?=$val['name'] ?></p>
-                                                        <p><?=$val['birthday'] ?></p>
-                                                        <ul>
-                                                            <li><a href="#" class="fa"> </a></li>
-                                                            <li><a href="#" class="tw"> </a></li>
-                                                            <li><a href="#" class="g"> </a></li>
-                                                        </ul>
-                                                    </div>	
-                                                </div>
-                                            <?php } ?> -->
-                                            <div class="table-responsive">
-                                            <table class="table table-bordered table-striped table-hover dataTable js-basic-example">
-                                                <thead>
-                                                    <tr>
-                                                        
-                                                        <th>Họ Tên</th>
-                                                        <th>Email</th>
-                                                        <th>SĐT</th>
-                                                        <th>Ngày sinh</th>
-                                                        <th>Địa chỉ</th>
-                                                        <th>Thao tác</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach($teacher as $t){ ?>
-                                                        <tr>
-                                                            
-                                                            <td><?php echo $t['name']; ?></td>
-                                                            <td><?php echo $t['email']; ?></td>
-                                                            <td><?php echo $t['phone']; ?></td>
-                                                            <td><?php echo $t['birthday']; ?></td>
-                                                            <td><?php echo $t['address']; ?></td>
-                                                            <td>
-                                                                <a href="#" data-toggle="tooltip" data-original-title="Chi tiết" class="btn btn-success btn-xs"><i class='material-icons'>search</i></a> 
-                                                                
-                                                                <!-- <a href="<?php echo site_url('cource/edit/'.$c['courseID']); ?>" data-toggle="tooltip" data-original-title="Sửa khóa học" class="btn btn-warning btn-xs"><i class='material-icons'>edit</i></a> 
-                                                                <a onclick="onDelete('<?=$c['courseID']?>','<?=$c['nameCourse']?>')" class="btn btn-danger btn-xs"
-                                                                data-toggle="tooltip" data-original-title="Xóa">
-                                                                    <i class="material-icons">delete</i>
-                                                                </a> -->
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane animated fadeInRight" id="messages_animation_2">
-                                        <div class="table-responsive">
-												<table class="table table-bordered table-striped table-hover dataTable js-basic-example">
-													<thead>
-														<tr>
-															<th>Tài khoản</th>
-															<th>Họ Tên</th>
-															<th>Email</th>
-															<th>SĐT</th>
-															<th>Loại người dùng</th>
-															<th>Thao tác</th>
-														</tr>
-													</thead>
-													<tbody>
-														<?php foreach($ST as $u){ ?>
-															<tr>
-																<td><?php echo $u['account']; ?></td>
-																<td><?php echo $u['name']; ?></td>
-																<td><?php echo $u['email']; ?></td>
-																<td><?php echo $u['phone']; ?></td>
-																<td><?php echo $u['namePermission']; ?></td>
-																<td>
-																	<a href="<?php echo site_url('user/edit/'.$u['account']); ?>" data-toggle="tooltip" data-original-title="Sửa người dùng" class="btn btn-warning btn-xs"><i class='material-icons'>edit</i></a> 
-																	<a href="<?php echo site_url('user/remove/'.$u['account']); ?>" data-toggle="tooltip" data-original-title="Xóa người dùng" class="btn btn-danger btn-xs"><i class='material-icons'>delete</i></a>
-																</td>
-															</tr>
-														<?php } ?>
-													</tbody>
-												</table>
-											</div>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane animated fadeInRight" id="settings_animation_2">
-                                            <b>Settings Content</b>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                                Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent
-                                                aliquid pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere
-                                                gubergren sadipscing mel.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                    </div>	
+                                <?php } ?>
+                                
                             </div>
+                            
                         </div>
                     </div>
             </div>
@@ -250,3 +147,90 @@
     
 
 
+<script>
+
+function btnClick(self){
+    var id = self.value;
+    if(id){
+        $.post(
+            "<?= base_url()?>user_clas/fetch_by_courseID",
+            {
+                courseID:id,
+            },function(data) {
+                $('#classID').html(data);
+                $('#classID').selectpicker('refresh');
+            });
+    }
+}
+</script>
+
+<script>
+
+
+function classClick(self){
+    var id = self.value;
+    alert(id);
+    if(id){
+            data = { id: id };
+            refesh_datatable("<?= base_url('user_clas/student_by_classID') ?>",data);
+    
+    }
+}
+
+
+function refesh_datatable(url,data)
+{
+    var dataTable = $('#exportables').DataTable();         
+    function loaddatatable(){
+        dataTable = $('#exportables').DataTable({
+        select: true,
+        responsive: true,
+        processing:true,
+        retrieve:true,
+        ajax:{
+                url:url,
+                type:"POST",
+                data: data
+        },
+        columns: [
+            { data: "id" },
+            { data: "studentID" },
+            { data: "status" },
+            { data: "result" },
+            { data: "action" }
+        ],
+        language: {
+            decimal:        "",
+            emptyTable:     "Dữ liệu rỗng",
+            info:           "Hiển thị từ _START_ đến _END_ trong tổng cộng _TOTAL_ dòng",
+            infoEmpty:      "Dữ liệu rỗng",
+            infoFiltered:   "(tìm kiếm từ _MAX_ dòng)",
+            nfoPostFix:    "",
+            thousands:      ",",
+            lengthMenu:     'Hiển thị _MENU_ dòng',
+            loadingRecords: "Đang tải...",
+            processing:     "Đang xử lý...",
+            search:         '<label class="control-label">Tìm kiếm</label>',
+            zeroRecords:    "Không tìm thấy",
+            paginate: {
+                first:      "Đầu",
+                last:       "Cuối",
+                next:       "»",
+                previous:   "«"
+            },
+            aria: {
+                sortAscending:  ": activate to sort column ascending",
+                sortDescending: ": activate to sort column descending"
+            }
+        },
+        aoColumnDefs : [ {
+            bSortable : false,
+            aTargets : [ "no-sort" ]
+        }]
+    }); 
+    }
+    loaddatatable();
+    dataTable.destroy();
+    loaddatatable();
+}
+</script>

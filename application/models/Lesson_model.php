@@ -22,6 +22,10 @@ class Lesson_model extends CI_Model
     {
         return $this->db->get_where('lesson',array('nameLesson'=>$nameLesson))->row_array();
     } 
+    function get_lesson_by_author($author)
+    {
+        return $this->db->get_where('lesson',array('author'=>$author))->row_array();
+    } 
     /*
      * Get all lesson
      */

@@ -18,7 +18,10 @@ class Cource_model extends CI_Model
     {
         return $this->db->get_where('cource',array('courseID'=>$courseID))->row_array();
     }
-        
+    function get_cource_by_author($author)
+    {
+        return $this->db->get_where('cource',array('author'=>$author))->result_array();
+    }
     /*
      * Get all cource
      */
@@ -32,6 +35,14 @@ class Cource_model extends CI_Model
         return $this->db->select("c.*")->from('class cl')
         ->join('cource c','c.courseID = cl.courseID')
         ->where('cl.teacherID',$teacherID)
+        ->get() 
+        ->result_array();
+    }
+    function get_courses_of_student($studentID){
+        return $this->db->select("c.*,cl.times,cl.teacherID,uc.result")->from('user_class uc')
+        ->join('class cl','cl.classID = uc.classID')
+        ->join('cource c','c.courseID = cl.courseID')
+        ->where('uc.studentID',$studentID)
         ->get() 
         ->result_array();
     }

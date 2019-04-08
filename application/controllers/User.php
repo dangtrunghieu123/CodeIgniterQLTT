@@ -10,6 +10,10 @@ class User extends MY_Controller{
         parent::__construct();
         $this->load->model('User_model');
         $this->load->model('Permission_model');
+        $this->load->model('Cource_model');
+        $this->load->model('User_clas_model');
+        $this->load->model('Lesson_model');
+        $this->load->model('Clas_model');
     } 
 
     /*
@@ -18,8 +22,8 @@ class User extends MY_Controller{
     function index()
     {
         $data['AD'] = $this->User_model->get_user_by_Permission('AD');
-        $data['ST'] = $this->User_model->get_user_by_Permission('GV');
-        $data['T'] = $this->User_model->get_user_by_Permission('HV');
+        $data['T'] = $this->User_model->get_user_by_Permission('GV');
+        $data['ST'] = $this->User_model->get_user_by_Permission('HV');
         // $data['user'] = $this->User_model->get_user_by_namePermission();
         $data['_view'] = 'user/index';
         $this->load->view('layouts/main',$data);
@@ -90,20 +94,19 @@ class User extends MY_Controller{
         if(isset($data['user']['account']))
         {
             
-            $this->load->library('form_validation');
+            // $this->load->library('form_validation');
 
 			// $this->form_validation->set_rules('pass','Pass','required|max_length[250]');
-			$this->form_validation->set_rules('name','Name','required|max_length[250]');
-			$this->form_validation->set_rules('email','Email','max_length[250]|valid_email');
-			$this->form_validation->set_rules('phone','Phone','integer');
-			$this->form_validation->set_rules('gender','Gender','required|max_length[3]');
-			$this->form_validation->set_rules('permissionID','PermissionID','required|max_length[150]');
+			// $this->form_validation->set_rules('name','Name','required|max_length[250]');
+			// $this->form_validation->set_rules('email','Email','max_length[250]|valid_email');
+			// $this->form_validation->set_rules('phone','Phone','numberic');
+			// $this->form_validation->set_rules('gender','Gender','required|max_length[3]');
+			// $this->form_validation->set_rules('permissionID','PermissionID','required|max_length[150]');
         
-			if($this->form_validation->run())     
-            {   
-                echo "tới đây rồi";
+			// if($this->form_validation->run())     
+            // {   
+               
                  if(isset($_POST) && count($_POST) > 0)  {
-                     echo "submit rồi nha";
                     $params = array(
                         'account' => $this->input->post('account'),
                         'name' => $this->input->post('name'),
@@ -114,22 +117,22 @@ class User extends MY_Controller{
                         'address' => $this->input->post('address'),
                         'introduce' => $this->input->post('introduce'),
                     );
-                    if ($this->input->post('password') != null) {
-                        $params['password'] = MD5($this->input->post('pass'));
+                    if ($this->input->post('pass') != null) {
+                        $params['pass'] = MD5($this->input->post('pass'));
                     } else {
-                        $params['password'] = $data['user']['pass'];
+                        $params['pass'] = $data['user']['pass'];
                     }
                     print_r($params);
                     $this->User_model->update_user($account,$params);            
-                    // redirect('user/index');
-                }
-                else
-                {
-                    $data['permission'] = $this->Permission_model->get_all_permission();
-                    $data['user_permission'] = $this->User_model->get_permission_by_promissionID($account);
-                    $data['_view'] = 'user/edit';
-                    $this->load->view('layouts/main',$data);
-                }
+                    redirect('user/index');
+                // }
+                // else
+                // {
+                //     $data['permission'] = $this->Permission_model->get_all_permission();
+                //     $data['user_permission'] = $this->User_model->get_permission_by_promissionID($account);
+                //     $data['_view'] = 'user/edit';
+                //     $this->load->view('layouts/main',$data);
+                // }
                 
             }
             else
@@ -147,18 +150,72 @@ class User extends MY_Controller{
     /*
      * Deleting user
      */
-    function remove($account)
+    function remove()
     {
-        $user = $this->User_model->get_user($account);
+        try{
+            $account = $this->input->post('id');
+            $user = $this->User_model->get_user($account);
+            print_r($user);
+            if(isset($user['account'])){
+                $class = $this->Clas_model->get_clas_by_teacherID($user['account']);
+                $user_class = $this->User_clas_model->get_user_clas_by_studentID($user['account']);
+                $lesson = $this->Lesson_model->get_lesson_by_author($user['account']);
+                $course = $this->Cource_model->get_cource_by_author($user['account']);
+                if($class != null){
+                    throw new Exception('Vui lòng xóa các lớp của người này trước!');
+                }
+                else if($user_class != null){
+                    throw new Exception('Vui lòng xóa danh sách học viên trong lớp của người dùng này trước!');
+                }
+                else if($lesson != null){
+                    throw new Exception('Vui lòng xóa các bài học của người này tạo trước trước!');
+                }
+                else if($course != null){
+                    throw new Exception('Vui lòng xóa khóa học do người dùng này tạo trước!');
+                }
+                $this->User_model->delete_user($user['account']);
+                return $this->Success(array(
+                    'message' => 'Xóa thành công!'
+                ));
+                redirect('user/index');
+            }
+            else
+                throw new Exception('Tài khoản không tồn tại!');
+        }
+        catch(Exception $e){
+            return $this->Success(array(
+                'isSuccess' => false,
+                'message' => $e->getMessage()
+            ));
+        }
 
-        // check if the user exists before trying to delete it
+        
+    }
+    
+    // detail
+
+    function detail_user($account){
+        $user = $this->User_model->get_user($account);
         if(isset($user['account']))
         {
-            $this->User_model->delete_user($account);
-            redirect('user/index');
+            $data['user'] = $user;
         }
         else
             show_error('The user you are trying to delete does not exist.');
+        $this->load->view('detail_user',$data);
     }
-    
+
+    //profile
+    function profile(){  //truyền account đang đăng nhập tương tự như detail_user
+        $account ="ThuKara";
+        $user = $this->User_model->get_user($account);
+        if(isset($user['account']))
+        {
+            $data['user'] = $user;
+        }
+        else
+            show_error('The user you are trying to delete does not exist.');
+      
+        $this->load->view('user/profile',$data);
+    }
 }

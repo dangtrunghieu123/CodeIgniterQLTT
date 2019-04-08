@@ -33,12 +33,7 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?=base_url()?>admin">
-                            <i class="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="<?=base_url()?>cource">
                             <i class="material-icons">text_fields</i>
@@ -52,13 +47,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?=base_url()?>lesson">
-                            <i class="material-icons">clear_all</i>
-                            <span>QL bài học</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>user_clas">
+                        <a href="<?=base_url()?>user_clas/add">
                             <i class="material-icons">recent_actors</i>
                             <span>Ghi danh học viên</span>
                         </a>
@@ -69,7 +58,36 @@
                             <span>QL học viên</span>
                         </a>
                     </li>
-                  
+                    <li>
+                        <a href="<?=base_url()?>lesson">
+                            <i class="material-icons">clear_all</i>
+                            <span>QL bài học</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url()?>admin">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url()?>admin/listST">
+                            <i class="material-icons">layers</i>
+                            <span>DS học viên</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url()?>student">
+                            <i class="material-icons">layers</i>
+                            <span>Khóa học của tôi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url()?>user/profile">
+                            <i class="material-icons">layers</i>
+                            <span>Thông tin cá nhân</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->

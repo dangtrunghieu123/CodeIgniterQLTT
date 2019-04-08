@@ -22,6 +22,10 @@ class User_clas_model extends CI_Model
     {
         return $this->db->get_where('user_class',array('classID'=>$classID))->result_array();
     }   
+    function get_user_clas_by_studentID($studentID)
+    {
+        return $this->db->get_where('user_class',array('studentID'=>$studentID))->result_array();
+    }  
     /*
      * Get all user_class
      */

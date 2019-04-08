@@ -93,7 +93,7 @@ canvas{
   
   .cont_forms_active_login {
   box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
-    height: 420px;  
+    height: 430px;  
   top:20px;
   left: 0px;
     -webkit-transition: all 0.5s;
@@ -426,4 +426,10 @@ canvas{
     .screan_xs{
       display: block;
     }
+  }
+
+  .error{
+    margin-bottom:0px;
+    padding: 0.4rem 1.25rem !important;
+    display: none;
   }

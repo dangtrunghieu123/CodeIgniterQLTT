@@ -26,7 +26,7 @@
 									<div class="form-group">
 										<label>Mật khẩu </label>
                                         <div class="form-line">
-											<input type="password" class="form-control"  placeholder="Nhập password mới nếu muốn thay đổi" name="pass" required>
+											<input type="password" class="form-control"  placeholder="Nhập password mới nếu muốn thay đổi" name="pass">
                                         </div>
                                     </div>
 								</div>
@@ -38,14 +38,6 @@
                                         </div>
                                     </div>
 								</div>
-                                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="form-group">
-										<label>Hình ảnh</label>
-                                        <div class="form-line">
-											<input type="text" class="form-control" placeholder="url" value="<?=$user['avatar'] ?>" name="avatar" required>
-                                        </div>
-                                    </div>
-								</div> -->
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Email</label>

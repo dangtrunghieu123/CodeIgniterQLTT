@@ -23,7 +23,10 @@ class Clas_model extends CI_Model
     {
         return $this->db->get_where('class',array('courseID'=>$courseID))->result_array();
     }
-        
+    function get_clas_by_teacherID($account)
+    {
+        return $this->db->get_where('class',array('teacherID'=>$account))->result_array();
+    } 
     /*
      * Get all class
      */

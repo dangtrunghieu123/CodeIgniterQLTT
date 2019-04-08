@@ -12,13 +12,18 @@ class Admin extends MY_Controller{
         $this->load->model('User_model');
          $this->load->library('pagination');
          $this->load->helper('url');
+
+         $this->load->model('User_clas_model');
+        $this->load->model('Clas_model');
     }
 
     function index()
     {
-        // $data['teacher'] = $this->User_model->get_user_by_promissionID();
+        
+        $data['user_class'] = $this->User_clas_model->get_all_user_class();
+        $data['course'] = $this->Cource_model->get_all_cource();
         $teacherID = "NguyenDai";
-        $data['courses'] = $this->Cource_model->get_courses_by_teacherID($teacherID);
+        $data['_course'] = $this->Cource_model->get_courses_by_teacherID($teacherID);
         $data['teacher'] = $this->User_model->get_user_by_Permission('GV');
         $data['ST'] = $this->User_model->get_user_by_Permission('HV');
         
@@ -110,4 +115,55 @@ class Admin extends MY_Controller{
     //     $data['_view'] = 'dashboard';
     //     $this->load->view('layouts/main',$params);
     // }
+
+
+    function fetch_by_courseID(){
+        $courseId=$this->input->post('courseID');
+        $sc=$this->Clas_model->get_clas_by_courseID($courseId);//lấy danh sách theo courseId
+        print_r($sc);
+        if($sc!=""){
+            $html="";
+            foreach($sc as $key => $obj){
+                $html.=" <option value='".($obj['classID'])."'>". ($obj['times'])."</option>";
+            }
+            print_r($html);//cục html select box
+        }
+        else{
+            echo "<option value=''>không có dữ liệu</option>";
+        }
+    }
+
+    public function student_by_classID(){
+        $classId=$this->input->post('id');
+        $value=$this->User_clas_model->get_student_by_classID($classId);//lấy danh sách theo yearSchoolId
+        print_r($value);
+        for ($i=0; $i < count($value); $i++) {
+            $new[$i] = new stdClass;
+            $new[$i]->id = $i +1;
+            $new[$i]->studentID = $value[$i]['studentID'];
+            $new[$i]->status = $value[$i]['status'];
+            $new[$i]->result = $value[$i]['result'];
+            $new[$i]->action = '
+                    
+                    <a class="btn btn-warning btn-xs btn-raised" href="' . base_url() . 'user_clas/edit/' . $value[$i]['id'] . '"  data-toggle="tooltip" data-original-title="Sửa"  aria-hidden="true"><i class="material-icons">mode_edit</i></a>
+                    <a onclick=\'onDelete("' . $value[$i]['id'] . '","' . $value[$i]['studentID'] . '")\' class="btn btn-danger btn-xs btn-raised" data-toggle="tooltip" title="Xóa"><i class="material-icons">delete</i></a>
+                ';
+            
+        }
+
+        $news = array('data' => $new);        
+        // print_r($new);
+        // $data = $news;
+        $data = json_encode($news,JSON_UNESCAPED_UNICODE);
+        print_r($data);
+        return $data;
+
+    }
+
+    function listST(){
+        $teacherID = "NguyenDai";
+        $data['_course'] = $this->Cource_model->get_courses_by_teacherID($teacherID);
+        $data['_view'] = 'student/listST';
+        $this->load->view('layouts/main',$data);
+    }
 }

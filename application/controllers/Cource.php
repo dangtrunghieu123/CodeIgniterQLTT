@@ -157,5 +157,49 @@ class Cource extends MY_Controller{
 
         
     }
+
+    // detail
+
+    function detail_course($courseID){
+        // print_r($courseID);
+        $course = $this->Cource_model->get_cource($courseID);
+        if(isset($course['courseID']))
+        {
+            $data['_course'] = $course;
+        }
+        else
+            show_error('The course you are trying to delete does not exist.');
+        $this->load->view('detail_course',$data);
+    }
     
+    function viewLess($courseID){
+        $data['name'] = $this->Cource_model->get_cource($courseID);
+        $data['lesson'] = $this->Detail_lc_model->get_detail_lc_by_courseID($courseID);
+        $data['_view'] = 'detail_lc/index';
+        $this->load->view('layouts/main',$data);
+    }
+
+    //remove lesson
+    function removeLesson(){
+        try{
+            $id = $this->input->post('id');
+            $detail_lc = $this->Detail_lc_model->get_detail_lc($id);
+            if(isset( $detail_lc['id'])){
+                $this->Detail_lc_model->delete_detail_lc($id);
+                return $this->Success(array(
+                    'message' => 'Xóa thành công!'
+                ));
+                redirect('detail_lc/index');
+            }
+            throw new Exception("Xóa không thành công");
+        }
+        catch(Exception $e){
+            return $this->Success(array(
+                'isSuccess' => false,
+                'message' => $e->getMessage()
+            ));
+        }
+    }
+
+   
 }

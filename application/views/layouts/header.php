@@ -1,19 +1,3 @@
-<!-- <link rel="icon" href="favicon.ico" type="image/x-icon">
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-<link href="<?= base_url() ?>public/assets/themes/admin/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="<?= base_url() ?>public/assets/themes/admin/plugins/node-waves/waves.css" rel="stylesheet" />
-<link href="<?= base_url() ?>public/assets/themes/admin/plugins/animate-css/animate.css" rel="stylesheet" /> -->
-
-
-<!-- Custom Css -->
-<!-- <link href="<?= base_url() ?>public/assets/themes/admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet"> -->
-
-<!-- <link href="<?= base_url() ?>public/assets/themes/admin/css/style.css" rel="stylesheet"> -->
-
-<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-<!-- <link href="<?= base_url() ?>public/assets/themes/admin/css/themes/all-themes.css" rel="stylesheet" /> -->
-
 
 
 
@@ -29,9 +13,10 @@
     <link href="<?=base_url()?>public/assets/themes/admin/plugins/node-waves/waves.css" rel="stylesheet" />
     <link href="<?=base_url()?>public/assets/themes/admin/plugins/animate-css/animate.css" rel="stylesheet" />
     <link href="<?=base_url()?>public/assets/themes/admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+    <link href="<?=base_url()?>public/assets/themes/admin/js/sweetalert.css" rel="stylesheet" />
     <link href="<?=base_url()?>public/assets/themes/admin/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>public/assets/themes/admin/css/themes/all-themes.css" rel="stylesheet" />
-    <link href="<?=base_url()?>public/assets/themes/admin/js/sweetalert.css" rel="stylesheet" />
     <script src="<?=base_url()?>public/assets/themes/admin/plugins/jquery/jquery.min.js"></script>
     <style>
         .dataTables_wrapper .dt-buttons a.dt-button {

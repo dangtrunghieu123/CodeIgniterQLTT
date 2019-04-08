@@ -20,8 +20,21 @@ class Dashboard extends MY_Controller{
 
     function index()
     {
-        $data['courses'] = $this->Cource_model->get_all_cource();
+        $data['_course'] = $this->Cource_model->get_all_cource();
         $data['_view'] = 'dashboard';
         $this->load->view('layouts/main',$data);
+    }
+
+    function detail_course($id){
+        // $courseID = $this->input->post('courseID');
+        // print_r($courseID);
+        $data['_Dcourse'] = $this->Cource_model->get_cource($id);
+        if(isset($data['_Dcourse']['courseID'])){
+
+            
+        }
+        else
+            show_error('The user you are trying to finđ does not exist.');
+        $this->load->view('detail_course',$data);
     }
 }

@@ -51,6 +51,7 @@
 												 data-toggle="tooltip" data-original-title="Xóa">
 													<i class="material-icons">delete</i>
 												</a>
+                                                <a  href="<?php echo site_url('cource/viewLess/'.$c['courseID']); ?>"  data-toggle="tooltip" data-original-title="Xem bài học" class="btn btn-success btn-xs"><i class='material-icons'>search</i></a> 
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -104,3 +105,17 @@
     //     });
 </script>
 
+<!-- <script>
+    function onViewLesson(id){
+        var self = this;
+        if(id){
+            $.post(
+                '<?=base_url()?>Detail_lc',
+                {id:id},
+                function(result){
+                    console.log(result);
+                }
+            );
+        }
+    }
+</script> -->

@@ -7,28 +7,28 @@ class MY_Controller extends CI_Controller{
         // $this->load->model('User_active_model');
         // $this->load->model('User_onlines_model');
 
-        // session_start();
+        session_start();
         // $loginPage = "auth?returnUrl=";
-        // //print_r(json_encode((object)$this->controllerlist->getControllers()));
-        // if(!isset($_SESSION["user"]))
-        // {
-        //     return redirect(base_url().$loginPage.$_SERVER['REDIRECT_QUERY_STRING'] ?? '/');
-        // }
+        //print_r(json_encode((object)$this->controllerlist->getControllers()));
+        if(!isset($_SESSION["user"]))
+        {
+            // return redirect(base_url().$loginPage.$_SERVER['REDIRECT_QUERY_STRING'] ?? '/');
+        }
         
         //  $this->CheckPermission();
         //  $this->refreshUserActive();
     } 
-    public function CheckPermission(){
-        $this->load->model('User_model');
-        $user = $this->User_model->get_username($_SESSION['user']->username);
-        $_SESSION['listPermission'] = (array)json_decode(strtolower($user['function']));
+    // public function CheckPermission(){
+    //     $this->load->model('User_model');
+    //     $user = $this->User_model->get_permission_by_promissionID($_SESSION['user']->account);
+    //     $_SESSION['listPermission'] = (array)json_decode(strtolower($user['namePermission']));
 
-        $class = strtolower($this->router->fetch_class());
-        $method = strtolower($this->router->fetch_method());
-        if(!(isset($_SESSION['listPermission'][$class]) && in_array($method,$_SESSION['listPermission'][$class]))){
-            show_error("Bạn không có quyền truy cập trang này" , 403 );
-        }
-    }
+    //     $class = strtolower($this->router->fetch_class());
+    //     $method = strtolower($this->router->fetch_method());
+    //     if(!(isset($_SESSION['listPermission'][$class]) && in_array($method,$_SESSION['listPermission'][$class]))){
+    //         show_error("Bạn không có quyền truy cập trang này" , 403 );
+    //     }
+    // }
     public function Success($ar = array(
         'isSuccess' => true,
         'message'   => "Thành công",

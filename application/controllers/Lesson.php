@@ -11,6 +11,7 @@ class Lesson extends MY_Controller{
         $this->load->model('Lesson_model');
         $this->load->model('User_model');
         $this->load->model('Detail_lc_model');
+        $this->load->model('Cource_model');
     } 
 
     /*
@@ -19,7 +20,7 @@ class Lesson extends MY_Controller{
     function index()
     {
         $data['lesson'] = $this->Lesson_model->get_all_lesson();
-        
+        $data['_cource'] = $this->Cource_model->get_all_cource();
         $data['_view'] = 'lesson/index';
         $this->load->view('layouts/main',$data);
     }
@@ -155,5 +156,35 @@ class Lesson extends MY_Controller{
 
        
     }
+
+    function addIntoCourse(){
+        try{
+            
+            $courseID = $this->input->post('idCourse');
+            $lessonID = $this->input->post('idLesson');
+            $detail_lc = $this->Detail_lc_model->get_by_lessonID_courseID($lessonID,$courseID);
+            if($detail_lc === null){
+                $params = array(
+                    'courseID' => $courseID,
+                    'lessonID' => $lessonID
+                );
+                $detail_lc_id = $this->Detail_lc_model->add_detail_lc($params);
+                return $this->Success(array(
+                    'message' => 'Thêm thành công!'
+                ));
+            }
+            else 
+                throw new Exception('bài học này đã tồn tại');
+            
+        }
+        catch(Exception $e){
+            return $this->Success(array(
+                'isSuccess' => false,
+                'message' => $e->getMessage()
+            ));
+        }
+        
+    }
+    
     
 }

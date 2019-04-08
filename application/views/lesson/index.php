@@ -8,6 +8,10 @@
 		width:300px;
 		height:200px;
 	}
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        left:70px !important;
+        opacity:1 !important;
+    }
 </style>
 <section class="content">
 	<div class="container-fluid">
@@ -46,6 +50,11 @@
 												 data-toggle="tooltip" data-original-title="Xóa">
 													<i class="material-icons">delete</i>
 												</a>
+                                                <a onclick="onAdd(<?=$l['lessonID']?>)"  data-toggle="modal" data-target="#defaultModal" class="btn btn-primary  btn-xs"
+												 data-toggle="tooltip" data-original-title="Thêm vào khóa học">
+													<i class="material-icons">add</i>
+												</a>
+                                                
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -59,8 +68,51 @@
 	</div>
 </section>
 
+<!-- Default Size -->
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-basic-example">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Tên khóa học</th>
+                                <!-- <th>Người tạo</th> -->
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <?php foreach($_cource as $c){ ?>
+                                <tr>
+                                    <td>
+                                        <form action="">
+                                            <input type="checkbox"   class="check" value="<?=$c['courseID'] ?>"  class="filled-in chk-col-light-green" >
+                                        </form>
+                                    </td>
+                                    <td><?php echo $c['nameCourse']; ?></td>
+                                   
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button"  id="getCourseID" class="btn btn-link btn-primary waves-effect">SAVE CHANGES</button>
+                <button type="button" class="btn btn-link btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
+                      
 <script>
 	 function onDelete(id,name){
         var self = this;
@@ -97,4 +149,48 @@
 	// $(document).ajaxStop(function(){
     //         $('[data-toggle="tooltip"]').tooltip();
     //     });
+</script>
+
+<script>
+    function onAdd(id){
+        alert(id);
+        $('#getCourseID').click(function(){
+            var check = $('.check');
+            alert(check.length);
+            for (var i = 0; i < check.length; i++){
+                if (check[i].checked === true){
+                    $.post(
+                        '<?=base_url() ?>lesson/addIntoCourse',
+                        {
+                            idLesson :id,
+                            idCourse :check[i].value
+                        },
+                        function(result){
+                            console.log(result);
+                            swal({
+                            title: 'THÔNG BÁO',
+                            type: result.isSuccess == true ? 'success' : 'error',
+                            text: result.message
+                            }, function() {
+                                window.location.reload();
+                            });
+                        }
+                    );
+                }
+            }
+        });
+    }
+    function getCourseID(){
+        // var lessonID = onAdd();
+        // var check = $('.check');
+        // var result = "";
+        // alert(check.length);
+        // for (var i = 0; i < check.length; i++){
+        //     if (check[i].checked === true){
+        //         // result += ' [' + check[i].value + ']';
+        //         check[i].value;
+
+        //     }
+        // }
+    }
 </script>
