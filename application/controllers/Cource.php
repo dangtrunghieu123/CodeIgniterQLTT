@@ -12,6 +12,7 @@ class Cource extends MY_Controller{
         $this->load->model('User_model');
         $this->load->model('Clas_model');
         $this->load->model('Detail_lc_model');
+        $_SESSION['navi'] = 'course';
     } 
 
     /*

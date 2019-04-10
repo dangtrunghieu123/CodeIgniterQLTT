@@ -9,6 +9,7 @@ class Clas extends MY_Controller{
     {
         parent::__construct();
         $this->load->model('Clas_model');
+       
     } 
 
     /*

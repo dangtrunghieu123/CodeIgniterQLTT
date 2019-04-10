@@ -7,11 +7,14 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="card">
 					<div class="header">
-						<h2>Thêm học viên</h2>
+					<a href="<?=base_url()?>user_clas/index" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Quay lại">
+							<i class="material-icons">keyboard_backspace</i> 
+						</a>
+						<h2>Thêm học viên vào lớp học</h2>
 					</div>
 					<div class="body">
-
-                        <form id="form_validation" action="<?=base_url()?>user_clas/index" method="POST">
+					<!-- <form id="form_validation" action="<?=base_url()?>user_clas/index" method="POST"> -->
+                        <form id="form_validation" action=""  method="POST" onsubmit="return false">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group form-float">
@@ -27,35 +30,50 @@
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group form-float">
 										<label for="">Chọn lớp học</label>
-											<select  onchange="classClick(this)"  class="form-control show-tick" data-live-search="true" id="classID" name="classID">
+											<select  onchange="lophoc(this)"  class="form-control show-tick" data-live-search="true" id="classID" name="classID">
 												<option value="" selected disabled style="display:none;">Chọn lớp học</option>  
 												
 											</select>
 										</div>
 									</div>
 								</div>
-						   </form>
-
-						<div class="table-responsive" id="test">
-							<table id="exportables" class="table table-bordered table-striped table-hover dataTable js-exportable" >
+								<div class="table-responsive" id="test">
+							<table id="exportables" class="table table-bordered table-striped table-hover dataTable js-basic-example" >
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>name</th>
+										<th>Tài khoản</th>
+										<th>Họ tên</th>
 										<th>email</th>
-										<th>phone</th>
-										<th>Thao tác</th>
+										<th>SĐT</th>
+										<th>Chọn HV</th>
 									</tr>	
 								</thead>
 							
-								<!-- <tbody id="semesterId">
-									
+								<tbody>
+									<?php foreach($student as $key=>$u){ ?>
 										
-							
-									
-								</tbody> -->
+										<tr>
+											<td><?= $key+1 ?></td>
+											<td><?php echo $u['account']; ?></td>
+											<td><?php echo $u['name']; ?></td>
+											<td><?php echo $u['email']; ?></td>
+											<td><?php echo $u['phone']; ?></td>
+											<td>
+											
+												<input type="checkbox" class="account" id="<?= $key+1 ?>" name="account" value="<?=$u['account']?>" class="filled-in chk-col-green" />
+												<label for="<?= $key+1 ?>"></label>
+												
+											</td>
+										</tr>
+									<?php } ?>
+								</tbody>
 							</table>
 						</div>
+						<button class="btn btn-primary waves-effect btn-block" style="margin-top:20px" onclick="addStudent()" type="submit">LƯU</button>
+					</form>
+
+						
 						
 					</div>
 				</div>
@@ -73,7 +91,7 @@
 			$.post(
 				"<?= base_url()?>user_clas/fetch_by_courseID",
 				{
-					courseID:id,
+					id:id,
 				},function(data) {
 					$('#classID').html(data);
 					$('#classID').selectpicker('refresh');
@@ -85,70 +103,47 @@
 <script>
 
 	
-	function classClick(self){
+	function lophoc(self){
 		var id = self.value;
-		alert(id);
-		if(id){
-				data = { id: id };
-				refesh_datatable("<?= base_url('user_clas/student_by_classID') ?>",data);
 		
-		}
 	}
 
+</script>
 
-	function refesh_datatable(url,data)
-	{
-		var dataTable = $('#exportables').DataTable();         
-		function loaddatatable(){
-			dataTable = $('#exportables').DataTable({
-			select: true,
-			responsive: true,
-			processing:true,
-			retrieve:true,
-			ajax:{
-					url:url,
-					type:"POST",
-					data: data
-			},
-			columns: [
-				{ data: "id" },
-				{ data: "studentID" },
-				{ data: "status" },
-				{ data: "result" },
-				{ data: "action" }
-			],
-			language: {
-				decimal:        "",
-				emptyTable:     "Dữ liệu rỗng",
-				info:           "Hiển thị từ _START_ đến _END_ trong tổng cộng _TOTAL_ dòng",
-				infoEmpty:      "Dữ liệu rỗng",
-				infoFiltered:   "(tìm kiếm từ _MAX_ dòng)",
-				nfoPostFix:    "",
-				thousands:      ",",
-				lengthMenu:     'Hiển thị _MENU_ dòng',
-				loadingRecords: "Đang tải...",
-				processing:     "Đang xử lý...",
-				search:         '<label class="control-label">Tìm kiếm</label>',
-				zeroRecords:    "Không tìm thấy",
-				paginate: {
-					first:      "Đầu",
-					last:       "Cuối",
-					next:       "»",
-					previous:   "«"
-				},
-				aria: {
-					sortAscending:  ": activate to sort column ascending",
-					sortDescending: ": activate to sort column descending"
-				}
-			},
-			aoColumnDefs : [ {
-				bSortable : false,
-				aTargets : [ "no-sort" ]
-			}]
-		}); 
+<script>
+	function addStudent(){
+		var classID = $('#classID').val();
+		var studentID = $(".account");
+		console.log(classID);
+		for (var i = 0; i < studentID.length; i++){
+			console.log(studentID.length)
+			if (studentID[i].checked === true){
+				console.log(studentID[i].value);
+				$.post(
+					'<?=base_url() ?>user_clas/add',
+					{
+						classID :classID,
+						studentID :studentID[i].value
+					},
+					function(result){
+						console.log(result);
+						swal({
+							title: 'THÔNG BÁO',
+							type: result.isSuccess == true ? 'success' : 'error',
+							text: result.message
+						}, function() {
+							if(result.isSuccess == false){
+								window.location.href = "<?=base_url()?>user_clas";
+							}
+							else{
+								window.location.reload();
+							}
+						
+						});
+					}
+				);
+			}
 		}
-		loaddatatable();
-		dataTable.destroy();
-		loaddatatable();
 	}
 </script>
+

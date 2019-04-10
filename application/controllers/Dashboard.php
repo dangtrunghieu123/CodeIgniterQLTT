@@ -10,11 +10,7 @@ class Dashboard extends MY_Controller{
         parent::__construct();
         $this->load->model('Cource_model');
         $this->load->model('User_model');
-         // load Pagination library
-         $this->load->library('pagination');
-         
-         // load URL helper
-         $this->load->helper('url');
+        $_SESSION['navi'] = 'dashboard';
         
     }
 

@@ -153,10 +153,8 @@
 
 <script>
     function onAdd(id){
-        alert(id);
         $('#getCourseID').click(function(){
             var check = $('.check');
-            alert(check.length);
             for (var i = 0; i < check.length; i++){
                 if (check[i].checked === true){
                     $.post(
@@ -180,17 +178,5 @@
             }
         });
     }
-    function getCourseID(){
-        // var lessonID = onAdd();
-        // var check = $('.check');
-        // var result = "";
-        // alert(check.length);
-        // for (var i = 0; i < check.length; i++){
-        //     if (check[i].checked === true){
-        //         // result += ' [' + check[i].value + ']';
-        //         check[i].value;
-
-        //     }
-        // }
-    }
+    
 </script>

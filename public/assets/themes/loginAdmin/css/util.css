@@ -2984,8 +2984,25 @@
 }
 
 
-
-
+/*custom notify*/
+.bg-black {
+  background-color: #000000 !important;
+  color: #fff; }
+  .bg-black .content .text,
+  .bg-black .content .number {
+    color: #fff !important; }
+.alert-dismissible .close {
+    color: #fff;
+    opacity: 1;
+    border: none;
+    text-shadow: none;
+	top: 0px;
+    right: -21px;
+	padding:0  !important;
+}
+.close:focus, .close:hover{
+color: #fff !important;
+}
 
 
 

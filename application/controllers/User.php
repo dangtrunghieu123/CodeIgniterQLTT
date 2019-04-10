@@ -14,6 +14,7 @@ class User extends MY_Controller{
         $this->load->model('User_clas_model');
         $this->load->model('Lesson_model');
         $this->load->model('Clas_model');
+        $_SESSION['navi'] = 'user';
     } 
 
     /*

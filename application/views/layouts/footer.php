@@ -17,9 +17,8 @@
     <script src="<?=base_url()?>public/assets/themes/admin/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
     <script src="<?=base_url()?>public/assets/themes/admin/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
-        <!-- Jquery Core Js -->
-        <!-- <script src="<?= base_url() ?>public/assets/themes/admin/plugins/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>public/assets/themes/admin/js/pages/tables/jquery-datatable.js"></script> -->
+
+
     <script src="<?=base_url()?>public/assets/themes/admin/js/admin.js"></script>
     <script src="<?=base_url()?>public/assets/themes/admin/js/main.js"></script>
     <script src="<?=base_url()?>public/assets/themes/admin/js/demo.js"></script>
@@ -28,7 +27,9 @@
     <script src="<?=base_url()?>public/assets/themes/admin/js/pages/ui/tooltips-popovers.js"></script>
     <script src="<?=base_url()?>public/assets/themes/admin/js/common.js"></script>
     <script src="<?=base_url()?>public/assets/themes/admin/plugins/dropzone/dropzone.js"></script>
-    <script src="//cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
+    <!-- <script src="//cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script> -->
+    <script src="<?=base_url()?>public/assets/themes/admin/plugins/ckeditor/ckeditor.js"></script>
+
     <script>
    
         // $(document).ajaxStart(function() {

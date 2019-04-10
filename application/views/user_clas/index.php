@@ -7,10 +7,10 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="card">
 					<div class="header">
-						<a href="<?=base_url()?>user_clas/add" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Thêm khóa học">
+					<a href="<?=base_url()?>user_clas/add" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Thêm khóa học">
 							<i class="material-icons">add</i> 
 						</a>
-						<h2>QUẢN LÝ HỌC VIÊN</h2>
+						<h2>Quản lí học viên</h2>
 					</div>
 					<div class="body">
 
@@ -30,7 +30,7 @@
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group form-float">
 										<label for="">Chọn lớp học</label>
-											<select  onchange="classClick(this)"  class="form-control show-tick" data-live-search="true" id="classID" name="classID">
+											<select  onchange="lophoc(this)"  class="form-control show-tick" data-live-search="true" id="classID" name="classID">
 												<option value="" selected disabled style="display:none;">Chọn lớp học</option>  
 												
 											</select>
@@ -40,13 +40,14 @@
 						   </form>
 
 						<div class="table-responsive" id="test">
-							<table id="exportables" class="table table-bordered table-striped table-hover dataTable js-exportable" >
+							<table id="exportables" class="table table-bordered table-striped table-hover dataTable js-basic-example" >
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>name</th>
+										<th>Họ tên</th>
 										<th>email</th>
-										<th>phone</th>
+										<th>SĐT</th>
+										<th>Tình trạng</th>
 										<th>Thao tác</th>
 									</tr>	
 								</thead>
@@ -76,7 +77,7 @@
 			$.post(
 				"<?= base_url()?>user_clas/fetch_by_courseID",
 				{
-					courseID:id,
+					id:id,
 				},function(data) {
 					$('#classID').html(data);
 					$('#classID').selectpicker('refresh');
@@ -88,12 +89,11 @@
 <script>
 
 	
-	function classClick(self){
+	function lophoc(self){
 		var id = self.value;
-		alert(id);
 		if(id){
-				data = { id: id };
-				refesh_datatable("<?= base_url('user_clas/student_by_classID') ?>",data);
+			data = { id: id };
+			refesh_datatable("<?= base_url('user_clas/student_by_classID') ?>",data);
 		
 		}
 	}
@@ -115,8 +115,9 @@
 			},
 			columns: [
 				{ data: "id" },
-				{ data: "studentID" },
-				{ data: "status" },
+				{ data: "name" },
+				{ data: "email" },
+				{ data: "phone" },
 				{ data: "result" },
 				{ data: "action" }
 			],
@@ -154,4 +155,41 @@
 		dataTable.destroy();
 		loaddatatable();
 	}
+</script>
+
+
+<script>
+	 function onDelete(id,name){
+        var self = this;
+        if(id){
+            swal({
+                title: "Xóa tin tức " + name,
+                text: "Bạn chắc chắn muốn xóa tin tức này?",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Có",
+                cancelButtonText: "Không",
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true
+            }, function() {
+                $.post(
+                    '<?=base_url()?>user_clas/remove/'+id,
+					{id:id},
+                    function(result){
+                        swal({
+                            title: 'THÔNG BÁO',
+                            type: result.isSuccess == true ? 'success' : 'error',
+                            text: result.message
+                        }, function() {
+                            window.location.reload();
+                        });
+                    }
+                );
+            });
+        }
+    }
+	$(document).ajaxStop(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
 </script>

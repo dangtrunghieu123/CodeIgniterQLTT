@@ -27,7 +27,7 @@
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group form-float">
 										<label for="">Chọn lớp học</label>
-											<select  onchange="classClick(this)"  class="form-control show-tick" data-live-search="true" id="classID" name="classID">
+											<select  onchange="lophoc(this)"  class="form-control show-tick" data-live-search="true" id="classID" name="classID">
 												<option value="" selected disabled style="display:none;">Chọn lớp học</option>  
 												
 											</select>
@@ -37,13 +37,14 @@
 						   </form>
 
 						<div class="table-responsive" id="test">
-							<table id="exportables" class="table table-bordered table-striped table-hover dataTable js-exportable" >
+							<table id="exportables" class="table table-bordered table-striped table-hover dataTable js-basic-example" >
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>name</th>
+										<th>Họ tên</th>
 										<th>email</th>
-										<th>phone</th>
+										<th>SĐT</th>
+										<th>Tình trạng</th>
 										<th>Thao tác</th>
 									</tr>	
 								</thead>
@@ -71,7 +72,7 @@
 		var id = self.value;
 		if(id){
 			$.post(
-				"<?= base_url()?>user_clas/fetch_by_courseID",
+				"<?= base_url()?>admin/fetch_by_courseID",
 				{
 					courseID:id,
 				},function(data) {
@@ -79,76 +80,75 @@
 					$('#classID').selectpicker('refresh');
 				});
 		}
+		
 	}
 </script>
 
 <script>
 
 	
-	function classClick(self){
+	function lophoc(self){
 		var id = self.value;
-		alert(id);
 		if(id){
 				data = { id: id };
-				refesh_datatable("<?= base_url('user_clas/student_by_classID') ?>",data);
-		
+				refesh_datatable("<?= base_url('admin/student_by_classID') ?>",data);
 		}
 	}
-
 
 	function refesh_datatable(url,data)
-	{
-		var dataTable = $('#exportables').DataTable();         
-		function loaddatatable(){
-			dataTable = $('#exportables').DataTable({
-			select: true,
-			responsive: true,
-			processing:true,
-			retrieve:true,
-			ajax:{
-					url:url,
-					type:"POST",
-					data: data
-			},
-			columns: [
-				{ data: "id" },
-				{ data: "studentID" },
-				{ data: "status" },
-				{ data: "result" },
-				{ data: "action" }
-			],
-			language: {
-				decimal:        "",
-				emptyTable:     "Dữ liệu rỗng",
-				info:           "Hiển thị từ _START_ đến _END_ trong tổng cộng _TOTAL_ dòng",
-				infoEmpty:      "Dữ liệu rỗng",
-				infoFiltered:   "(tìm kiếm từ _MAX_ dòng)",
-				nfoPostFix:    "",
-				thousands:      ",",
-				lengthMenu:     'Hiển thị _MENU_ dòng',
-				loadingRecords: "Đang tải...",
-				processing:     "Đang xử lý...",
-				search:         '<label class="control-label">Tìm kiếm</label>',
-				zeroRecords:    "Không tìm thấy",
-				paginate: {
-					first:      "Đầu",
-					last:       "Cuối",
-					next:       "»",
-					previous:   "«"
-				},
-				aria: {
-					sortAscending:  ": activate to sort column ascending",
-					sortDescending: ": activate to sort column descending"
+		{
+			var dataTable = $('#exportables').DataTable();         
+			function loaddatatable(){
+					dataTable = $('#exportables').DataTable({
+					select: true,
+					responsive: true,
+					processing:true,
+					retrieve:true,
+					ajax:{
+							url:url,
+							type:"POST",
+							data: data
+					},
+					columns: [
+						{ data: "id" },
+						{ data: "name" },
+						{ data: "email" },
+						{ data: "phone" },
+						{ data: "result" },
+						{ data: "action" }
+					],
+					language: {
+						decimal:        "",
+						emptyTable:     "Dữ liệu rỗng",
+						info:           "Hiển thị từ _START_ đến _END_ trong tổng cộng _TOTAL_ dòng",
+						infoEmpty:      "Dữ liệu rỗng",
+						infoFiltered:   "(tìm kiếm từ _MAX_ dòng)",
+						nfoPostFix:    "",
+						thousands:      ",",
+						lengthMenu:     'Hiển thị _MENU_ dòng',
+						loadingRecords: "Đang tải...",
+						processing:     "Đang xử lý...",
+						search:         '<label class="control-label">Tìm kiếm</label>',
+						zeroRecords:    "Không tìm thấy",
+						paginate: {
+							first:      "Đầu",
+							last:       "Cuối",
+							next:       "»",
+							previous:   "«"
+						},
+						aria: {
+							sortAscending:  ": activate to sort column ascending",
+							sortDescending: ": activate to sort column descending"
+						}
+					},
+					aoColumnDefs : [ {
+						bSortable : false,
+						aTargets : [ "no-sort" ]
+					}]
+				}); 
 				}
-			},
-			aoColumnDefs : [ {
-				bSortable : false,
-				aTargets : [ "no-sort" ]
-			}]
-		}); 
+				loaddatatable();
+				dataTable.destroy();
+				loaddatatable();
 		}
-		loaddatatable();
-		dataTable.destroy();
-		loaddatatable();
-	}
 </script>

@@ -12,6 +12,7 @@ class Lesson extends MY_Controller{
         $this->load->model('User_model');
         $this->load->model('Detail_lc_model');
         $this->load->model('Cource_model');
+        $_SESSION['navi'] = 'lesson';
     } 
 
     /*

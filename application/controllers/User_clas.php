@@ -11,6 +11,8 @@ class User_clas extends MY_Controller{
         $this->load->model('User_clas_model');
         $this->load->model('Cource_model');
         $this->load->model('Clas_model');
+        $this->load->model('User_model');
+        $_SESSION['navi'] = 'user_class';
     } 
 
     /*
@@ -29,42 +31,60 @@ class User_clas extends MY_Controller{
      */
     function add()
     {   
+        $_SESSION['navi'] = 'user_class_add';
         $data['user_class'] = $this->User_clas_model->get_all_user_class();
         $data['course'] = $this->Cource_model->get_all_cource();
-        $this->load->library('form_validation');
-
-		$this->form_validation->set_rules('studentID','StudentID','required|max_length[150]');
-		$this->form_validation->set_rules('classID','ClassID','required|integer');
-		$this->form_validation->set_rules('status','Status','required|max_length[250]');
-		$this->form_validation->set_rules('result','Result','required|max_length[250]');
-		
-		if($this->form_validation->run())     
-        {   
-            $params = array(
-				'studentID' => $this->input->post('studentID'),
-				'classID' => $this->input->post('classID'),
-				'status' => $this->input->post('status'),
-				'result' => $this->input->post('result'),
-            );
+        
+		if(isset($_POST) && count($_POST) > 0) { 
+            try{
+                $studentID = $this->input->post('studentID');
+                $classID = $this->input->post('classID');
+                $listST = $this->User_clas_model->get_by_studentID_classID($studentID,$classID);
+               
+                if($listST == null){
+                    $params = array(
+                        'studentID' => $this->input->post('studentID'),
+                        'classID' => $this->input->post('classID'),
+                        'status' => 'Chưa hoàn thành học phí',
+                        'result' => 'Chưa hoàn thành khóa học',
+                    );
+                    
+                    $user_clas_id = $this->User_clas_model->add_user_clas($params);
+                    return $this->Success(array(
+                        'message' => 'Thêm thành công!'
+                    ));
+                    // redirect('user_clas/index');
+                }
+                else 
+                    throw new Exception("1 vài sinh viên đã tồn tại");
+                
+            }
+            catch(Exception $e){
+               
+                return $this->Success(array(
+                    'isSuccess' => false,
+                    'message' => $e->getMessage()
+                ));
+            }
             
-            $user_clas_id = $this->User_clas_model->add_user_clas($params);
-            redirect('user_clas/index');
         }
         else
         {            
+            $data['student'] = $this->User_model->get_user_by_Permission('HV');
+            $data['course'] = $this->Cource_model->get_all_cource();
             $data['_view'] = 'user_clas/add';
             $this->load->view('layouts/main',$data);
         }
     }  
 
     function fetch_by_courseID(){
-        $courseId=$this->input->post('courseID');
+        $courseId=$this->input->post('id');
         $sc=$this->Clas_model->get_clas_by_courseID($courseId);//lấy danh sách theo courseId
         print_r($sc);
         if($sc!=""){
             $html="";
             foreach($sc as $key => $obj){
-                $html.=" <option value='".($obj['classID'])."'>". ($obj['times'])."</option>";
+                $html.=" <option id='classID' value='".($obj['classID'])."'>". ($obj['times'])."</option>";
             }
             print_r($html);//cục html select box
         }
@@ -73,30 +93,53 @@ class User_clas extends MY_Controller{
         }
     }
 
-    public function student_by_classID(){
+    public function add_student_by_classID(){
         $classId=$this->input->post('id');
         $value=$this->User_clas_model->get_student_by_classID($classId);//lấy danh sách theo yearSchoolId
-        print_r($value);
+      
         for ($i=0; $i < count($value); $i++) {
             $new[$i] = new stdClass;
             $new[$i]->id = $i +1;
-            $new[$i]->studentID = $value[$i]['studentID'];
-            $new[$i]->status = $value[$i]['status'];
+            $new[$i]->name = $value[$i]['name'];
+            $new[$i]->email = $value[$i]['email'];
+            $new[$i]->phone = $value[$i]['phone'];
             $new[$i]->result = $value[$i]['result'];
             $new[$i]->action = '
-                    
-                    <a class="btn btn-warning btn-xs btn-raised" href="' . base_url() . 'user_clas/edit/' . $value[$i]['id'] . '"  data-toggle="tooltip" data-original-title="Sửa"  aria-hidden="true"><i class="material-icons">mode_edit</i></a>
-                    <a onclick=\'onDelete("' . $value[$i]['id'] . '","' . $value[$i]['studentID'] . '")\' class="btn btn-danger btn-xs btn-raised" data-toggle="tooltip" title="Xóa"><i class="material-icons">delete</i></a>
+            <a  onclick=\'onCheck("' . $value[$i]['account'] . '","' . $value[$i]['classID'] . '")\' class="btn btn-success btn-xs btn-raised" data-toggle="tooltip" data-original-title="Thêm học viên"  aria-hidden="true"><i class="material-icons">check</i></a>
+        
                 ';
-            
+                // <a class="btn btn-danger btn-xs btn-raised" href="' . base_url() . 'user_clas/remove/' . $value[$i]['id'] . '"  data-toggle="tooltip" data-original-title="Xóa học viên"  aria-hidden="true"><i class="material-icons">clear</i></a>
         }
 
-        $news = array('data' => $new);        
-        // print_r($new);
-        // $data = $news;
-        $data = json_encode($news,JSON_UNESCAPED_UNICODE);
+        $new = array('data' => $new); 
+        $data = json_encode($new,JSON_UNESCAPED_UNICODE);
         print_r($data);
-        return $data;
+        return ;
+
+    }
+
+    public function student_by_classID(){
+        $classId=$this->input->post('id');
+        $value=$this->User_clas_model->get_student_by_classID($classId);//lấy danh sách theo yearSchoolId
+      
+        for ($i=0; $i < count($value); $i++) {
+            $new[$i] = new stdClass;
+            $new[$i]->id = $i +1;
+            $new[$i]->name = $value[$i]['name'];
+            $new[$i]->email = $value[$i]['email'];
+            $new[$i]->phone = $value[$i]['phone'];
+            $new[$i]->result = $value[$i]['result'];
+            $new[$i]->action = '
+            <a onclick=\'onDelete("' . $value[$i]['id'] . '","' . $value[$i]['name'] . '")\' class="btn btn-danger btn-xs btn-raised" data-toggle="tooltip" data-original-title="Xóa học viên"  aria-hidden="true"><i class="material-icons">clear</i></a>
+                   
+                ';
+                // <a class="btn btn-danger btn-xs btn-raised" href="' . base_url() . 'user_clas/remove/' . $value[$i]['id'] . '"  data-toggle="tooltip" data-original-title="Xóa học viên"  aria-hidden="true"><i class="material-icons">clear</i></a>
+        }
+
+        $new = array('data' => $new); 
+        $data = json_encode($new,JSON_UNESCAPED_UNICODE);
+        print_r($data);
+        return ;
 
     }
     /*
@@ -141,18 +184,29 @@ class User_clas extends MY_Controller{
     /*
      * Deleting user_clas
      */
-    function remove($id)
+    function remove()
     {
-        $user_clas = $this->User_clas_model->get_user_clas($id);
-
-        // check if the user_clas exists before trying to delete it
-        if(isset($user_clas['']))
-        {
-            $this->User_clas_model->delete_user_clas($id);
-            redirect('user_clas/index');
+    
+        try{
+            $id = $this->input->post('id');
+            $user_clas = $this->User_clas_model->get_user_clas($id);
+                // check if the user_clas exists before trying to delete it
+            if(isset( $user_clas['id'])){
+                $this->User_clas_model->delete_user_clas($id);
+                return $this->Success(array(
+                    'message' => 'Xóa thành công!'
+                ));
+                redirect('user_clas/index');
+            }
+            throw new Exception("Không thể xóa học viên này");
         }
-        else
-            show_error('The user_clas you are trying to delete does not exist.');
+        catch(Exception $e){
+            return $this->Success(array(
+                'isSuccess' => false,
+                'message' => $e->getMessage()
+            ));
+        }
     }
+    
     
 }

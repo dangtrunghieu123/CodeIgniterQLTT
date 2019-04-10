@@ -15,6 +15,7 @@ class Admin extends MY_Controller{
 
          $this->load->model('User_clas_model');
         $this->load->model('Clas_model');
+        $_SESSION['navi'] = 'admin';
     }
 
     function index()
@@ -27,95 +28,11 @@ class Admin extends MY_Controller{
         $data['teacher'] = $this->User_model->get_user_by_Permission('GV');
         $data['ST'] = $this->User_model->get_user_by_Permission('HV');
         
-        // init params
-        // $params = array();
-        // $limit_per_page = 1;
-        // $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        // $total_records = $this->Users->get_total();
-        // if ($total_records > 0) 
-        // {
-        //     // get current page records
-        //     $params["results"] = $this->Users->get_current_page_records($limit_per_page, $start_index);
-             
-        //     $config['base_url'] = base_url() . 'paging/index';
-        //     $config['total_rows'] = $total_records;
-        //     $config['per_page'] = $limit_per_page;
-        //     $config["uri_segment"] = 3;
-             
-        //     $this->pagination->initialize($config);
-             
-        //     // build paging links
-        //     $params["links"] = $this->pagination->create_links();
-        // }
-         
-        // $data = $params;
-
         $data['_view'] = 'admin';
         $this->load->view('layouts/main',$data);
     }
 
-    // public function custom()
-    // {
-    //     // load db and model
-    //     $this->load->database();
-    //     $this->load->model('Users');
-     
-    //     // init params
-    //     $params = array();
-    //     $limit_per_page = 2;
-    //     $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
-    //     $total_records = $this->Users->get_total();
-     
-    //     if ($total_records > 0)
-    //     {
-    //         // get current page records
-    //         $params["results"] = $this->Users->get_current_page_records($limit_per_page, $page*$limit_per_page);
-                 
-    //         $config['base_url'] = base_url() . 'paging/custom';
-    //         $config['total_rows'] = $total_records;
-    //         $config['per_page'] = $limit_per_page;
-    //         $config["uri_segment"] = 3;
-             
-    //         // custom paging configuration
-    //         $config['num_links'] = 2;
-    //         $config['use_page_numbers'] = TRUE;
-    //         $config['reuse_query_string'] = TRUE;
-             
-    //         $config['full_tag_open'] = '<div class="pagination">';
-    //         $config['full_tag_close'] = '</div>';
-             
-    //         $config['first_link'] = 'First Page';
-    //         $config['first_tag_open'] = '<span class="firstlink">';
-    //         $config['first_tag_close'] = '</span>';
-             
-    //         $config['last_link'] = 'Last Page';
-    //         $config['last_tag_open'] = '<span class="lastlink">';
-    //         $config['last_tag_close'] = '</span>';
-             
-    //         $config['next_link'] = 'Next Page';
-    //         $config['next_tag_open'] = '<span class="nextlink">';
-    //         $config['next_tag_close'] = '</span>';
- 
-    //         $config['prev_link'] = 'Prev Page';
-    //         $config['prev_tag_open'] = '<span class="prevlink">';
-    //         $config['prev_tag_close'] = '</span>';
- 
-    //         $config['cur_tag_open'] = '<span class="curlink">';
-    //         $config['cur_tag_close'] = '</span>';
- 
-    //         $config['num_tag_open'] = '<span class="numlink">';
-    //         $config['num_tag_close'] = '</span>';
-             
-    //         $this->pagination->initialize($config);
-                 
-    //         // build paging links
-    //         $params["links"] = $this->pagination->create_links();
-    //     }
-
-    //     $data['_view'] = 'dashboard';
-    //     $this->load->view('layouts/main',$params);
-    // }
-
+    
 
     function fetch_by_courseID(){
         $courseId=$this->input->post('courseID');
@@ -133,34 +50,33 @@ class Admin extends MY_Controller{
         }
     }
 
+   
     public function student_by_classID(){
         $classId=$this->input->post('id');
         $value=$this->User_clas_model->get_student_by_classID($classId);//lấy danh sách theo yearSchoolId
-        print_r($value);
+     
         for ($i=0; $i < count($value); $i++) {
             $new[$i] = new stdClass;
             $new[$i]->id = $i +1;
-            $new[$i]->studentID = $value[$i]['studentID'];
-            $new[$i]->status = $value[$i]['status'];
+            $new[$i]->name = $value[$i]['name'];
+            $new[$i]->email = $value[$i]['email'];
+            $new[$i]->phone = $value[$i]['phone'];
             $new[$i]->result = $value[$i]['result'];
             $new[$i]->action = '
-                    
-                    <a class="btn btn-warning btn-xs btn-raised" href="' . base_url() . 'user_clas/edit/' . $value[$i]['id'] . '"  data-toggle="tooltip" data-original-title="Sửa"  aria-hidden="true"><i class="material-icons">mode_edit</i></a>
-                    <a onclick=\'onDelete("' . $value[$i]['id'] . '","' . $value[$i]['studentID'] . '")\' class="btn btn-danger btn-xs btn-raised" data-toggle="tooltip" title="Xóa"><i class="material-icons">delete</i></a>
+                    <a class="btn btn-success btn-xs btn-raised" href="' . base_url() . 'user/detail_user/' . $value[$i]['account'] . '"  data-toggle="tooltip" data-original-title="Xem thông tin HV"  aria-hidden="true"><i class="material-icons">search</i></a>
+                  
                 ';
-            
         }
 
-        $news = array('data' => $new);        
-        // print_r($new);
-        // $data = $news;
-        $data = json_encode($news,JSON_UNESCAPED_UNICODE);
+        $new = array('data' => $new);    
+        $data = json_encode($new,JSON_UNESCAPED_UNICODE);
         print_r($data);
-        return $data;
+        return ;
 
     }
 
     function listST(){
+        $_SESSION['navi'] = 'listST';
         $teacherID = "NguyenDai";
         $data['_course'] = $this->Cource_model->get_courses_by_teacherID($teacherID);
         $data['_view'] = 'student/listST';

@@ -20,12 +20,20 @@ class User_clas_model extends CI_Model
     }
     function get_student_by_classID($classID)
     {
-        return $this->db->get_where('user_class',array('classID'=>$classID))->result_array();
+        return $this->db->select("u.*, uc.result, uc.id")->from('user u')->join('user_class uc','uc.studentID= u.account')
+        ->where(array('uc.classID' => $classID))
+        ->get() 
+        ->result_array();
     }   
     function get_user_clas_by_studentID($studentID)
     {
         return $this->db->get_where('user_class',array('studentID'=>$studentID))->result_array();
-    }  
+    } 
+    
+    function get_by_studentID_classID($studentID, $classID)
+    {
+        return $this->db->get_where('user_class',array('studentID'=>$studentID,'classID'=>$classID))->row_array();
+    } 
     /*
      * Get all user_class
      */

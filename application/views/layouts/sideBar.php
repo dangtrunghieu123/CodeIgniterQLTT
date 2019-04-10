@@ -3,40 +3,48 @@
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
             <div class="user-info">
+                <?php
+                $CI =& get_instance();
+                $CI->load->model('User_model');
+                $user = $CI->User_model->get_user($_SESSION['user']->account);
+                ?>
                 <div class="image">
-                    <img src="<?=base_url()?>public/assets/themes/admin/images/user.png" width="48" height="48" alt="User" />
+                    <img src="<?=$user['avatar']?>" width="48" height="48" alt="<?=base_url()?>public/assets/themes/admin/images/user.png" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="email">john.doe@example.com</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
-                    </div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$user['account']?> (<?=$user['permissionID']?>)</div>
+                    <div class="email"><?=$user['email']?></div>
+                    
                 </div>
+              
             </div>
-            <!-- #User Info -->
+           
             <!-- Menu -->
             <div class="menu">
-                <ul class="list">
-                    <li class="active">
+                <ul class="list">   
+                    <li class="<?= isSelected('dashboard') ?>">
                         <a href="<?=base_url()?>dashboard">
                             <i class="material-icons">home</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    
+                    <!-- <li class="<?= isSelected('admin') ?>">
+                        <a href="<?=base_url()?>admin">
+                            <i class="material-icons">home</i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li> -->
+                     <!-- <?php if(authPermission('cource','index')){ ?> -->
+                        <li class="<?= isSelected('course') ?>">
+                            <a href="<?=base_url()?>cource">
+                                <i class="material-icons">import_contacts</i>
+                                <span>QL khóa học</span>
+                            </a>
+                        </li>
+                    <!-- <?php } ?> -->
                     <li>
                         <a href="<?=base_url()?>cource">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">import_contacts</i>
                             <span>QL khóa học</span>
                         </a>
                     </li>
@@ -72,7 +80,7 @@
                     </li>
                     <li>
                         <a href="<?=base_url()?>admin/listST">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">contacts</i>
                             <span>DS học viên</span>
                         </a>
                     </li>
@@ -80,12 +88,6 @@
                         <a href="<?=base_url()?>student">
                             <i class="material-icons">layers</i>
                             <span>Khóa học của tôi</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>user/profile">
-                            <i class="material-icons">layers</i>
-                            <span>Thông tin cá nhân</span>
                         </a>
                     </li>
                 </ul>
