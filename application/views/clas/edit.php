@@ -1,41 +1,72 @@
-<div class="row">
-    <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
-              	<h3 class="box-title">Clas Edit</h3>
-            </div>
-			<?php echo form_open('clas/edit/'.$clas['classID']); ?>
-			<div class="box-body">
-				<div class="row clearfix">
-					<div class="col-md-6">
-						<label for="courseID" class="control-label"><span class="text-danger">*</span>CourseID</label>
-						<div class="form-group">
-							<input type="text" name="courseID" value="<?php echo ($this->input->post('courseID') ? $this->input->post('courseID') : $clas['courseID']); ?>" class="form-control" id="courseID" />
-							<span class="text-danger"><?php echo form_error('courseID');?></span>
-						</div>
+
+<section class="content">
+	<div class="container-fluid">
+
+		<div class="row clearfix">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="card">
+					<div class="header">
+						<a href="<?=base_url()?>clas/index" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Quay lại">
+							<i class="material-icons">keyboard_backspace</i> 
+						</a>
+						<h2>THÊM LỚP HỌC</h2>
 					</div>
-					<div class="col-md-6">
-						<label for="teacherID" class="control-label"><span class="text-danger">*</span>TeacherID</label>
-						<div class="form-group">
-							<input type="text" name="teacherID" value="<?php echo ($this->input->post('teacherID') ? $this->input->post('teacherID') : $clas['teacherID']); ?>" class="form-control" id="teacherID" />
-							<span class="text-danger"><?php echo form_error('teacherID');?></span>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<label for="times" class="control-label"><span class="text-danger">*</span>Times</label>
-						<div class="form-group">
-							<input type="text" name="times" value="<?php echo ($this->input->post('times') ? $this->input->post('times') : $clas['times']); ?>" class="form-control" id="times" />
-							<span class="text-danger"><?php echo form_error('times');?></span>
-						</div>
+					<div class="body">
+						<form id="form_advanced_validation" method="POST">
+                            <div class="row">
+                                
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Tên khóa học</label>
+                                        <div class="form-line">
+											<input type="text" value="<?=$clas['nameCourse']?>" name="courseID"  class="form-control" placeholder="Nhập tên khóa học" disabled>
+                                        </div>
+                                    </div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Giảng viên</label>
+                                        <select class="form-control show-tick" data-live-search="true" name="teacherID" id="" required>
+											<option value="<?=$clas['teacherID']?>" selected disabled style="display:none;"><?=$clas['teacherID']?></option>  
+											<?php foreach($_teacher as $value){?>
+											<option value="<?php echo $value['account']; ?>">
+												<?php echo $value['account']; ?>
+											</option>
+											<?php }?>
+                                        </select>
+                                    </div>
+								</div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label>Thời gian học</label>
+										<textarea name="times" placeholder="Giới thiệu bản thân (nếu có)" class="form-control" id="ckeditor"><?=$clas['times']?></textarea>
+                                     
+                                    </div>
+								</div>
+                            </div>
+
+                            <button class="btn btn-primary waves-effect btn-block" type="submit">LƯU</button>
+                        </form>		
 					</div>
 				</div>
 			</div>
-			<div class="box-footer">
-            	<button type="submit" class="btn btn-success">
-					<i class="fa fa-check"></i> Save
-				</button>
-	        </div>				
-			<?php echo form_close(); ?>
 		</div>
-    </div>
-</div>
+
+	</div>
+</section>
+
+
+
+<!-- <script type="text/javascript">
+	$(function() {				    				    
+		if(CKEDITOR.instances['ckeditor']) {						
+			CKEDITOR.remove(CKEDITOR.instances['ckeditor']);
+		}
+	    CKEDITOR.config.height = 300;
+		CKEDITOR.replace('content', {
+			allowedContent: 'iframe[*]'
+		});
+	})
+</script> -->
+

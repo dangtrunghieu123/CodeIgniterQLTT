@@ -11,9 +11,6 @@ class Student extends MY_Controller{
         $this->load->model('Cource_model');
         $this->load->model('User_model');
         $this->load->model('Lesson_model');
-        $this->load->library('pagination');
-        $this->load->helper('url');
-
          $this->load->model('User_clas_model');
         $this->load->model('Clas_model');
         $this->load->model('Detail_lc_model');
@@ -22,7 +19,8 @@ class Student extends MY_Controller{
 
     function index()
     {
-        $studentID = "DaiNguyen";
+      
+        $studentID = $_SESSION["user"]->account;
         $data['myCourse'] = $this->Cource_model->get_courses_of_student($studentID);
         $data['_view'] = 'student/my_course';
         $this->load->view('layouts/main',$data);

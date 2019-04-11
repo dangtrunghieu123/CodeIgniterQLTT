@@ -18,6 +18,10 @@ class User_model extends CI_Model
     {
         return $this->db->get_where('user',array('account'=>$account))->row_array();
     }
+    function get_email($email)
+    {
+        return $this->db->get_where('user',array( 'email'=>$email))->row_array();
+    }
     // function get_user_by_promissionID()
     // {
     //     return $this->db->get_where('user',array('permissionID'=>"GV"))->result_array();
@@ -25,7 +29,7 @@ class User_model extends CI_Model
     function get_permission_by_promissionID($account)
     {
        
-        return $this->db->select("u.*, p.namePermission")->from('user u')->join('permission p','p.permissionID = u.permissionID')
+        return $this->db->select("u.*, p.namePermission, p.function")->from('user u')->join('permission p','p.permissionID = u.permissionID')
         ->where(array('u.account' => $account))
         ->get() 
         ->row_array();
@@ -86,6 +90,12 @@ class User_model extends CI_Model
         return $this->db->update('user',$params);
     }
     
+    function update_password_by_email($email,$newPassword)
+    {
+        $this->db->where('email', $email);
+		return $this->db->update('user',array('pass'=>MD5($newPassword)));
+       
+    }
     /*
      * function to delete user
      */

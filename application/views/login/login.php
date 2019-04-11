@@ -111,10 +111,28 @@
 					
                     if(result.isSuccess){
 						
-						var interval_obj = setInterval(function(){
+						// var interval_obj = setInterval(function(){
+						// 	window.location.href = "<?=base_url()?>admin";
+						// 	clearInterval(interval_obj);
+						// }, 3000);
+						if(result.data == "HV"){
+							var interval_obj = setInterval(function(){
+							window.location.href = "<?=base_url()?>student";
+							clearInterval(interval_obj);
+							}, 3000);
+						}
+						else if(result.data == "GV"){
+							var interval_obj = setInterval(function(){
 							window.location.href = "<?=base_url()?>admin";
 							clearInterval(interval_obj);
-						}, 3000);
+							}, 3000);
+						}
+						if(result.data == "AD"){
+							var interval_obj = setInterval(function(){
+							window.location.href = "<?=base_url()?>dashboard";
+							clearInterval(interval_obj);
+							}, 3000);
+						}
                     }
                 }
             );

@@ -20,6 +20,7 @@ class Cource extends MY_Controller{
      */
     function index()
     {
+        
         $data['cource'] = $this->Cource_model->get_all_cource();
         
         $data['_view'] = 'cource/index';
@@ -125,7 +126,7 @@ class Cource extends MY_Controller{
         try{
             $courseID = $this->input->post('id');
             $cource = $this->Cource_model->get_cource($courseID);
-            print_r($cource);
+            // print_r($cource);
             if(isset($cource['courseID']))
             {
                 $class = $this->Clas_model->get_clas_by_courseID($cource['courseID']);

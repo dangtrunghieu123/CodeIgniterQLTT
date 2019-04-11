@@ -9,7 +9,10 @@ class Clas extends MY_Controller{
     {
         parent::__construct();
         $this->load->model('Clas_model');
-       
+        $this->load->model('Cource_model');
+        $this->load->model('User_model');
+        $this->load->model('User_clas_model');
+        $_SESSION['navi'] = 'clas';
     } 
 
     /*
@@ -17,7 +20,8 @@ class Clas extends MY_Controller{
      */
     function index()
     {
-        $data['class'] = $this->Clas_model->get_all_class();
+        
+        $data['class'] = $this->Clas_model->get_teacherID_courseID_by_classID();
         
         $data['_view'] = 'clas/index';
         $this->load->view('layouts/main',$data);
@@ -28,6 +32,7 @@ class Clas extends MY_Controller{
      */
     function add()
     {   
+        
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('courseID','CourseID','required|integer');
@@ -35,18 +40,39 @@ class Clas extends MY_Controller{
 		$this->form_validation->set_rules('times','Times','required|max_length[250]');
 		
 		if($this->form_validation->run())     
-        {   
-            $params = array(
-				'courseID' => $this->input->post('courseID'),
-				'teacherID' => $this->input->post('teacherID'),
-				'times' => $this->input->post('times'),
-            );
-            
-            $clas_id = $this->Clas_model->add_clas($params);
-            redirect('clas/index');
+        {  
+            if(isset($_POST) && count($_POST) > 0)  {
+                $courseID = $this->input->post('courseID');
+                $teacherID = $this->input->post('teacherID');
+                echo $courseID;
+                $clas = $this->Clas_model->get_class_by_teacherID_classID($courseID,$teacherID);
+                if( $clas == null){
+                    if(isset($_POST) && count($_POST) > 0)  {
+                        $params = array(
+                            'courseID' => $this->input->post('courseID'),
+                            'teacherID' => $this->input->post('teacherID'),
+                            'times' => $this->input->post('times'),
+                        );
+                        
+                        $clas_id = $this->Clas_model->add_clas($params);
+                        redirect('clas/index');
+                    }
+                    else{
+                        echo "sai";
+                    }
+                
+                }
+                else{
+                  
+                    return "sai";
+                    
+                }
+            }
         }
         else
-        {            
+        {         
+            $data['_teacher'] = $this->User_model->get_user_by_Permission('GV');  
+            $data['_course'] = $this->Cource_model->get_all_cource();
             $data['_view'] = 'clas/add';
             $this->load->view('layouts/main',$data);
         }
@@ -62,25 +88,31 @@ class Clas extends MY_Controller{
         
         if(isset($data['clas']['classID']))
         {
-            $this->load->library('form_validation');
-
-			$this->form_validation->set_rules('courseID','CourseID','required|integer');
-			$this->form_validation->set_rules('teacherID','TeacherID','required|max_length[150]');
-			$this->form_validation->set_rules('times','Times','required|max_length[250]');
-		
-			if($this->form_validation->run())     
-            {   
-                $params = array(
-					'courseID' => $this->input->post('courseID'),
-					'teacherID' => $this->input->post('teacherID'),
-					'times' => $this->input->post('times'),
-                );
-
-                $this->Clas_model->update_clas($classID,$params);            
-                redirect('clas/index');
+            
+            if(isset($_POST) && count($_POST) > 0)  {
+                $courseID = $this->input->post('courseID');
+                $teacherID = $this->input->post('teacherID');
+                $clas = $this->Clas_model->get_class_by_teacherID_classID($courseID,$teacherID);
+                if($clas == null){
+                    $params = array(
+                        'teacherID' => $this->input->post('teacherID'),
+                        'times' => $this->input->post('times'),
+                    );
+    
+                    $this->Clas_model->update_clas($classID,$params);            
+                    redirect('clas/index');
+                }
+                else{
+                    $data['_teacher'] = $this->User_model->get_user_by_Permission('GV');  
+                    $data['_course'] = $this->Cource_model->get_all_cource();
+                    $data['_view'] = 'clas/edit';
+                    $this->load->view('layouts/main',$data);
+                }
             }
             else
             {
+                $data['_teacher'] = $this->User_model->get_user_by_Permission('GV');  
+                $data['_course'] = $this->Cource_model->get_all_cource();
                 $data['_view'] = 'clas/edit';
                 $this->load->view('layouts/main',$data);
             }
@@ -92,18 +124,37 @@ class Clas extends MY_Controller{
     /*
      * Deleting clas
      */
-    function remove($classID)
+    function remove()
     {
-        $clas = $this->Clas_model->get_clas($classID);
+        try{
+            $classID = $this->input->post('id');
+            $clas = $this->Clas_model->get_clas($classID);
+            if(isset($clas['classID']))
+            {
+                $listST = $this->User_clas_model->get_student_by_classID($classID);
+                if($listST != null){
+                    throw new Exception("vui lòng xóa danh sách học viên trong lớp học này trước");
+                }
+                $this->Clas_model->delete_clas($classID);
+                return $this->Success(array(
+                    'message' => 'Xóa thành công!'
+                ));
+                redirect('clas/index');
+            }
+            else
+                throw new Exception("Xóa không thành công");
+
+        }
+        catch(Exception $e){
+            return $this->Success(array(
+                'isSuccess' => false,
+                'message' => $e->getMessage()
+            ));
+        }
+       
 
         // check if the clas exists before trying to delete it
-        if(isset($clas['classID']))
-        {
-            $this->Clas_model->delete_clas($classID);
-            redirect('clas/index');
-        }
-        else
-            show_error('The clas you are trying to delete does not exist.');
+       
     }
     
 }

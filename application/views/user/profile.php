@@ -70,9 +70,6 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                
-                <a href="<?=base_url()?>user/index" class="btn  btn-primary btn-raised pull-right waves-effect " style="margin-top:16px" data-placement="bottom"  data-toggle="tooltip" data-original-title="Quay lại">
-					<i class="material-icons">keyboard_backspace</i> 
-				</a>
             </div>
         </div>
     </nav>
@@ -137,7 +134,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?= base_url() ?>/user/edit/<?=$user['account']?>" class=" btn btn-primary waves-effect btn-block">Cập nhật thông tin</a>
+                                <a href="<?= base_url() ?>/user/editprofile/<?=$user['account']?>" class=" btn btn-primary waves-effect btn-block">Cập nhật thông tin</a>
                                
                             </div>
                             

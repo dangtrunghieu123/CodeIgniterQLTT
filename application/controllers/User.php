@@ -22,6 +22,7 @@ class User extends MY_Controller{
      */
     function index()
     {
+        
         $data['AD'] = $this->User_model->get_user_by_Permission('AD');
         $data['T'] = $this->User_model->get_user_by_Permission('GV');
         $data['ST'] = $this->User_model->get_user_by_Permission('HV');
@@ -48,7 +49,7 @@ class User extends MY_Controller{
 		if($this->form_validation->run())     
         {   
             if($user == null){
-                if(isset($_POST) && count($_POST) > 0)  {
+                // if(isset($_POST) && count($_POST) > 0)  {
                     $params = array(
                         'account' => $this->input->post('account'),
                         'pass' => MD5($this->input->post('pass')),
@@ -65,11 +66,11 @@ class User extends MY_Controller{
                     var_dump($params);
                     $user_id = $this->User_model->add_user($params);
                     redirect('user/index');
-                }
-                else{
-                    $data['_view'] = 'user/add';
-                    $this->load->view('layouts/main',$data);
-                }
+                // }
+                // else{
+                //     $data['_view'] = 'user/add';
+                //     $this->load->view('layouts/main',$data);
+                // }
             }
             else{
                 echo "trùng";
@@ -94,46 +95,25 @@ class User extends MY_Controller{
         
         if(isset($data['user']['account']))
         {
-            
-            // $this->load->library('form_validation');
-
-			// $this->form_validation->set_rules('pass','Pass','required|max_length[250]');
-			// $this->form_validation->set_rules('name','Name','required|max_length[250]');
-			// $this->form_validation->set_rules('email','Email','max_length[250]|valid_email');
-			// $this->form_validation->set_rules('phone','Phone','numberic');
-			// $this->form_validation->set_rules('gender','Gender','required|max_length[3]');
-			// $this->form_validation->set_rules('permissionID','PermissionID','required|max_length[150]');
-        
-			// if($this->form_validation->run())     
-            // {   
-               
-                 if(isset($_POST) && count($_POST) > 0)  {
-                    $params = array(
-                        'account' => $this->input->post('account'),
-                        'name' => $this->input->post('name'),
-                        'email' => $this->input->post('email'),
-                        'phone' => $this->input->post('phone'),
-                        'birthday' => $this->input->post('birthday'),
-                        'permissionID' => $this->input->post('permissionID'),
-                        'address' => $this->input->post('address'),
-                        'introduce' => $this->input->post('introduce'),
-                    );
-                    if ($this->input->post('pass') != null) {
-                        $params['pass'] = MD5($this->input->post('pass'));
-                    } else {
-                        $params['pass'] = $data['user']['pass'];
-                    }
-                    print_r($params);
-                    $this->User_model->update_user($account,$params);            
-                    redirect('user/index');
-                // }
-                // else
-                // {
-                //     $data['permission'] = $this->Permission_model->get_all_permission();
-                //     $data['user_permission'] = $this->User_model->get_permission_by_promissionID($account);
-                //     $data['_view'] = 'user/edit';
-                //     $this->load->view('layouts/main',$data);
-                // }
+            if(isset($_POST) && count($_POST) > 0)  {
+            $params = array(
+                'account' => $this->input->post('account'),
+                'name' => $this->input->post('name'),
+                'email' => $this->input->post('email'),
+                'phone' => $this->input->post('phone'),
+                'birthday' => $this->input->post('birthday'),
+                'permissionID' => $this->input->post('permissionID'),
+                'address' => $this->input->post('address'),
+                'introduce' => $this->input->post('introduce'),
+            );
+            if ($this->input->post('pass') != null) {
+                $params['pass'] = MD5($this->input->post('pass'));
+            } else {
+                $params['pass'] = $data['user']['pass'];
+            }
+            print_r($params);
+            $this->User_model->update_user($account,$params);            
+            redirect('user/index');
                 
             }
             else
@@ -208,15 +188,60 @@ class User extends MY_Controller{
 
     //profile
     function profile(){  //truyền account đang đăng nhập tương tự như detail_user
-        $account ="ThuKara";
+        $account =  $_SESSION['user']->account;
         $user = $this->User_model->get_user($account);
         if(isset($user['account']))
         {
             $data['user'] = $user;
+            
         }
         else
             show_error('The user you are trying to delete does not exist.');
       
         $this->load->view('user/profile',$data);
+    }
+
+    function editProfile(){
+        $_SESSION['navi'] = 'edit-profile';
+        $account =  $_SESSION['user']->account;
+        $data['user'] = $this->User_model->get_user($account);
+        if(isset($data['user']['account']))
+        {
+            
+            if(isset($_POST) && count($_POST) > 0)  {
+                $params = array(
+                    'account' => $this->input->post('account'),
+                    'name' => $this->input->post('name'),
+                    'email' => $this->input->post('email'),
+                    'phone' => $this->input->post('phone'),
+                    'birthday' => $this->input->post('birthday'),
+                    'address' => $this->input->post('address'),
+                    'introduce' => $this->input->post('introduce'),
+                );
+                if ($this->input->post('pass') != null) {
+                    $params['pass'] = MD5($this->input->post('pass'));
+                } else {
+                    $params['pass'] = $data['user']['pass'];
+                }
+                print_r($params);
+                $this->User_model->update_user($account,$params);            
+                redirect('user/profile');
+                        
+            }
+            else
+            {
+                // $data['permission'] = $this->Permission_model->get_all_permission();
+                // $data['user_permission'] = $this->User_model->get_permission_by_promissionID($account);
+                $data['_view'] = 'user/editprofile';
+                $this->load->view('layouts/main',$data);
+            }
+        }
+        else{
+            $data['_view'] = 'user/editprofile';
+            $this->load->view('layouts/main',$data);
+        }
+           
+      
+        
     }
 }

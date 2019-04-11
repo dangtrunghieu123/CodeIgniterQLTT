@@ -19,7 +19,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="card">
 					<div class="header">
-						<a href="<?=base_url()?>lesson/add" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Thêm khóa học">
+						<a href="<?=base_url()?>lesson/add" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Thêm bài học">
 							<i class="material-icons">add</i> 
 						</a>
 						<h2>QUẢN LÝ BÀI HỌC</h2>

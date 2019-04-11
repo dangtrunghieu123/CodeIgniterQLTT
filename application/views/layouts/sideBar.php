@@ -22,74 +22,99 @@
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">   
-                    <li class="<?= isSelected('dashboard') ?>">
-                        <a href="<?=base_url()?>dashboard">
-                            <i class="material-icons">home</i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <!-- <li class="<?= isSelected('admin') ?>">
-                        <a href="<?=base_url()?>admin">
-                            <i class="material-icons">home</i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li> -->
-                     <!-- <?php if(authPermission('cource','index')){ ?> -->
+                   
+                    <?php if(authPermission('dashboard','index')){ ?> 
+                        <li class="<?= isSelected('dashboard') ?>">
+                            <a href="<?=base_url()?>dashboard">
+                                <i class="material-icons">home</i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                    <?php } ?> 
+                     <?php if(authPermission('cource','index')){ ?> 
                         <li class="<?= isSelected('course') ?>">
                             <a href="<?=base_url()?>cource">
                                 <i class="material-icons">import_contacts</i>
                                 <span>QL khóa học</span>
                             </a>
                         </li>
-                    <!-- <?php } ?> -->
-                    <li>
-                        <a href="<?=base_url()?>cource">
-                            <i class="material-icons">import_contacts</i>
-                            <span>QL khóa học</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>user">
-                            <i class="material-icons">assignment_ind</i>
-                            <span>QL người dùng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>user_clas/add">
-                            <i class="material-icons">recent_actors</i>
-                            <span>Ghi danh học viên</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>user_clas">
-                            <i class="material-icons">layers</i>
-                            <span>QL học viên</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>lesson">
-                            <i class="material-icons">clear_all</i>
-                            <span>QL bài học</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>admin">
-                            <i class="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>admin/listST">
-                            <i class="material-icons">contacts</i>
-                            <span>DS học viên</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>student">
-                            <i class="material-icons">layers</i>
-                            <span>Khóa học của tôi</span>
-                        </a>
-                    </li>
+                     <?php } ?>
+                     
+                     <?php if(authPermission('clas','index')){ ?> 
+                        <li class="<?= isSelected('clas') ?>">
+                            <a href="<?=base_url()?>clas">
+                                <i class="material-icons">horizontal_splits</i>
+                                <span>QL lớp học</span>
+                            </a>
+                        </li>
+                     <?php } ?>
+                     <?php if(authPermission('user','index')){ ?> 
+                        <li class="<?= isSelected('user') ?>">
+                            <a href="<?=base_url()?>user">
+                                <i class="material-icons">assignment_ind</i>
+                                <span>QL người dùng</span>
+                            </a>
+                        </li>
+                     <?php } ?>
+
+                    <?php if(authPermission('user_clas','add')){ ?> 
+                        <li class="<?= isSelected('user_class_add') ?>">
+                            <a href="<?=base_url()?>user_clas/add">
+                                <i class="material-icons">recent_actors</i>
+                                <span>Ghi danh học viên</span>
+                            </a>
+                        </li>
+                     <?php } ?>
+
+                      <?php if(authPermission('user_clas','index')){ ?> 
+                        <li class="<?= isSelected('user_class') ?>">
+                            <a href="<?=base_url()?>user_clas">
+                                <i class="material-icons">layers</i>
+                                <span>QL học viên</span>
+                            </a>
+                        </li>
+                     <?php } ?>
+
+                     <?php if(authPermission('lesson','index')){ ?> 
+                        <li class="<?= isSelected('lesson') ?>">
+                            <a href="<?=base_url()?>lesson">
+                                <i class="material-icons">clear_all</i>
+                                <span>QL bài học</span>
+                            </a>
+                        </li>
+                     <?php } ?>
+                     <?php if(authPermission('admin','index')){ ?> 
+                        <li class="<?= isSelected('admin') ?>">
+                            <a href="<?=base_url()?>admin">
+                                <i class="material-icons">home</i>
+                                <span>admin</span>
+                            </a>
+                        </li>
+                     <?php } ?>
+                     <?php if(authPermission('admin','listST')){ ?> 
+                        <li class="<?= isSelected('listST') ?>">
+                            <a href="<?=base_url()?>admin/listST">
+                                <i class="material-icons">contacts</i>
+                                <span>DS học viên</span>
+                            </a>
+                        </li>
+                     <?php } ?>
+                     <?php if(authPermission('student','index')){ ?> 
+                        <li class="<?= isSelected('student') ?>">
+                            <a href="<?=base_url()?>student">
+                                <i class="material-icons">layers</i>
+                                <span>Khóa học của tôi</span>
+                            </a>
+                        </li>
+                     <?php } ?>
+                     <?php if(authPermission('user','editProfile')){ ?> 
+                        <li class="<?= isSelected('edit-profile') ?>">
+                            <a href="<?=base_url()?>user/editProfile">
+                                <i class="material-icons">create</i>
+                                <span>Sửa TTCN</span>
+                            </a>
+                        </li>
+                     <?php } ?>
                 </ul>
             </div>
             <!-- #Menu -->
