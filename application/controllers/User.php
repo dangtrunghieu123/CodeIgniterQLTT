@@ -209,7 +209,7 @@ class User extends MY_Controller{
             
             if(isset($_POST) && count($_POST) > 0)  {
                 $params = array(
-                    'account' => $this->input->post('account'),
+                    'account' => $data['user']['account'] ,
                     'name' => $this->input->post('name'),
                     'email' => $this->input->post('email'),
                     'phone' => $this->input->post('phone'),
@@ -224,7 +224,7 @@ class User extends MY_Controller{
                 }
                 print_r($params);
                 $this->User_model->update_user($account,$params);            
-                redirect('user/profile');
+                redirect('user/detail_user/'.$account);
                         
             }
             else

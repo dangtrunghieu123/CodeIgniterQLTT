@@ -16,7 +16,7 @@
 									<div class="form-group">
 										<label>Tài khoản</label>
                                         <div class="form-line">
-											<input type="text" class="form-control" value="<?=$user['account'] ?>" placeholder="Nhập tài khoản" name="account" required>
+											<input type="text" class="form-control" value="<?=$user['account'] ?>" disabled placeholder="Nhập tài khoản" name="account" required>
                                         </div>
                                     </div>
 								</div>

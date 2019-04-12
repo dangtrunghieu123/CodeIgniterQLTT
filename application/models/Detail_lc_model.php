@@ -31,6 +31,15 @@ class Detail_lc_model extends CI_Model
         ->result_array();
         // return $this->db->get_where('detail_lc',array('courseID'=>$courseID))->result_array();
     } 
+    // function get_courseID($lessonID)
+    // {
+    //     return $this->db->select("l.*,lc.courseID")->from('detail_lc lc')
+    //     ->join('lesson l','l.lessonID = lc.lessonID')
+    //     ->where('l.lessonID',$lessonID)
+    //     ->get() 
+    //     ->row_array();
+    //     // return $this->db->get_where('detail_lc',array('courseID'=>$courseID))->result_array();
+    // } 
     function get_by_lessonID_courseID($lessonID, $courseID)
     {
         return $this->db->get_where('detail_lc',array('lessonID'=>$lessonID,'courseID'=>$courseID))->row_array();
