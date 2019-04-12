@@ -136,7 +136,6 @@ class User extends MY_Controller{
         try{
             $account = $this->input->post('id');
             $user = $this->User_model->get_user($account);
-            print_r($user);
             if(isset($user['account'])){
                 $class = $this->Clas_model->get_clas_by_teacherID($user['account']);
                 $user_class = $this->User_clas_model->get_user_clas_by_studentID($user['account']);

@@ -8,14 +8,17 @@ class MY_Controller extends CI_Controller{
         // $this->load->model('User_onlines_model');
 
         session_start();
-        $loginPage = "auth?returnUrl=";
+        $loginPage = "login";
+        $this->CheckPermission();
         //print_r(json_encode((object)$this->controllerlist->getControllers()));
-        if(!isset($_SESSION["user"]))
+        if(!isset($_SESSION["user"]) )
         {
-            return redirect(base_url().$_SERVER['REDIRECT_QUERY_STRING'] ?? '/');
+            return redirect(base_url().$loginPage.$_SERVER['REDIRECT_QUERY_STRING'] ?? '/');
+          
+           
         }
+        // $this->CheckPermission();
         
-         $this->CheckPermission();
         //  $this->refreshUserActive();
     } 
     public function CheckPermission(){

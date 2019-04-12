@@ -132,7 +132,7 @@
 							type: result.isSuccess == true ? 'success' : 'error',
 							text: result.message
 						}, function() {
-							if(result.isSuccess == false){
+							if(result.isSuccess == true){
 								window.location.href = "<?=base_url()?>user_clas";
 							}
 							else{

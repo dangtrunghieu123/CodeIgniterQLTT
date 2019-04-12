@@ -10,9 +10,6 @@ class Admin extends MY_Controller{
         parent::__construct();
         $this->load->model('Cource_model');
         $this->load->model('User_model');
-         $this->load->library('pagination');
-         $this->load->helper('url');
-
          $this->load->model('User_clas_model');
         $this->load->model('Clas_model');
         $_SESSION['navi'] = 'admin';
@@ -23,7 +20,8 @@ class Admin extends MY_Controller{
         
         $data['user_class'] = $this->User_clas_model->get_all_user_class();
         $data['course'] = $this->Cource_model->get_all_cource();
-        $teacherID = "NguyenDai";
+ 
+        $teacherID = $_SESSION["user"]->account;
         $data['_course'] = $this->Cource_model->get_courses_by_teacherID($teacherID);
         $data['teacher'] = $this->User_model->get_user_by_Permission('GV');
         $data['ST'] = $this->User_model->get_user_by_Permission('HV');
@@ -77,7 +75,7 @@ class Admin extends MY_Controller{
 
     function listST(){
         $_SESSION['navi'] = 'listST';
-        $teacherID = "NguyenDai";
+        $teacherID = $_SESSION["user"]->account;
         $data['_course'] = $this->Cource_model->get_courses_by_teacherID($teacherID);
         $data['_view'] = 'student/listST';
         $this->load->view('layouts/main',$data);

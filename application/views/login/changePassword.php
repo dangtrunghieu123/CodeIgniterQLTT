@@ -33,7 +33,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="forgot_password" method="POST"  onsubmit="return false">
+                <form id="forgot_password"   onsubmit="return false">
                     <div class="msg">
                         Thay đổi mật khẩu của bạn 
                     </div>
@@ -106,12 +106,12 @@
                     {
                     pass: pass
                     },function(result){
-                        console.log(result);
                         swal({
                         title: 'THÔNG BÁO',
                         type: result.isSuccess == true ? 'success' : 'error',
                         text: result.message
                         }, function() {
+                            
                             if(result.isSuccess){
                                 window.location.href = "<?=base_url()?>login";
                             }

@@ -42,7 +42,7 @@ class Login extends CI_Controller{
                         // $newPassword = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 15);
                         $email = (object)$email;
                         // $this->User_model->update_password_by_email($email->email,$newPassword);
-                       
+                        $_SESSION["account"] = $email->account;
                         $config = Array(
                             'protocol' => 'smtp',
                             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -59,7 +59,7 @@ class Login extends CI_Controller{
                         $this->email->to($email->email);// change it to yours
                         $this->email->subject('reset mật khẩu');
                         // $this->email->message("Mật khẩu của bạn là:".$newPassword);
-                        $this->email->message("http://localhost/CodeIgniterQLTT/login/changePassword/".$email->account);
+                        $this->email->message("http://localhost/CodeIgniterQLTT/login/changePass/".$email->account);
                         if($this->email->send())
                         {
                             return $this->output
@@ -211,15 +211,18 @@ class Login extends CI_Controller{
     function forgetPassword(){
         $this->load->view('login/forgetPassword');
     }
+    function changePass(){
+        $this->load->view('login/changePassword');
+    }
     function changePassword(){
         try{
-            $account = $this->uri->segment(3);
-            if(isset($_POST) && count($_POST) > 0)  {
+        
+            if(isset($_SESSION["account"])){
                 $password = MD5($this->input->post('pass'));
                 $params = array(
                     'pass' => $password
                 );
-                $this->User_model->update_user($account,$params);  
+                $this->User_model->update_user($_SESSION["account"],$params);  
                 return $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode(array(
@@ -236,6 +239,6 @@ class Login extends CI_Controller{
                     'message' =>$e->getMessage()
             )));
         }
-        $this->load->view('login/changePassword');
+       
     }
 }
