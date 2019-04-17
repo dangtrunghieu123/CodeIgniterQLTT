@@ -52,12 +52,12 @@ class Detail_uc extends CI_Controller{
     /*
      * Editing a detail_uc
      */
-    function edit($)
+    function edit($id)
     {   
         // check if the detail_uc exists before trying to edit it
-        $data['detail_uc'] = $this->Detail_uc_model->get_detail_uc($);
+        $data['detail_uc'] = $this->Detail_uc_model->get_detail_uc($id);
         
-        if(isset($data['detail_uc']['']))
+        if(isset($data['detail_uc']['id']))
         {
             $this->load->library('form_validation');
 
@@ -71,7 +71,7 @@ class Detail_uc extends CI_Controller{
 					'courseID' => $this->input->post('courseID'),
                 );
 
-                $this->Detail_uc_model->update_detail_uc($,$params);            
+                $this->Detail_uc_model->update_detail_uc($id,$params);            
                 redirect('detail_uc/index');
             }
             else
@@ -87,14 +87,14 @@ class Detail_uc extends CI_Controller{
     /*
      * Deleting detail_uc
      */
-    function remove($)
+    function remove($id)
     {
-        $detail_uc = $this->Detail_uc_model->get_detail_uc($);
+        $detail_uc = $this->Detail_uc_model->get_detail_uc($id);
 
         // check if the detail_uc exists before trying to delete it
-        if(isset($detail_uc['']))
+        if(isset($detail_uc['id']))
         {
-            $this->Detail_uc_model->delete_detail_uc($);
+            $this->Detail_uc_model->delete_detail_uc($id);
             redirect('detail_uc/index');
         }
         else

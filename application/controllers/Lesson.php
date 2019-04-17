@@ -90,8 +90,8 @@ class Lesson extends MY_Controller{
 			$this->form_validation->set_rules('image','Image','required');
 			$this->form_validation->set_rules('content','Content','required');
 		
-			if($this->form_validation->run())     
-            {   
+			// if($this->form_validation->run())     
+            // {   
                 if(isset($_POST) && count($_POST) > 0) {
                     $params = array(
                         'nameLesson' => $this->input->post('nameLesson'),
@@ -110,14 +110,14 @@ class Lesson extends MY_Controller{
                     $this->load->view('layouts/main',$data);
                 }
                 
-            }
-            else
-            {
+            // }
+            // else
+            // {
                 
-                $data['author'] = $this->User_model->get_author_create_lesson(); 
-                $data['_view'] = 'lesson/edit';
-                $this->load->view('layouts/main',$data);
-            }
+            //     $data['author'] = $this->User_model->get_author_create_lesson(); 
+            //     $data['_view'] = 'lesson/edit';
+            //     $this->load->view('layouts/main',$data);
+            // }
         }
         else
             show_error('The lesson you are trying to edit does not exist.');

@@ -58,13 +58,19 @@ class Clas extends MY_Controller{
                         redirect('clas/index');
                     }
                     else{
-                        echo "sai";
+                        $data['_teacher'] = $this->User_model->get_user_by_Permission('GV');  
+                        $data['_course'] = $this->Cource_model->get_all_cource();
+                        $data['_view'] = 'clas/add';
+                        $this->load->view('layouts/main',$data);
                     }
                 
                 }
                 else{
                   
-                    return "sai";
+                    $data['_teacher'] = $this->User_model->get_user_by_Permission('GV');  
+                    $data['_course'] = $this->Cource_model->get_all_cource();
+                    $data['_view'] = 'clas/add';
+                    $this->load->view('layouts/main',$data);
                     
                 }
             }

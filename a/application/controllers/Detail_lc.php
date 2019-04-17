@@ -52,12 +52,12 @@ class Detail_lc extends CI_Controller{
     /*
      * Editing a detail_lc
      */
-    function edit($)
+    function edit($id)
     {   
         // check if the detail_lc exists before trying to edit it
-        $data['detail_lc'] = $this->Detail_lc_model->get_detail_lc($);
+        $data['detail_lc'] = $this->Detail_lc_model->get_detail_lc($id);
         
-        if(isset($data['detail_lc']['']))
+        if(isset($data['detail_lc']['id']))
         {
             $this->load->library('form_validation');
 
@@ -71,7 +71,7 @@ class Detail_lc extends CI_Controller{
 					'lessonID' => $this->input->post('lessonID'),
                 );
 
-                $this->Detail_lc_model->update_detail_lc($,$params);            
+                $this->Detail_lc_model->update_detail_lc($id,$params);            
                 redirect('detail_lc/index');
             }
             else
@@ -87,14 +87,14 @@ class Detail_lc extends CI_Controller{
     /*
      * Deleting detail_lc
      */
-    function remove($)
+    function remove($id)
     {
-        $detail_lc = $this->Detail_lc_model->get_detail_lc($);
+        $detail_lc = $this->Detail_lc_model->get_detail_lc($id);
 
         // check if the detail_lc exists before trying to delete it
-        if(isset($detail_lc['']))
+        if(isset($detail_lc['id']))
         {
-            $this->Detail_lc_model->delete_detail_lc($);
+            $this->Detail_lc_model->delete_detail_lc($id);
             redirect('detail_lc/index');
         }
         else
