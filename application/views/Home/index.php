@@ -192,7 +192,7 @@
 						<div class="text">
 							<div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
 							<h3 style="height:60px"> 
-								<a  href="<?= base_url() ?>cource/detail_course/<?=$value['courseID']?>">
+								<a  href="<?= base_url() ?>home/detail_course/<?=$value['courseID']?>">
 									<?php
 										$str = $value['nameCourse'];
 										if(strlen($str) >30 ){
@@ -263,7 +263,7 @@
 							<?php foreach($teacher as $val){?>
 								<div class="item">	
 									<div class="ih-item circle effect5">
-										<a href="<?= base_url()?>user/detail_user/<?=$val['account'] ?>">
+										<a href="<?= base_url()?>home/detail_user/<?=$val['account'] ?>">
 											<div class="img"><img src="<?=$val['avatar'] ?>" width="100%"></div>
 											<div class="info">
 												<div class="info-back">

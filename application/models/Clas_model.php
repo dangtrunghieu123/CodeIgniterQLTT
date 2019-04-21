@@ -20,17 +20,19 @@ class Clas_model extends CI_Model
     // }
     function get_clas($classID)
     {
-        return $this->db->select("cl.*,c.nameCourse")->from('class cl')
+        return $this->db->select("cl.*,c.nameCourse,c.price")->from('class cl')
         ->join('cource c','c.courseID = cl.courseID')
         ->where('cl.classID',$classID)
         ->get() 
         ->row_array();
         // return $this->db->get_where('detail_lc',array('courseID'=>$courseID))->result_array();
     } 
+   
     function get_clas_by_courseID($courseID)
     {
         return $this->db->get_where('class',array('courseID'=>$courseID))->result_array();
     }
+
     function get_clas_by_teacherID($account)
     {
         return $this->db->get_where('class',array('teacherID'=>$account))->result_array();
