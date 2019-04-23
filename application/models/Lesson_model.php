@@ -34,7 +34,9 @@ class Lesson_model extends CI_Model
         $this->db->order_by('lessonID', 'desc');
         return $this->db->get('lesson')->result_array();
     }
-        
+    function get_all_lesson_of_teacher($author){
+        return $this->db->get_where('lesson',array('author'=>$author))->result_array();
+    }  
     /*
      * function to add new lesson
      */

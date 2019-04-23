@@ -109,7 +109,7 @@
                                             <div class="body">
                                                 <div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
                                                 <h3>
-                                                 <!-- <a  href="<?php echo site_url('home/detail_course/'.$value['courseID']); ?>"><?=	$value['nameCourse'] ?></a>  -->
+                                                 <!-- <a  href="<?= base_url() ?>student/listLesson/<?=$value['courseID']?>"> -->
                                                     <a  href="<?= base_url() ?>cource/detail_course/<?=$value['courseID']?>">
                                                         <?php
                                                             $str = $value['nameCourse'];

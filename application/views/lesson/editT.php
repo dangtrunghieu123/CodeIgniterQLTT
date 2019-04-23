@@ -7,10 +7,10 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="card">
 					<div class="header">
-						<!-- <a href="<?=base_url()?>lesson/index" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Quay lại">
+						<a href="<?=base_url()?>lesson/index" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Quay lại">
 							<i class="material-icons">keyboard_backspace</i> 
-						</a> -->
-						<h2>THÊM BÀI HỌC</h2>
+						</a>
+						<h2>SỬA BÀI HỌC</h2>
 					</div>
 					<div class="body">
 					<form id="form_advanced_validation" method="POST">
@@ -19,29 +19,17 @@
 									<div class="form-group">
 										<label>Tên bài học</label>
                                         <div class="form-line">
-											<input type="text" class="form-control" placeholder="Nhập tên bài học" name="nameLesson" required>
+											<input type="text" value="<?=$lesson['nameLesson'] ?>" class="form-control" placeholder="Nhập tên bài học" name="nameLesson" required>
                                         </div>
                                     </div>
 								</div>
 								
-								<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="form-group">
-										<label>Người tạo</label>
-                                        <select class="form-control show-tick" data-live-search="true" name="author" id="" required>
-                                              
-											<?php foreach($author as $value){?>
-											<option value="<?php echo $value['account']; ?>">
-												<?php echo $value['account']; ?>
-											</option>
-											<?php }?>
-                                        </select>
-                                    </div>
-								</div> -->
+								
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<div class="form-group">
 										<label>Nội dung</label>
-											<textarea name="content" placeholder="Giới thiệu bản thân (nếu có)" class="form-control" id="ckeditor"></textarea>
+										<textarea name="content" placeholder="Giới thiệu bản thân (nếu có)" class="form-control" id="ckeditor"><?=$lesson['content'] ?></textarea>
                                      
                                     </div>
 								</div>
@@ -70,4 +58,5 @@
 		});
 	})
 </script>
+
 

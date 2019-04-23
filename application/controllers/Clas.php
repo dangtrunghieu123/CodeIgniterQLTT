@@ -45,8 +45,8 @@ class Clas extends MY_Controller{
                 $courseID = $this->input->post('courseID');
                 $teacherID = $this->input->post('teacherID');
                 echo $courseID;
-                $clas = $this->Clas_model->get_class_by_teacherID_classID($courseID,$teacherID);
-                if( $clas == null){
+                // $clas = $this->Clas_model->get_class_by_teacherID_classID($courseID,$teacherID);
+                // if( $clas == null){
                     if(isset($_POST) && count($_POST) > 0)  {
                         $params = array(
                             'courseID' => $this->input->post('courseID'),
@@ -64,15 +64,15 @@ class Clas extends MY_Controller{
                         $this->load->view('layouts/main',$data);
                     }
                 
-                }
-                else{
+                // }
+                // else{
                   
-                    $data['_teacher'] = $this->User_model->get_user_by_Permission('GV');  
-                    $data['_course'] = $this->Cource_model->get_all_cource();
-                    $data['_view'] = 'clas/add';
-                    $this->load->view('layouts/main',$data);
+                //     $data['_teacher'] = $this->User_model->get_user_by_Permission('GV');  
+                //     $data['_course'] = $this->Cource_model->get_all_cource();
+                //     $data['_view'] = 'clas/add';
+                //     $this->load->view('layouts/main',$data);
                     
-                }
+                // }
             }
         }
         else

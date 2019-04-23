@@ -87,7 +87,15 @@
                         <li class="<?= isSelected('admin') ?>">
                             <a href="<?=base_url()?>admin">
                                 <i class="material-icons">home</i>
-                                <span>admin</span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                     <?php } ?>
+                     <?php if(authPermission('lesson','lessonT')){ ?> 
+                        <li class="<?= isSelected('lesson_T') ?>">
+                            <a href="<?=base_url()?>lesson/lessonT">
+                                <i class="material-icons">clear_all</i>
+                                <span>QL bài học</span>
                             </a>
                         </li>
                      <?php } ?>

@@ -12,6 +12,7 @@ class Cource extends MY_Controller{
         $this->load->model('User_model');
         $this->load->model('Clas_model');
         $this->load->model('Detail_lc_model');
+        $this->load->model('Lesson_model');
         $_SESSION['navi'] = 'course';
     } 
 
@@ -173,7 +174,19 @@ class Cource extends MY_Controller{
             show_error('The course you are trying to delete does not exist.');
         $this->load->view('detail_course',$data);
     }
-    
+    function listLesson($courseID){
+        $_SESSION['ID_Course'] = $this->uri->segment(3);
+        $data['name'] = $this->Cource_model->get_cource($courseID);
+        $data['lesson'] = $this->Detail_lc_model->get_detail_lc_by_courseID($courseID);
+        $data['_view'] = 'cource/listLesson';
+        $this->load->view('layouts/main',$data);
+    }
+    function D_lesson($lessonID){
+        $data['_courseID'] =  $_SESSION['ID_Course'];
+        $data['lesson'] = $this->Lesson_model->get_lesson($lessonID);
+        $data['_view'] = 'cource/D_Lesson';
+        $this->load->view('layouts/main',$data);
+    }
     function viewLess($courseID){
         $data['name'] = $this->Cource_model->get_cource($courseID);
         $data['lesson'] = $this->Detail_lc_model->get_detail_lc_by_courseID($courseID);

@@ -34,7 +34,9 @@ class Admin extends MY_Controller{
 
     function fetch_by_courseID(){
         $courseId=$this->input->post('courseID');
-        $sc=$this->Clas_model->get_clas_by_courseID($courseId);//lấy danh sách theo courseId
+        $teacherID = $_SESSION["user"]->account;
+        $sc=$this->Clas_model->get_class_of_teacherID_by_courseID($teacherID,$courseId);
+        // $sc=$this->Clas_model->get_clas_by_courseID($courseId);//lấy danh sách theo courseId
         print_r($sc);
         if($sc!=""){
             $html="";

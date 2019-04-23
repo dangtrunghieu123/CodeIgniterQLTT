@@ -66,13 +66,14 @@
 <div class="bg-text">
   <div class="container py-5">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="img ">
           <img class="img-thumbnail" src="<?= $_course['image']?>" alt="">
         </div>
         <h2 class="mt-3">Khóa học: <?= $_course['nameCourse']?></h2>
+        <a class="btn btn-success waves-effect btn-block" style="margin-top:20px" href="<?= base_url() ?>cource/listLesson/<?=$_course['courseID']?>" >Danh sách bài học</a>
       </div>
-      <div class="col-lg-8 pl-5" >
+      <div class="col-lg-8  col-md-8 col-sm-8 col-xs-12 pl-5" >
         <h2 class="mb-5">Thông tin khóa học</h2>
         <div class="content ">
             <p>
