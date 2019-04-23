@@ -117,6 +117,9 @@ class Home extends CI_Controller{
             if(!isset($_SESSION["user"])){
                 throw new Exception("Bạn vui lòng đăng nhập trước");
             }
+            else if($_SESSION["user"]->permissionID != 'HV'){
+                throw new Exception("Bạn vui lòng đăng nhập bằng tài khoản học viên");
+            }
             else
                 return $this->output
                 ->set_content_type('application/json')

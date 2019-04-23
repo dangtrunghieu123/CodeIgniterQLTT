@@ -25,11 +25,20 @@ class User_model extends CI_Model
     // function get_user_by_promissionID()
     // {
     //     return $this->db->get_where('user',array('permissionID'=>"GV"))->result_array();
-    // }  
+    // } 
+
+    // function get_permission_by_promissionID($account)
+    // {
+       
+    //     return $this->db->select("u.*, p.namePermission, p.function")->from('user u')->join('permission p','p.permissionID = u.permissionID')
+    //     ->where(array('u.account' => $account))
+    //     ->get() 
+    //     ->row_array();
+    // } 
     function get_permission_by_promissionID($account)
     {
        
-        return $this->db->select("u.*, p.namePermission, p.function")->from('user u')->join('permission p','p.permissionID = u.permissionID')
+        return $this->db->select("u.*, p.*")->from('user u')->join('permission p','p.permissionID = u.permissionID')
         ->where(array('u.account' => $account))
         ->get() 
         ->row_array();
