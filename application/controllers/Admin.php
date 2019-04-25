@@ -78,7 +78,7 @@ class Admin extends MY_Controller{
     function listST(){
         $_SESSION['navi'] = 'listST';
         $teacherID = $_SESSION["user"]->account;
-        $data['_course'] = $this->Cource_model->get_courses_by_teacherID($teacherID);
+        $data['_course'] = $this->Cource_model->get_courses_by_teacherID_distinct($teacherID);
         $data['_view'] = 'student/listST';
         $this->load->view('layouts/main',$data);
     }

@@ -39,10 +39,12 @@ class Clas_model extends CI_Model
         ->get() 
         ->result_array();
     }
+    
     function get_clas_by_teacherID($account)
     {
         return $this->db->get_where('class',array('teacherID'=>$account))->result_array();
     } 
+
     function get_class_by_teacherID_classID($courseID,$teacherID){
         return $this->db->get_where('class',array('courseID'=>$courseID,'teacherID' =>$teacherID))->row_array();
     }

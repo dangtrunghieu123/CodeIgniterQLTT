@@ -9,7 +9,7 @@
                 $user = $CI->User_model->get_user($_SESSION['user']->account);
                 ?>
                 <div class="image">
-                    <img src="<?=$user['avatar']?>" width="48" height="48" alt="<?=base_url()?>public/assets/themes/admin/images/user.png" />
+                    <img src="<?=$user['avatar']?>" width="48" height="48" alt="" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$user['account']?> (<?=$user['permissionID']?>)</div>

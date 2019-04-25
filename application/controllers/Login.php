@@ -156,6 +156,7 @@ class Login extends CI_Controller{
                                     'account'=> $this->input->post('account'),
                                     'pass' => MD5($this->input->post('pass')),
                                     'name' =>  $this->input->post('name'),
+                                    'avatar' =>  'https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png',
                                     'email' =>  $this->input->post('email'),
                                     'gender' => $this->input->post('gender'),
                                     'permissionID' => 'HV'

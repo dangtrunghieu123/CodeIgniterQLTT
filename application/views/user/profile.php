@@ -128,6 +128,7 @@
                                             <span> <b>Địa chỉ:</b> <?= $user['address']?></span>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="line">
                                             <span> <b>Giới thiệu:</b> <?= $user['introduce']?></span>

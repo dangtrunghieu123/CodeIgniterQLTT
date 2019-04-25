@@ -119,19 +119,19 @@
 							var interval_obj = setInterval(function(){
 							window.location.href = "<?=base_url()?>student";
 							clearInterval(interval_obj);
-							}, 2000);
+							}, 1500);
 						}
 						else if(result.data == "GV"){
 							var interval_obj = setInterval(function(){
 							window.location.href = "<?=base_url()?>admin";
 							clearInterval(interval_obj);
-							}, 2000);
+							}, 1500);
 						}
 						if(result.data == "AD"){
 							var interval_obj = setInterval(function(){
 							window.location.href = "<?=base_url()?>dashboard";
 							clearInterval(interval_obj);
-							}, 2000);
+							}, 1500);
 						}
                     }
                 }

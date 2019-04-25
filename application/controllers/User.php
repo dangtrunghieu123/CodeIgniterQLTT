@@ -215,6 +215,7 @@ class User extends MY_Controller{
                     'phone' => $this->input->post('phone'),
                     'birthday' => $this->input->post('birthday'),
                     'address' => $this->input->post('address'),
+                    'address' => $this->input->post('address'),
                     'introduce' => $this->input->post('introduce'),
                 );
                 if ($this->input->post('pass') != null) {
@@ -222,6 +223,9 @@ class User extends MY_Controller{
                 } else {
                     $params['pass'] = $data['user']['pass'];
                 }
+                if ($this->input->post('avatar') != null) {
+                    $params['avatar'] = $this->input->post('avatar');
+                } 
                 print_r($params);
                 $this->User_model->update_user($account,$params);            
                 redirect('user/detail_user/'.$account);

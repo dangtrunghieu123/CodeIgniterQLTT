@@ -164,8 +164,8 @@ class Cource extends MY_Controller{
     // detail
 
     function detail_course($courseID){
-        // print_r($courseID);
         $course = $this->Cource_model->get_cource($courseID);
+        // $course = $this->Cource_model->get_time($courseID,$classID);
         if(isset($course['courseID']))
         {
             $data['_course'] = $course;

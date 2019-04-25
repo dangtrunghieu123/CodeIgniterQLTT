@@ -103,14 +103,15 @@
                         <div class="body">
                            <div class="row">
                                 <?php foreach($_course as $value){?>
+                                    
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="card c-card">
                                             <img src="<?= $value['image'] ?>" width="100%">
                                             <div class="body">
-                                                <div class="class_time">Classes <i class="fa fa-clock-o"></i> 10 am - 11 am</div>
+                                                <div class="class_time">Classes <i class="fa fa-clock-o"></i> 8 am - 11 am</div>
                                                 <h3>
-                                                 <!-- <a  href="<?= base_url() ?>student/listLesson/<?=$value['courseID']?>"> -->
-                                                    <a  href="<?= base_url() ?>cource/detail_course/<?=$value['courseID']?>">
+                                                <a  href="<?= base_url() ?>cource/detail_course/<?=$value['courseID']?>">
+                                                   
                                                         <?php
                                                             $str = $value['nameCourse'];
                                                             if(strlen($str) >30 ){
@@ -123,7 +124,8 @@
                                                         ?>
                                                     </a>
                                                  </h3>
-                                                <p>Người tạo : <?=	$value['author'] ?></p>
+                                                <!-- <p>Người tạo : <?=	$value['author'] ?></p> -->
+                                                <p>TKB: <?=	$value['times'] ?></p>
                                                 <ul class="courses-info">
                                                     <li class="courses-info__price"><strong class="color">$<?=$value['price']?> </strong></li>
                                                     <li>
