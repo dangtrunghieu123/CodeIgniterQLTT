@@ -76,6 +76,54 @@ class Lesson extends MY_Controller{
             $this->load->view('layouts/main',$data);
         }
     } 
+
+    function addContinue()
+    {   
+       
+        $this->load->library('form_validation');
+		$this->form_validation->set_rules('nameLesson','NameLesson','required|max_length[250]');
+		// $this->form_validation->set_rules('author','Author','required|max_length[100]');
+		$this->form_validation->set_rules('content','Content','required');
+        $name = $this->Lesson_model->get_name_lesson($this->input->post('nameLesson'));
+		if($this->form_validation->run())     
+        {   
+            if($name == null){
+                if(isset($_POST) && count($_POST) > 0)  {
+                    $params = array(
+                        'nameLesson' => $this->input->post('nameLesson'),
+                        'author' => $_SESSION['user']->account,
+                        'content' => $this->input->post('content')
+                    );
+                    $lesson_id = $this->Lesson_model->add_lesson($params);
+                    $_classID = $this->Lesson_model->get_name_lesson($this->input->post('nameLesson'));
+                    print_r($_classID);
+                    $_params = array(
+                        'courseID' => $_SESSION['ID_Course'],
+                        'lessonID' => $_classID['lessonID'],
+                    );
+                    
+                    $detail_lc_id = $this->Detail_lc_model->add_detail_lc($_params);
+                    redirect('cource/listLesson/'.$_SESSION['ID_Course']);
+                }
+                else{
+                       
+                    $data['_view'] = 'lesson/add';
+                    $this->load->view('layouts/main',$data);
+                }
+            }
+            else{
+                    
+                $data['_view'] = 'lesson/add';
+                $this->load->view('layouts/main',$data);
+            }
+        }
+        else
+        {    
+             
+            $data['_view'] = 'lesson/add';
+            $this->load->view('layouts/main',$data);
+        }
+    } 
     function add()
     {   
        

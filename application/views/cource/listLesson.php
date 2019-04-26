@@ -15,6 +15,9 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="card">
 					<div class="header">
+						<a href="<?=base_url()?>lesson/addContinue" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Thêm khóa học">
+							<i class="material-icons">add</i> 
+						</a>
                         <a href="<?=base_url()?>cource/detail_course/<?=$name['courseID'] ?>" class="btn btn-primary btn-raised pull-right waves-effect m-t--10"  data-toggle="tooltip" data-original-title="Thêm khóa học">
 							<i class="material-icons">keyboard_backspace</i> 
 						</a>
